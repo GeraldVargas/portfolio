@@ -1,0 +1,15 @@
+---
+import {HeroIconsSocial} from "../data/HeroIconsData";
+---
+
+{
+  HeroIconsSocial.map((icon, index) => (
+    <div class="social">
+      <div
+        class={`social__link icon-${index + 1} icono__dark`}
+      >
+        <iconify-icon class="social__icon" icon={icon.src} w></iconify-icon>
+      </div>
+    </div>
+  ))
+}

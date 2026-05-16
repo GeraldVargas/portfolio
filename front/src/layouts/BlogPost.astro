@@ -1,0 +1,131 @@
+---
+import type { CollectionEntry } from "astro:content";
+import "@styles/global.css";
+import BaseHead from "@components/BaseHead.astro";
+import Footer from "@components/Footer.astro";
+import ToggleDarkBtn from "../ToggleDarkBtn.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import BtnToTop from "@atoms/BtnToTop.astro";
+import NavLinks from "@components/NavLinks.astro";
+const { title, description, pubDate, updatedDate } = Astro.props;
+import { blog}from "../data/MenuData";
+// import "@pages/blog/blog.css";
+type Props = CollectionEntry<"blog">["data"];
+---
+<!doctype html>
+<html lang="en" >
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body>
+    <NavLinks origin={blog} />
+    <ToggleDarkBtn />
+    <BtnToTop />
+    <main>
+      <div class="prose">
+        <div class="title">
+          <div class="date">
+            <FormattedDate date={pubDate} />
+            {
+              updatedDate && (
+                <div class="last-updated-on">
+                  Last updated on <FormattedDate date={updatedDate} />
+                </div>
+              )
+            }
+          </div>
+          <h1 class="article__title">≥ {title}</h1>
+          <hr />
+        </div>
+        <slot />
+      </div>
+    </main>
+    <Footer />
+  </body>
+  </html>
+
+  <style is:global>
+
+	main {
+		width: calc(100% - 2em);
+		max-width: 100%;
+		margin: 0;
+		margin-top: 14rem;
+		overflow: hidden;
+	}
+	ol li {
+		list-style: decimal;
+		font-size: 1.7rem;
+	}
+	ul li{
+		font-size: 1.7rem;
+	}
+	 img{
+		max-width: 100%;
+		height: auto;
+	}
+	article{
+		margin-right: -2rem;
+	}
+
+	.dark-mode body{
+		background-color: var(--dark-purple);
+	}
+	.hero-image {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+	.hero-image img {
+		display: block;
+		margin: 0 auto;
+		border-radius: 12px;
+		box-shadow: var(--box-shadow);
+		width: 95%;
+		height: 29rem;
+		object-fit: cover;
+	}
+	.dark-mode .hero-image img {
+		box-shadow: none;
+	}
+
+	.prose {
+		width: 720px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: 1em;
+		color: rgb(var(--gray-dark));
+	}
+	.title {
+		margin-bottom: 1em;
+		padding: 1em 0;
+		text-align: center;
+		line-height: 1;
+		font-size: rem;
+	}
+	.article__title {
+		margin: 0 0 0.5em 0;
+	}
+	.dark-mode .article__title{
+		color: var(--seccond-color);
+	}
+
+	.date {
+		margin-bottom: 0.5em;
+		color: rgb(var(--gray));
+	}
+	.dark-mode .date{
+		color: var(--blue);
+	}
+	.last-updated-on {
+		font-style: italic;
+	}
+	@media(min-width:768px){
+		.hero-image img {
+			width: 80%;
+			height: 60rem;
+		}
+	}
+
+  </style>

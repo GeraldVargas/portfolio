@@ -1,0 +1,24 @@
+{
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "baseUrl": ".",
+	  "paths": {
+		"@src/*": ["src/*"],
+		"@components/*": ["src/components/*"],
+		"@atoms/*": ["src/components/atoms/*"],
+		"@molecules/*": ["src/components/molecules/*"],
+		"@organisms/*": ["src/components/organisms/*"],
+		"@layouts/*": ["src/layouts/*"],
+		"@pages/*": ["src/pages/*"],
+		"@controllers/*": ["src/controllers/*"],
+		"@services/*": ["src/services/*"],
+		"@data/*": ["src/data/*"],
+		"@styles/*": ["src/styles/*"],
+		"@animations/*": ["src/styles/animations/*"],
+		"@img/*": ["public/img/*"]
+	  },
+  }
+}

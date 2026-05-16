@@ -1,0 +1,94 @@
+@import url("../animations/animation-up-down.css");
+
+@import url("../animations/animation-flicker.css");
+@import url("../animations/animations-slides.css");
+
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.hero__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(0.78);
+  background: #000;
+  z-index: 0;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.4) 14%, transparent 26%),
+    linear-gradient(to left, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.4) 14%, transparent 26%);
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  padding-left: 5%;
+  padding-right: 0;
+  padding-bottom: 8%;
+  max-width: 550px;
+}
+
+.hero__greeting {
+  color: #00ff66;
+  font-family: var(--fira-code);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero__name {
+  color: #fff;
+  font-family: var(--fira-code);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 30px rgba(120, 80, 255, 0.8);
+}
+
+.hero__role {
+  color: #ff0090;
+  font-family: var(--fira-code);
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.hero__sub {
+  color: aqua;
+  font-family: var(--fira-code);
+  font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero__overlay {
+    background:
+      linear-gradient(to right, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.34) 14%, transparent 26%),
+      linear-gradient(to left, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.34) 14%, transparent 26%);
+  }
+}
