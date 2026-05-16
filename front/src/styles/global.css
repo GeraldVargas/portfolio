@@ -45,7 +45,7 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 58%;
   overflow-x: hidden;
   scroll-padding: 10rem;
 }
@@ -58,7 +58,7 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.7;
   background-color: var(--seccond-color);
 }
@@ -76,7 +76,7 @@ ul li {
 }
 
 .titulo {
-  font-size: 4rem;
+  font-size: clamp(2.8rem, 4.4vw, 3.6rem);
   font-family: var(--montserrat);
   text-align: center;
 }
@@ -90,13 +90,13 @@ a {
   text-decoration: none;
 }
 h3 {
-  font-size: 1.8rem;
-}
-h4 {
   font-size: 1.6rem;
 }
+h4 {
+  font-size: 1.45rem;
+}
 .prose p {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .dark-mode {

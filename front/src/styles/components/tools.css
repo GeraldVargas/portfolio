@@ -3,11 +3,13 @@
   position: relative;
   flex-direction: column;
   background-color: var(--purple-bg);
+  --tools-edge: var(--purple-bg);
+  padding-bottom: 1.25rem;
 }
 .tools__titulo {
   color: var(--green-terminal);
   text-align: center;
-  margin: 14px 0 0;
+  margin: 0.5rem 0 0;
 }
 .tools__caja__slider {
   width: 100%;
@@ -17,20 +19,32 @@
   flex-direction: column;
   overflow: hidden;
   justify-content: center;
+  position: relative;
+  padding: 0.5rem 0 1rem;
 }
-.tools__caja__slider::after {
-  right: 274px;
-  top: 111px;
-  transform: rotateZ(-180deg);
+.tools__caja__slider::before, .tools__caja__slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(48px, 8vw, 110px);
+  z-index: 2;
+  pointer-events: none;
 }
 
-.tools__caja__slider::before, .tools__caja__slider::after {
-  background: linear-gradient(to right, rgb(25, 0, 60) 0%, rgba(255, 255, 255, 0) 100%);
-  content: "";
-  height: 200px;
-  position: absolute;
-  width: 99px;
-  z-index: 2;
+.tools__caja__slider::before {
+  left: 0;
+  background: linear-gradient(to right, var(--tools-edge) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.tools__caja__slider::after {
+  right: 0;
+  background: linear-gradient(to left, var(--tools-edge) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.dark-mode .tools {
+  background-color: var(--dark-bg);
+  --tools-edge: var(--dark-bg);
 }
 
 .slider:has(.tools__grupo:hover ){
@@ -39,33 +53,36 @@
 }
 
 .slider {
-  display: inline-block;
+  display: flex;
+  width: max-content;
   height: auto;
-  animation: 35s slide infinite linear;
+  animation: 32s slide infinite linear;
 }
 @keyframes slide {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-590%);
+    transform: translateX(-50%);
   }
 }
 .tools__cajas {
   display: flex;
-  gap: 40px;
+  gap: clamp(1rem, 3vw, 3rem);
   align-items: center;
   white-space: nowrap;
-  height: 164px;
+  min-height: 136px;
+  padding: 0.5rem 0;
 }
 .tools__grupo {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
-  height: 103px;
-  padding: 2px;
-  justify-content: space-around;
+  min-height: 104px;
+  padding: 0 2px;
+  justify-content: center;
+  gap: 0.5rem;
 }
 .tools__caja {
   display: flex;
@@ -83,7 +100,7 @@
   align-items: center;
 }
 .tools__caja:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .tools__icono {
   display: flex;
@@ -94,80 +111,53 @@
   text-align: center;
   color: var(--green-terminal);
   font-family: var(--fira-code);
-  font-size: 1.7rem;
+  font-size: 1.2rem;
 }
 /*TABLET VIEW */
 @media (min-width: 678px) {
   .slider {
-    height: 36vh;
-    min-height: 331px;
-    animation: 30s slide infinite linear;
-  }
-  @keyframes slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-418%);
-    }
+    animation-duration: 34s;
   }
   .tools__cajas {
-    display: flex;
-    height: 45vh;
-    gap: 144px;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    min-height: 170px;
   }
   .tools__grupo {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    padding: 2px;
-    gap: 1rem;
+    gap: 0.8rem;
   }
   .tools__caja {
-    width: 90px;
-    height: 90px;
-    min-width: 90px;
-    min-height: 90px;
+    width: 86px;
+    height: 86px;
+    min-width: 86px;
+    min-height: 86px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .tools__icono {
-    width: 53px;
-  }
-  .tools__descripcion {
-    display: none;
-  }
-
-  .tools__grupo:hover .tools__descripcion {
-    display: inline-block;
+    width: 50px;
   }
 }
 
 /* DESKTOP VIEW */
 @media (min-width: 1200px) {
   .slider {
-    animation: 40s slide infinite linear;
-  }
-  @keyframes slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-250%);
-    }
+    animation-duration: 38s;
   }
   .tools__cajas {
-    height: 34vh;
+    min-height: 188px;
+    gap: clamp(2rem, 4vw, 4.5rem);
   }
   .tools__caja {
-    height: 97px;
-    width: 97px;
-    min-height: 97px;
-    min-width: 97px;
+    height: 94px;
+    width: 94px;
+    min-height: 94px;
+    min-width: 94px;
   }
   .tools__icono {
-    width: 5rem;
+    width: 4.2rem;
+  }
+  .tools__descripcion {
+    font-size: 1.4rem;
   }
 }

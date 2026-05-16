@@ -1,7 +1,9 @@
 .wraper__tools {
   position: relative;
-  height: 21vh;
-
+  height: clamp(72px, 11vw, 130px);
+  line-height: 0;
+  overflow: hidden;
+  margin-bottom: -1px;
 }
 
 .custom-shape-divider-top-1699780157 {
@@ -17,8 +19,8 @@
 .custom-shape-divider-top-1699780157 svg {
   position: relative;
   display: block;
-  width: calc(131% + 1.3px);
-  height: 147px;
+  width: 100%;
+  height: clamp(72px, 11vw, 130px);
 }
 /* color de fondo segun la prop */
 
@@ -56,4 +58,4 @@
 }
  .secundary{
   background-color: var(--purple-bg);
-}
+ }

@@ -17,15 +17,15 @@ export const portfolio = [
   { href: "/", text: "Home", target: "_self" },
   { href: "/blog", text: "Blog", target: "_self" },
   { href: "/about", text: "About Me", target: "_self" },
-  { href: "https://github.com/SofiDevO", text: "My GitHub", target: "_blank" },
+  { href: "https://github.com/GeraldVargas", text: "My GitHub", target: "_blank" },
 ];
 export const blog = [
   { href: "/", text: "Home", target: "_self" },
   { href: "/about", text: "About", target: "_self" },
   { href: "/portfolio", text: "Portfolio", target: "_self" },
   {
-    href: "https://sofidev.medium.com/",
-    text: "Medium blog",
+    href: "https://github.com/GeraldVargas",
+    text: "GitHub",
     target: "_blank",
   },
 ];

@@ -5,16 +5,21 @@
 .header {
   display: flex;
   width: 100%;
+  max-width: min(96%, 1500px);
   position: fixed;
   z-index: 50;
-  top: 0;
-  padding: 0 5rem;
+  top: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 1.4rem;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   z-index: 200;
-  background: #000000de;
-  box-shadow: 0 5px 4px -2px rgba(0, 0, 0, 0.46);
-  height: 10dvh;
+  background: rgba(20, 20, 20, 0.78);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 6.4rem;
 }
 
 .menu__list {
@@ -98,7 +103,7 @@
 /* TABLET VIEW */
 @media screen and (min-width: 768px) {
   .header {
-    padding: 0 1rem;
+    padding: 0 1.8rem;
     justify-content: space-between;
   }
   .dark-mode .header {
@@ -143,13 +148,13 @@
     /* position: relative; */
     transform: translateY(0px);
     justify-content: flex-end;
-    width: 89%;
+    width: auto;
   }
 
   .menu__ul {
     flex-direction: row;
     height: auto;
-    gap: 0;
+    gap: 0.4rem;
     padding: 0;
     justify-content: flex-end;
     margin-top: 0;
@@ -163,7 +168,7 @@
     cursor: pointer;
     text-shadow: -0.1rem 0rem 0rem var(--main-color);
     transition: 0.3s ease-in-out;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.9rem;
     color: var(--seccond-color);
     align-items: flex-end;
     transition: 0.5s ease-in-out;
@@ -174,9 +179,9 @@
     border-radius: 8px;
   }
 
-  .menu__link {
+.menu__link {
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: 1.55rem;
     font-weight: 500;
     color: var(--seccond-color);
   }
@@ -189,9 +194,9 @@
 /* DESKTOP VIEW */
 @media screen and (min-width: 1200px) {
   .header {
-    padding: 0 5rem;
+    padding: 0 2.2rem;
     justify-content: space-between;
-    height: 7.5rem;
+    min-height: 7rem;
   }
 
   .menu__ul {
@@ -200,13 +205,6 @@
     justify-content: flex-end;
   }
   .menu__list {
-    padding: 0.6rem 1rem;
+    padding: 0.55rem 0.95rem;
   }
-}
-
-
-@media (min-width: 768px) {
-
-
-  .dark-mode
 }

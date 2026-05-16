@@ -1,79 +1,55 @@
 const toolsInfo = [
   {
-    title: "Slack",
-    src: "./svg/slack.svg",
+    title: "Python",
+    src: "./svg/python.svg",
   },
   {
-    title: "git",
-
+    title: "Laravel",
+    src: "./svg/laravel.svg",
+  },
+  {
+    title: "Flutter",
+    src: "./svg/flutter.svg",
+  },
+  {
+    title: "React",
+    src: "./svg/react-dark.svg",
+  },
+  {
+    title: "Node.js",
+    src: "./svg/nodejs-dark.svg",
+  },
+  {
+    title: "MySQL",
+    src: "./svg/mysql.svg",
+  },
+  {
+    title: "PostgreSQL",
+    src: "./svg/postgresql.svg",
+  },
+  {
+    title: "Docker",
+    src: "./svg/docker.svg",
+  },
+  {
+    title: "TensorFlow",
+    src: "./svg/tensorflow.svg",
+  },
+  {
+    title: "Git",
     src: "./svg/git.svg",
   },
   {
-    title: "Bash",
-
-    src: "./svg/terminal-fill.svg",
+    title: "Linux",
+    src: "./svg/linux.svg",
   },
   {
-    title: "Notion",
-
-    src: "./svg/notion-icon.svg",
+    title: "n8n",
+    src: "./svg/n8n.svg",
   },
   {
-    title: "Ubuntu",
-    src: "./svg/ubuntu.svg",
-  },
-  {
-    title: "VsCode",
+    title: "VS Code",
     src: "./svg/visual-studio-code.svg",
-  },
-  {
-    title: "Figma",
-
-    src: "./svg/figma.svg",
-  },
-  {
-    title: "Woocommerce",
-
-    src: "./svg/woocommerce.svg",
-  },
-  {
-    title: "Yoast SEO",
-
-    src: "./svg/yoast.svg",
-  },
-  {
-    title: "XAMPP",
-
-    src: "./svg/xampp.svg",
-  },
-  {
-    title: "ELEMENTOR",
-
-    src: "./svg/elementor (1).svg",
-  },
-  {
-    title: "Analytics",
-
-    src: "./svg/google-analytics.svg",
-  },
-  {
-    title: "Search Console",
-
-    src: "./svg/google-search-console.svg",
-  },
-  {
-    title: "Photoshop",
-
-    src: "./svg/photoshop.svg",
-  },
-  {
-    title: "Illustrator",
-    src: "./svg/illustrator.svg",
-  },
-  {
-    title: "Premier",
-
-    src: "./svg/premiere.svg",
   },
 ];
 
