@@ -2,19 +2,48 @@
 import "../styles/components/hero.css";
 ---
 <section class="hero" id="hero" transition:persist>
-  <video
-    class="hero__video"
-    src="/video/heroport.mp4"
-    autoplay
-    loop
-    muted
-    playsinline
-  ></video>
   <div class="hero__overlay"></div>
-  <div class="hero__content">
-    <p class="hero__greeting">≥ Hi! I'm</p>
-    <h1 class="hero__name">Gerald Vargas</h1>
-    <h2 class="hero__role">≥ Full Stack Developer · Applied AI</h2>
-    <h3 class="hero__sub">Computer Engineering Student · Cochabamba, Bolivia</h3>
+  <div class="hero__container">
+    <div class="hero__content">
+      <p class="hero__greeting hero__glitch" data-text="≥ Hi! I'm">≥ Hi! I'm</p>
+      <h1 class="hero__name hero__glitch" data-text="Gerald Vargas">Gerald Vargas</h1>
+      <h2 class="hero__role hero__glitch" data-text="≥ Full Stack Developer · Applied AI">≥ Full Stack Developer · Applied AI</h2>
+      <h3 class="hero__sub hero__glitch" data-text="Computer Engineering Student · Cochabamba, Bolivia">Computer Engineering Student · Cochabamba, Bolivia</h3>
+      <div class="hero__socials" aria-label="Redes sociales">
+        <a
+          class="hero__social-btn"
+          href="https://github.com/GeraldVargas"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        >
+          <i class="bi bi-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a
+          class="hero__social-btn"
+          href="https://www.instagram.com/gerald__vargas__/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <i class="bi bi-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a
+          class="hero__social-btn"
+          href="https://www.linkedin.com/in/gerald-emanuel-vargas-morales-42b44332a/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <i class="bi bi-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+    <figure class="hero__bubble" aria-label="Gerald hero image">
+      <img class="hero__avatar" src="/img/portfolio_img/geraldhero.png" alt="Gerald hero" loading="eager" />
+    </figure>
   </div>
 </section>

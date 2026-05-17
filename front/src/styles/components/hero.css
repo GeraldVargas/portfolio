@@ -8,94 +8,327 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: #000;
+  background: #140032;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  margin-bottom: -2px;
-}
-
-.hero__video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(0.88);
-  background: #000;
-  z-index: 0;
+  display: grid;
+  align-items: center;
+  margin-bottom: 0;
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.42) 10%, transparent 20%),
-    linear-gradient(to left, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.42) 10%, transparent 20%);
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.08) 62%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(circle at 26% 52%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 42%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.16) 32%, rgba(0, 0, 0, 0.35) 100%);
   z-index: 1;
+}
+
+.hero__container {
+  position: relative;
+  z-index: 2;
+  width: min(1320px, 100%);
+  margin: 0 auto;
+  padding: 10rem 5% 8.5rem;
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) minmax(320px, 460px);
+  align-items: center;
+  gap: clamp(2.4rem, 4vw, 7rem);
 }
 
 .hero__content {
   position: relative;
-  z-index: 2;
   text-align: left;
-  padding-left: 5%;
-  padding-right: 0;
-  padding-bottom: 9%;
-  max-width: 680px;
+  max-width: 760px;
 }
 
 .hero__greeting {
-  color: #00ff66;
+  color: #6bffdf;
   font-family: var(--fira-code);
   font-size: clamp(1rem, 1.2vw, 1.3rem);
   margin-bottom: 0.8rem;
-  letter-spacing: 0.02em;
-  text-shadow: 0 0 14px rgba(0, 255, 140, 0.32);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 22px rgba(0, 230, 246, 0.5);
 }
 
 .hero__name {
   color: #fff;
   font-family: var(--montserrat);
   font-size: clamp(3.3rem, 6.2vw, 6rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.05;
   margin-bottom: 1rem;
-  text-shadow: 0 0 26px rgba(97, 0, 148, 0.45);
+  letter-spacing: 0.015em;
+  text-shadow:
+    0 0 24px rgba(0, 230, 246, 0.45),
+    0 0 40px rgba(255, 0, 153, 0.25);
 }
 
 .hero__role {
-  color: #ff0090;
+  color: #65f4ea;
   font-family: var(--fira-code);
   font-size: clamp(1.2rem, 2vw, 2rem);
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.8rem;
-  text-shadow: 0 0 16px rgba(255, 0, 144, 0.28);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px rgba(101, 244, 234, 0.45);
 }
 
 .hero__sub {
-  color: aqua;
+  color: #6cf9ff;
   font-family: var(--fira-code);
   font-size: clamp(1rem, 1.4vw, 1.35rem);
-  font-weight: 400;
-  text-shadow: 0 0 14px rgba(88, 236, 255, 0.28);
+  font-weight: 500;
+  letter-spacing: 0.035em;
+  text-shadow: 0 0 18px rgba(88, 236, 255, 0.36);
+}
+
+.hero__socials {
+  margin-top: 2.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.hero__social-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 0.9rem;
+  color: #fff;
+  font-size: 2rem;
+  background: linear-gradient(90deg, #1f1f27 0%, #000 100%);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transition: all 0.45s ease;
+}
+
+.hero__social-btn:hover {
+  transform: translateY(8px);
+  border-radius: 50%;
+  background: linear-gradient(90deg, #0d3941 0%, #05262c 100%);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(72, 255, 245, 0.35);
+}
+
+.hero__social-btn i {
+  line-height: 1;
+}
+
+.hero__social-btn span {
+  position: absolute;
+  left: 50%;
+  top: -2.2rem;
+  transform: translate(-50%, 8px);
+  opacity: 0;
+  color: #86dad6;
+  font-size: 1.15rem;
+  font-weight: 600;
+  pointer-events: none;
+  transition: all 0.55s ease;
+}
+
+.hero__social-btn:hover span {
+  opacity: 1;
+  transform: translate(-50%, -10px);
+  color: #c6fffb;
+}
+
+.hero__bubble {
+  position: relative;
+  margin: 0;
+  width: clamp(280px, 30vw, 430px);
+  aspect-ratio: 1 / 1;
+  justify-self: center;
+  border-radius: 62% 38% 55% 45% / 48% 63% 37% 52%;
+  background:
+    radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.02) 26%, rgba(255, 255, 255, 0) 43%),
+    radial-gradient(circle at 72% 80%, rgba(127, 82, 255, 0.18), rgba(127, 82, 255, 0) 45%),
+    #000;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 24px 60px rgba(0, 0, 0, 0.6),
+    0 0 44px rgba(90, 0, 255, 0.2);
+  display: grid;
+  place-items: end center;
+  overflow: hidden;
+}
+
+.hero__bubble::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: 10%;
+  width: 24%;
+  height: 15%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  filter: blur(1px);
+}
+
+.hero__avatar {
+  width: 88%;
+  height: auto;
+  object-fit: contain;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.5));
+}
+
+.hero__bubble:hover .hero__avatar {
+  transform: scale(0.95);
+}
+
+.hero__glitch {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.hero__glitch::before,
+.hero__glitch::after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  clip-path: var(--slice-0);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: hero-glitch-idle 3.2s steps(2, end) infinite;
+}
+
+.hero__glitch::before {
+  color: #00e6f6;
+  transform: translate(-1px, 0);
+  text-shadow: 0 0 8px rgba(0, 230, 246, 0.85);
+}
+
+.hero__glitch::after {
+  color: #ff1f8f;
+  transform: translate(1px, 0);
+  text-shadow: 0 0 8px rgba(255, 31, 143, 0.85);
+  pointer-events: none;
+}
+
+.hero__glitch:hover::before,
+.hero__glitch:hover::after {
+  opacity: 0.45;
+  animation: hero-glitch 1s steps(2, end);
+}
+
+@keyframes hero-glitch-idle {
+  0%,
+  100% {
+    clip-path: var(--slice-0);
+    transform: translate(0, 0);
+  }
+  33% {
+    clip-path: var(--slice-2);
+    transform: translate(-1px, 0);
+  }
+  66% {
+    clip-path: var(--slice-4);
+    transform: translate(1px, 0);
+  }
+}
+
+@keyframes hero-glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0, 5px);
+  }
+
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0);
+  }
+
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0);
+  }
+
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0);
+  }
+
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
 }
 
 @media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hero__container {
+    grid-template-columns: 1fr;
+    gap: 2.6rem;
+    padding-top: 8rem;
+    padding-bottom: 4.5rem;
+  }
+
   .hero__content {
     width: 100%;
     max-width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .hero__overlay {
     background:
-      linear-gradient(to right, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.38) 10%, transparent 22%),
-      linear-gradient(to left, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.38) 10%, transparent 22%);
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+      radial-gradient(circle at 50% 20%, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0) 44%),
+      linear-gradient(to right, rgba(0, 0, 0, 0.64) 0%, rgba(0, 0, 0, 0.3) 26%, rgba(0, 0, 0, 0.44) 100%);
+  }
+
+  .hero__bubble {
+    width: min(72vw, 360px);
+  }
+
+  .hero__socials {
+    gap: 1.2rem;
   }
 }

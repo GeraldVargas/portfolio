@@ -1,0 +1,48 @@
+---
+import "../styles/components/page-loader.css";
+---
+
+<div class="page-loader" id="page-loader" aria-live="polite" aria-label="Loading page">
+  <div class="loader">
+    <div class="loading-text">
+      Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+    </div>
+    <div class="loading-bar-background">
+      <div class="loading-bar">
+        <div class="white-bars-container">
+          <div class="white-bar"></div>
+          <div class="white-bar"></div>
+          <div class="white-bar"></div>
+          <div class="white-bar"></div>
+          <div class="white-bar"></div>
+          <div class="white-bar"></div>
+          <div class="white-bar"></div>
+          <div class="white-bar"></div>
+          <div class="white-bar"></div>
+          <div class="white-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const loader = document.getElementById("page-loader");
+  const hideLoader = () => {
+    if (!loader) return;
+    loader.classList.add("is-hidden");
+    window.setTimeout(() => loader.remove(), 450);
+  };
+
+  if (document.readyState === "complete") {
+    window.setTimeout(hideLoader, 650);
+  } else {
+    window.addEventListener(
+      "load",
+      () => {
+        window.setTimeout(hideLoader, 650);
+      },
+      { once: true },
+    );
+  }
+</script>

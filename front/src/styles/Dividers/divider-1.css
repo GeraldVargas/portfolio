@@ -1,15 +1,15 @@
 .wrapper {
 	box-sizing: border-box;
 	position: relative;
-	height: clamp(95px, 11vw, 180px);
-	margin-top: -6px;
-	background: var(--pure-black);
+	height: clamp(120px, 13vw, 210px);
+	margin-top: -18px;
+	background: #140032;
 	overflow: hidden;
 }
 
 .custom-shape-divider-bottom-1685513857 {
 	position: absolute;
-    bottom: -1px;
+    bottom: -4px;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -19,27 +19,25 @@
 .custom-shape-divider-bottom-1685513857 svg {
 	position: relative;
     display: block;
-    width: calc(150% + 1.3px);
+    width: 100%;
     height: 100%;
 }
 
 .custom-shape-divider-bottom-1685513857 .shape-fill {
-	fill: rgb(228, 228, 228);
+	fill: #140032;
 }
 .dark-mode .custom-shape-divider-bottom-1685513857 .shape-fill {
-	fill: var(--pure-black);
+	fill: #140032;
 }
 
 @media (min-width: 768px) {
 	.custom-shape-divider-bottom-1685513857 svg {
-		width: calc(138% + 230.8px);
-		height: clamp(140px, 11vw, 195px);
+		height: clamp(145px, 12vw, 210px);
 	}
 
 }
 @media (min-width: 1200px) {
 	.custom-shape-divider-bottom-1685513857 svg {
-		width: calc(118% + 760px);
-		height: clamp(160px, 10vw, 220px);
+		height: clamp(165px, 11vw, 240px);
 	}
 }
