@@ -2,31 +2,121 @@
 import Header from "../layouts/Header.astro";
 
 const { origin, target } = Astro.props;
+const linkKeyByHref = {
+  "#skills": "skills",
+  "#tools": "tools",
+  "#about": "about",
+  "#portafolio": "portfolio",
+  "#blog": "post",
+};
+const hasPrimaryLinks = origin?.some((link) => link.href === "#skills");
 ---
 
 <Header>
   {
-    origin.map((link) => (
-      <li class="menu__list">
-        {target == "_blank" ? (
-          <a
-            class="menu__link menu__hamburger-link"
-            target={link.target}
-            rel="nofollow noreferrer noopener"
-            href={link.href}
-          >
-            {link.text}
-          </a>
-        ) : (
-          <a
-            class="menu__link menu__hamburger-link"
-            target={link.target}
-            href={link.href}
-          >
-            {link.text}
-          </a>
-        )}
-      </li>
-    ))
+    origin.map((link) => {
+      const i18nKey = linkKeyByHref[link.href];
+      return (
+        <>
+          <li class="menu__list">
+            {target == "_blank" ? (
+              <a
+                class="menu__link menu__hamburger-link"
+                target={link.target}
+                rel="nofollow noreferrer noopener"
+                href={link.href}
+                data-i18n-key={i18nKey}
+              >
+                {link.text}
+              </a>
+            ) : (
+              <a
+                class="menu__link menu__hamburger-link"
+                target={link.target}
+                href={link.href}
+                data-i18n-key={i18nKey}
+              >
+                {link.text}
+              </a>
+            )}
+          </li>
+          {hasPrimaryLinks && link.href === "#blog" ? (
+            <li class="menu__list menu__list--lang" aria-label="Language selector">
+              <div class="lang-switcher">
+                <div class="radio-input" role="radiogroup" aria-label="Language selector">
+                  <div class="glass">
+                    <div class="glass-inner"></div>
+                  </div>
+                  <div class="selector">
+                    <label class="choice">
+                      <div>
+                        <input
+                          class="choice-circle"
+                          type="radio"
+                          name="site-lang"
+                          value="en"
+                          checked
+                        />
+                        <div class="ball"></div>
+                      </div>
+                      <span class="choice-name">EN</span>
+                    </label>
+                    <label class="choice">
+                      <div>
+                        <input
+                          class="choice-circle"
+                          type="radio"
+                          name="site-lang"
+                          value="es"
+                        />
+                        <div class="ball"></div>
+                      </div>
+                      <span class="choice-name">ES</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ) : null}
+        </>
+      );
+    })
   }
 </Header>
+
+<script type="module">
+  const translations = {
+    skills: { en: "Skills", es: "Habilidades" },
+    tools: { en: "Tools", es: "Herramientas" },
+    about: { en: "About", es: "Sobre" },
+    portfolio: { en: "Portfolio", es: "Portafolio" },
+    post: { en: "Post", es: "Publicaciones" },
+  };
+
+  const setLanguage = (lang) => {
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n-key]").forEach((node) => {
+      const key = node.getAttribute("data-i18n-key");
+      const label = translations[key]?.[lang];
+      if (label) node.textContent = label;
+    });
+  };
+
+  const savedLang = localStorage.getItem("site-lang");
+  const initialLang = savedLang === "es" ? "es" : "en";
+  const activeRadio = document.querySelector(
+    `input[name="site-lang"][value="${initialLang}"]`
+  );
+  if (activeRadio) activeRadio.checked = true;
+  setLanguage(initialLang);
+
+  document.querySelectorAll('input[name="site-lang"]').forEach((radio) => {
+    radio.addEventListener("change", (event) => {
+      if (!(event.target instanceof HTMLInputElement)) return;
+      if (!event.target.checked) return;
+      const lang = event.target.value;
+      localStorage.setItem("site-lang", lang);
+      setLanguage(lang);
+    });
+  });
+</script>
