@@ -21,22 +21,30 @@ const hasPrimaryLinks = origin?.some((link) => link.href === "#skills");
           <li class="menu__list">
             {target == "_blank" ? (
               <a
-                class="menu__link menu__hamburger-link"
+                class="menu__link menu__hamburger-link button"
                 target={link.target}
                 rel="nofollow noreferrer noopener"
                 href={link.href}
                 data-i18n-key={i18nKey}
               >
-                {link.text}
+                <div class="button-outer">
+                  <div class="button-inner">
+                    <span class="button-label">{link.text}</span>
+                  </div>
+                </div>
               </a>
             ) : (
               <a
-                class="menu__link menu__hamburger-link"
+                class="menu__link menu__hamburger-link button"
                 target={link.target}
                 href={link.href}
                 data-i18n-key={i18nKey}
               >
-                {link.text}
+                <div class="button-outer">
+                  <div class="button-inner">
+                    <span class="button-label">{link.text}</span>
+                  </div>
+                </div>
               </a>
             )}
           </li>
@@ -98,7 +106,13 @@ const hasPrimaryLinks = origin?.some((link) => link.href === "#skills");
     document.querySelectorAll("[data-i18n-key]").forEach((node) => {
       const key = node.getAttribute("data-i18n-key");
       const label = translations[key]?.[lang];
-      if (label) node.textContent = label;
+      if (!label) return;
+      const labelNode = node.querySelector(".button-label");
+      if (labelNode) {
+        labelNode.textContent = label;
+        return;
+      }
+      node.textContent = label;
     });
   };
 
