@@ -204,10 +204,6 @@
 .dark-mode .tools__caja {
   border-radius: 50%;
 }
-.skills__caja:hover .skills__icono__dark {
-  filter: invert(24%) sepia(1%) saturate(40%) hue-rotate(42deg) brightness(96%)
-    contrast(80%);
-}
 /* Portafolio */
 .dark-mode .portafolio {
   background: rgba(0, 0, 0, 0.6);

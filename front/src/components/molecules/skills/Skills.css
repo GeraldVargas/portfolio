@@ -32,13 +32,16 @@
   position: relative;
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
   margin: auto;
+  padding-block: 2.6rem;
+  min-height: 220px;
+  align-items: center;
 }
 
 .skills__cards-container::before,
 .skills__cards-container::after {
   background: linear-gradient(to right, rgb(211, 211, 211) 0%, rgba(255, 255, 255, 0) 100%);
   content: "";
-  height: 200px;
+  height: 100%;
   position: absolute;
   width: 89px;
   z-index: 2;
@@ -47,7 +50,7 @@
 .dark-mode .skills__cards-container::after {
   background: linear-gradient(to right, rgb(21, 0, 51) 0%, rgba(255, 255, 255, 0) 100%);
   content: "";
-  height: 200px;
+  height: 100%;
   position: absolute;
   width: 89px;
   z-index: 2;
@@ -84,92 +87,76 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 142px;
-  height: 142px;
-  color: #e5dede;
+  width: 130px;
+  height: 130px;
+  color: #000000;
   font-weight: bold;
+  border: 3px solid #000000;
+  border-radius: 12px;
+  padding: 0;
   text-decoration: none;
   position: relative;
+  box-shadow: 4px 4px 0px #000000;
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  background-color: #063525;
-  border: 3px solid #42c498;
-  border-radius: 12px;
-  box-shadow: 4px 4px 1px #000000;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: #356854;
 }
 
 .dark-mode .skills__caja.caja__dark {
-  background-color: #063525;
-  border-color: #42c498;
-  box-shadow: 4px 4px 1px #000000;
+  background-color: #356854;
+  border-color: #000000;
+  box-shadow: 4px 4px 0px #000000;
 }
 
 .skills__cajas:hover:has(.skills__caja) {
   animation-play-state: paused;
 }
 
-.skills__caja:hover {
-  background-color: #1a5c46;
-  border-color: #030504;
-  transform: translate(-6px, -6px) rotate(1deg);
-  box-shadow: 10px 10px 0 #000000, 15px 15px 20px rgba(64, 164, 122, 0.2);
-}
-
-.skills__caja::before,
-.skills__caja::after {
+.skills__caja::before {
   content: "";
   position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: 0.6s;
-}
-
-.skills__caja::before {
-  left: -100%;
-}
-
-.skills__caja::after {
-  left: 100%;
-}
-
-.skills__caja:hover::before {
-  animation: swipeRight 1.5s infinite;
-}
-
-.skills__caja:hover::after {
-  animation: swipeLeft 1.5s infinite;
+  left: 50%;
+  bottom: -150%;
+  width: 300%;
+  height: 300%;
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 1;
+  background-color: #316b58;
 }
 
 .skills__icono {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
   object-fit: contain;
 }
 
 .openai-logo {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: #0f1715;
   z-index: 3;
 }
 
 .openai-icon {
-  width: 64px;
-  height: 64px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 54px;
+  height: 54px;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .button-text {
@@ -177,66 +164,75 @@
   flex-direction: column;
   align-items: center;
   line-height: 1.2;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   text-align: center;
   opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: translateY(20px);
   z-index: 3;
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
 }
 
 .button-text span:first-child {
-  font-size: 12px;
-  font-weight: normal;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 2px;
 }
 
 .button-text span:last-child {
   font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+}
+
+.skills__caja:hover::before {
+  transform: translateX(-50%) scale(1);
+}
+
+.skills__caja:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px #000000;
+}
+
+.skills__caja:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
 }
 
 .skills__caja:hover .openai-logo {
-  transform: translateY(-10px);
+  animation: spin 5s linear infinite;
+  width: 50px;
+  height: 50px;
+  top: 28%;
 }
 
 .skills__caja:hover .openai-icon {
-  width: 40px;
-  height: 40px;
-  animation: spin-and-zoom 4s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+  transform: scale(0.6);
 }
 
 .skills__caja:hover .button-text {
   opacity: 1;
-  max-height: 60px;
-  margin-top: 8px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
 }
 
-.skills__caja:active .openai-icon,
-.skills__caja:active .button-text {
-  transform: scale(0.95);
+.skills__caja.openai:hover .button-text {
+  color: #d3d3d3;
 }
 
-@keyframes swipeRight {
-  100% {
-    transform: translateX(200%) skew(-45deg);
-  }
+.skills__caja.openai:hover .button-text span:last-child {
+  color: #d6cbbf;
 }
 
-@keyframes swipeLeft {
-  100% {
-    transform: translateX(-200%) skew(-45deg);
-  }
-}
-
-@keyframes spin-and-zoom {
+@keyframes spin {
   0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(1.1);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   100% {
-    transform: rotate(360deg) scale(1);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
@@ -274,13 +270,13 @@
   }
 
   .skills__caja {
-    height: 142px;
-    width: 142px;
+    height: 130px;
+    width: 130px;
   }
 
   .skills__icono {
-    width: 64px;
-    height: 64px;
+    width: 54px;
+    height: 54px;
   }
 
 }
@@ -297,7 +293,7 @@
   }
 
   .skills__icono {
-    width: 64px;
-    height: 64px;
+    width: 54px;
+    height: 54px;
   }
 }
