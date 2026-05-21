@@ -1,5 +1,22 @@
 ---
 import "../styles/components/hero.css";
+import { cardsData } from "../data/skillsMastered";
+
+const orbitSkills = cardsData;
+const orbitPositions = [
+  { x: 50, y: -4 },
+  { x: 76, y: 8 },
+  { x: 102, y: 30 },
+  { x: 104, y: 58 },
+  { x: 84, y: 86 },
+  { x: 58, y: 104 },
+  { x: 30, y: 92 },
+  { x: -4, y: 70 },
+  { x: -2, y: 42 },
+  { x: 16, y: 14 },
+  { x: 36, y: -2 },
+  { x: 70, y: 96 },
+];
 ---
 <section class="hero" id="hero" transition:persist>
   <div class="hero__overlay"></div>
@@ -42,12 +59,36 @@ import "../styles/components/hero.css";
         </a>
       </div>
     </div>
-    <figure class="hero__bubble" aria-label="Gerald hero">
-      <div class="loader-wrapper" aria-hidden="true">
-        <div class="loader" aria-hidden="true"></div>
+    <div class="hero__media">
+      <figure class="hero__bubble" aria-label="Gerald hero">
+        <div class="loader-wrapper" aria-hidden="true">
+          <div class="loader" aria-hidden="true"></div>
+        </div>
+        <img class="hero__avatar" src="/img/portfolio_img/geraldhero.png" alt="Gerald hero" loading="eager" />
+      </figure>
+      <div class="hero__orbit" aria-hidden="true">
+        {
+          orbitSkills.map((skill, index) => {
+            const position = orbitPositions[index % orbitPositions.length];
+            return (
+              <div
+                class="hero__orbit-item"
+                style={`--orbit-x:${position.x}%; --orbit-y:${position.y}%; --orbit-delay:${index * 0.12}s;`}
+              >
+                <div class="hero__orbit-skill">
+                  <img
+                    class={`hero__orbit-icon ${skill.clas}`}
+                    src={skill.imgSrc}
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            );
+          })
+        }
       </div>
-      <img class="hero__avatar" src="/img/portfolio_img/geraldhero.png" alt="Gerald hero" loading="eager" />
-    </figure>
+    </div>
   </div>
   <div class="hero__wave">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
