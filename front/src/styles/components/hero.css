@@ -29,7 +29,7 @@
   z-index: 2;
   width: min(1320px, 100%);
   margin: 0 auto;
-  padding: 10rem 5% 8.5rem;
+  padding: 5.75rem 5% 8.5rem;
   display: grid;
   grid-template-columns: minmax(420px, 1fr) minmax(320px, 460px);
   align-items: center;
@@ -137,7 +137,7 @@
 
 .hero__media {
   position: relative;
-  --hero-size: clamp(280px, 32vw, 460px);
+  --hero-size: clamp(210px, 25vw, 360px);
   width: var(--hero-size);
   aspect-ratio: 1 / 1;
   justify-self: center;
@@ -195,12 +195,12 @@
 .hero__orbit-skill::before {
   content: "";
   position: absolute;
-  width: 140%;
-  height: 140%;
-  left: -20%;
-  top: -20%;
-  filter: blur(12px);
-  opacity: 0.55;
+  width: 120%;
+  height: 120%;
+  left: -10%;
+  top: -10%;
+  filter: blur(3px);
+  opacity: 0.2;
   z-index: -1;
   border-radius: 50%;
   background-color: #d8ff99;
@@ -217,7 +217,7 @@
   width: 2em;
   height: 2em;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.12));
 }
 
 .hero__bubble .loader-wrapper {
@@ -293,7 +293,7 @@
 
 .hero__avatar {
   position: relative;
-  width: 56%;
+  width: 54%;
   height: auto;
   object-fit: contain;
   transform-origin: bottom center;
@@ -496,7 +496,7 @@
   .hero__container {
     grid-template-columns: 1fr;
     gap: 2.6rem;
-    padding-top: 8rem;
+    padding-top: 5.5rem;
     padding-bottom: 4.5rem;
   }
 
@@ -514,7 +514,7 @@
   }
 
   .hero__media {
-    --hero-size: min(78vw, 320px);
+    --hero-size: min(66vw, 230px);
   }
 
   .hero__socials {

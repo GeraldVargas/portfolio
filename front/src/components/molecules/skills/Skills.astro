@@ -1,37 +1,72 @@
 ---
-import CardSkill from "@molecules/skills/CardSkills";
-import CardTerminal from "@layouts/CardTerminal.astro";
-import Button from "@atoms/Button/Button.astro";
 ---
 
 <section class="skills" id="skills">
-  <h2 data-aos="fade-up" class="titulo titulo__dark">Skills</h2>
+  <h2 data-aos="fade-up" class="titulo titulo__dark">ABOUT ME</h2>
   <div class="skills__container max__width">
-    <CardTerminal animation="fade-right">
-      <p class="terminal__content terminal__content--p">
-        ≥ Final-year
-        <span class="terminal__content terminal__content--span"
-          >Computer Engineering student</span
+    <div class="skills__portrait" data-aos="fade-right">
+      <div class="card">
+        <img
+          class="card__image"
+          src="/img/gerald2.png"
+          alt="Gerald portrait"
+          loading="lazy"
+        />
+      </div>
+      <div class="skills__actions">
+        <a class="button" href="mailto:geraldemanuelvargasmorales@gmail.com">
+          <span class="button-outer">
+            <span class="button-inner">
+              <span>Email</span>
+            </span>
+          </span>
+        </a>
+        <a
+          class="button"
+          href="/docs/GeraldEmanuelVargas.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-        at Universidad Mayor de San Simón (UMSS).
-      </p>
-      <p class="terminal__content terminal__content--color">
-        ≥ Strong foundation in Python, PHP, Laravel, Node.js, React, Flutter,
-        MySQL, PostgreSQL, TensorFlow, Docker, and Astro.
-      </p>
-      <p class="terminal__content terminal__content--color">
-        ≥ Experience in high-criticality projects: electoral systems, municipal
-        apps, and educational platforms. Focused on Applied AI and Machine
-        Learning.
-      </p>
-      <Button
-        href="/docs/GeraldEmanuelVargas.pdf"
-        text="Download CV"
-        target="_blank"
-      />
-    </CardTerminal>
-	  <div class="skills__cards-container">
-	<CardSkill />
-	</div>
+          <span class="button-outer">
+            <span class="button-inner">
+              <span>Descargar CV</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="skills__terminal" data-aos="fade-left">
+      <div class="container">
+        <div class="terminal_toolbar">
+          <div class="butt">
+            <button class="btn btn-color" aria-label="Close"></button>
+            <button class="btn" aria-label="Minimize"></button>
+            <button class="btn" aria-label="Maximize"></button>
+          </div>
+          <p class="user">Soy un</p>
+        </div>
+        <div class="terminal_body">
+          <div class="terminal_promt">
+            <span class="terminal_user">gerald</span>
+            <span class="terminal_location">~</span>
+            <span class="terminal_bling">$</span>
+            <span>Full Stack Developer · Applied AI</span>
+          </div>
+          <div class="terminal_promt">
+            <span class="terminal_user">gerald</span>
+            <span class="terminal_location">~</span>
+            <span class="terminal_bling">$</span>
+            <span>Computer Engineering student at UMSS.</span>
+          </div>
+          <div class="terminal_promt">
+            <span class="terminal_user">gerald</span>
+            <span class="terminal_location">~</span>
+            <span class="terminal_bling">$</span>
+            <span>Python, Laravel, Node.js, React, Flutter, Docker.</span>
+            <span class="terminal_cursor"></span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
