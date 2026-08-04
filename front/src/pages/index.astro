@@ -2,7 +2,6 @@
 import BaseHead from "../components/BaseHead.astro";
 import Hero from "../components/Hero.astro";
 import PageLoader from "../components/PageLoader.astro";
-import ToogleDarkBtn from "../ToggleDarkBtn.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Skills from "@molecules/skills/Skills.astro";
@@ -26,7 +25,6 @@ import AOS from "aos";
   <body>
     <PageLoader />
     <NavLinks origin={links} />
-    <ToogleDarkBtn />
     <BtnToTop />
     <main>
       <Hero />

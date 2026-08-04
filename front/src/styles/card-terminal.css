@@ -5,6 +5,115 @@
   justify-content: center;
 }
 
+.terminal-card-container--about-modern {
+  align-items: flex-start;
+}
+
+.about-modern-card {
+  width: min(100%, 640px);
+  min-height: 120px;
+  padding: 0.5rem;
+  background: linear-gradient(145deg, rgba(4, 15, 38, 0.8) 0%, rgba(8, 31, 77, 0.72) 55%, rgba(9, 57, 107, 0.74) 100%);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 3px solid rgba(88, 236, 255, 0.48);
+  border-left: 2px rgba(88, 236, 255, 0.38) outset;
+  box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.28);
+  transform: skewX(10deg);
+  transition: 0.4s;
+  overflow: hidden;
+  color: white;
+  cursor: pointer;
+}
+
+.about-modern-card:hover,
+.about-modern-card:focus-within {
+  min-height: 254px;
+  transform: skew(0deg);
+}
+
+.about-modern-card__align {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-self: flex-start;
+}
+
+.about-modern-card__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.28);
+}
+
+.about-modern-card__dot--red {
+  background-color: #081f4d;
+}
+
+.about-modern-card__dot--yellow {
+  background-color: #0b2f6f;
+}
+
+.about-modern-card__dot--green {
+  background-color: #58ecff;
+}
+
+.about-modern-card__content {
+  padding: 0 1rem 1rem;
+}
+
+.about-modern-card__content .terminal__content {
+  max-width: 100%;
+}
+
+.about-modern-card__content .terminal__content--h3 {
+  text-align: center;
+  margin: 1rem 0 0.65rem;
+  color: #d9f9ff;
+  text-shadow: 0 0 18px rgba(88, 236, 255, 0.28);
+}
+
+.about-modern-card__content .terminal__content--p {
+  color: #d8fbff;
+}
+
+.about-modern-card__content .terminal__content--span {
+  color: #58ecff;
+}
+
+.about-modern-card__content .terminal__content--h3:first-of-type {
+  font-size: 2rem;
+}
+
+.about-modern-card__content .terminal__content--h3:nth-of-type(2) {
+  margin-top: 1.1rem;
+}
+
+.about-modern-card__content .terminal__content--p:last-of-type {
+  margin-bottom: 0;
+}
+
+.about-modern-card__content .terminal__content--h3,
+.about-modern-card__content .terminal__content--p {
+  text-align: center;
+}
+
+.about-modern-card__content .terminal__content--h3:first-of-type,
+.about-modern-card__content .terminal__content--h3:nth-of-type(2) {
+  letter-spacing: 0.02em;
+}
+
+.about-modern-card__content .terminal__content--h3:first-of-type::before {
+  content: "";
+}
+
+.about-modern-card__content .terminal__content--h3,
+.about-modern-card__content .terminal__content--p {
+  max-width: 100%;
+}
+
 .card_box {
   width: min(760px, 100%);
   min-height: 250px;

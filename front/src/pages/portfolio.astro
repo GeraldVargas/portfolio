@@ -3,7 +3,6 @@
    It initially renders all cards and provides functionality to filter cards by skill. */
 // Importing necessary Astro components
 import BaseHead from "../components/BaseHead.astro";
-import ToogleDarkBtn from "../ToggleDarkBtn.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import BtnToTop from "@atoms/BtnToTop.astro";
@@ -189,7 +188,6 @@ import { portfolio } from "../data/MenuData";
   <body>
     <!-- Navigation, toggle dark button, button to top, and main content -->
     <NavLinks origin={portfolio} />
-    <ToogleDarkBtn />
     <BtnToTop />
     <main>
       <!-- Portfolio section -->

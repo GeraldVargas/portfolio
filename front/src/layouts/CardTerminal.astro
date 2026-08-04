@@ -1,13 +1,31 @@
 ---
 import "@styles/card-terminal.css";
-const { animation } = Astro.props;
+const { animation, variant = "default" } = Astro.props;
 ---
 
-<div class="terminal-card-container" data-aos={animation}>
-  <div class="card_box">
-    <span aria-hidden="true"></span>
-    <div class="card_box__content">
-      <slot />
-    </div>
-  </div>
+<div class:list={[
+  "terminal-card-container",
+  variant === "about-modern" && "terminal-card-container--about-modern",
+]} data-aos={animation}>
+  {
+    variant === "about-modern" ? (
+      <div class="about-modern-card">
+        <div class="about-modern-card__align" aria-hidden="true">
+          <span class="about-modern-card__dot about-modern-card__dot--red"></span>
+          <span class="about-modern-card__dot about-modern-card__dot--yellow"></span>
+          <span class="about-modern-card__dot about-modern-card__dot--green"></span>
+        </div>
+        <div class="about-modern-card__content">
+          <slot />
+        </div>
+      </div>
+    ) : (
+      <div class="card_box">
+        <span aria-hidden="true"></span>
+        <div class="card_box__content">
+          <slot />
+        </div>
+      </div>
+    )
+  }
 </div>

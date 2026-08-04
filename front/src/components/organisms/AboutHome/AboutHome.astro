@@ -1,6 +1,5 @@
 ---
 import "./about-home.css";
-import Button from "@atoms/Button/Button.astro";
 import CardTerminal from "@layouts/CardTerminal.astro";
 import CardAbout from "@molecules/CardAbout/CardAbout.astro";
 import TitleSpan from "@atoms/TitleSpan/TitleSpan.astro";
@@ -11,7 +10,7 @@ import TitleSpan from "@atoms/TitleSpan/TitleSpan.astro";
 	<div class="about__container">
 		<CardAbout />
 		<div class="terminal__container">
-			<CardTerminal animation="fade-left">
+			<CardTerminal animation="fade-left" variant="about-modern">
 				<h3 class="terminal__content terminal__content--h3">≥ Gerald Emanuel Vargas</h3>
 				<p class="terminal__content terminal__content--p">≥ Python & Laravel fan 🤖. Always building things that matter.</p>
 
@@ -22,9 +21,6 @@ import TitleSpan from "@atoms/TitleSpan/TitleSpan.astro";
 					≥ I've deployed real systems used in official elections 🗳️ and
 					municipal governments. I build for production, not just for practice.
 				</p>
-				<div class="about__contactar">
-					<Button href="/about" text="See more" />
-				</div>
 			</CardTerminal>
 		</div>
 

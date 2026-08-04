@@ -156,9 +156,12 @@
 		z-index: 2;
 		justify-content: center;
 		flex-wrap: wrap;
-		gap: 2rem;
+		gap: 1rem;
 		flex-wrap: nowrap;
 		padding: 0 1.6rem;
+	}
+	.about__container > :first-child {
+		margin-left: clamp(5rem, 8vw, 10rem);
 	}
 	.card-title {
 		text-align: center;
