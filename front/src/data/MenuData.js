@@ -3,7 +3,7 @@ export const links = [
   { href: "#tools", text: "Tools" },
   { href: "#about", text: "About" },
   { href: "#portafolio", text: "Portfolio" },
-  { href: "#blog", text: "Post" },
+  { href: "#contact", text: "Contact" },
 ];
 export const about = [
   { href: "/", text: "Home" },
@@ -11,12 +11,9 @@ export const about = [
   { href: "#vsTheme", text: "VsCode Theme" },
   { href: "#ytChannel", text: "Youtube" },
   { href: "/portfolio", text: "Portfolio" },
-  { href: "/blog", text: "Blog" },
 ];
 export const portfolio = [
   { href: "/", text: "Home", target: "_self" },
-  { href: "/blog", text: "Blog", target: "_self" },
-  { href: "/about", text: "About Me", target: "_self" },
   { href: "https://github.com/GeraldVargas", text: "My GitHub", target: "_blank" },
 ];
 export const blog = [

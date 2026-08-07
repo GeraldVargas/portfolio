@@ -24,9 +24,8 @@ import { portfolio } from "../data/MenuData";
   const cardsContainer = document.querySelector(".cards__container");
   const allButton = document.querySelector("[data-All]") as HTMLElement;
 
-  // Function to render all portfolio cards
-  function renderAllCards() {
-    const allCardsHTML = portafolioData
+  function renderCards(projects) {
+    const cardsHTML = projects
       .map(
         (data) => `
         <div class="portafolio__tarjeta" >
@@ -59,7 +58,7 @@ import { portfolio } from "../data/MenuData";
                 </div>
             </div>
             <div class="portafolio__cara faceB  caja__dark__portafolio">
-                <p class="portafolio__descripcion titulo__dark">
+                <p class="portafolio__descripcion titulo__dark" data-i18n-key="desc_${data.id}">
                     ${data.descripcion}
                 </p>
                 <div class="portafolio__botobnes">
@@ -69,7 +68,7 @@ import { portfolio } from "../data/MenuData";
                         target="_blank"
                         rel="nofollow noreferrer noopener"
                     >
-                        <span data-section="portafolio" data-value="demo">
+                        <span data-section="portafolio" data-value="demo" data-i18n-key="view_demo">
                             View Demo
                         </span>
                     </a>
@@ -79,7 +78,7 @@ import { portfolio } from "../data/MenuData";
                         target="_blank"
                         rel="nofollow noreferrer noopener"
                     >
-                        <span data-section="portafolio" data-value="repo">
+                        <span data-section="portafolio" data-value="repo" data-i18n-key="view_repo">
                             View Repo
                         </span>
                     </a>
@@ -89,13 +88,15 @@ import { portfolio } from "../data/MenuData";
     `
       )
       .join("");
-    // Render all cards in the container
-    cardsContainer.innerHTML = allCardsHTML;
+    cardsContainer.innerHTML = cardsHTML;
   }
-  // Render all cards initially
+
+  function renderAllCards() {
+    renderCards(portafolioData);
+  }
+
   renderAllCards();
 
-  // Add click event listener to skill buttons
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       clicked = true;
@@ -103,74 +104,7 @@ import { portfolio } from "../data/MenuData";
       const projectsWithSkill = portafolioData.filter((project) =>
         project.skills.includes(skill)
       );
-      // Generate HTML template string for filtered cards
-      const filteredCardsHTML = projectsWithSkill
-        .map(
-          (data) =>
-            `
-          <div class="portafolio__tarjeta" >
-              <div class="portafolio__cara faceA card__content caja__dark__portafolio">
-                  <div class="img__container">
-                      <img
-                          class="portafolio__img"
-                          src="${data.imgSrc}"
-                          alt="${data.titulo}"
-                      />
-                  </div>
-                  <div class="container__info">
-                      <h3 class="portafolio__subtitulo titulo__dark">
-                          ${data.titulo}
-                      </h3>
-                      <div class="skills__used">
-                          ${data.skills
-                            .map(
-                              (skill) => `
-                              <div class="tecnology" >
-                                  <iconify-icon
-                                      icon="${skillIcons[skill] || ""}"
-                                      width="22"
-                                  />
-                              </div>
-                          `
-                            )
-                            .join("")}
-                      </div>
-                  </div>
-              </div>
-              <div class="portafolio__cara faceB  caja__dark__portafolio">
-                  <p class="portafolio__descripcion titulo__dark">
-                      ${data.descripcion}
-                  </p>
-                  <div class="portafolio__botobnes">
-                      <a
-                          class="portafolio__btn boton titulo__dark"
-                          href="${data.demoURL}"
-                          target="_blank"
-                          rel="nofollow noreferrer noopener"
-                      >
-                          <span data-section="portafolio" data-value="demo">
-                              View Demo
-                          </span>
-                      </a>
-                      <a
-                          class="portafolio__btn boton titulo__dark"
-                          href="${data.repoURL}"
-                          target="_blank"
-                          rel="nofollow noreferrer noopener"
-                      >
-                          <span data-section="portafolio" data-value="repo">
-                              View Repo
-                          </span>
-                      </a>
-                  </div>
-              </div>
-          </div>
-      `
-        )
-        .join("");
-
-      // Render filtered cards in the container
-      cardsContainer.innerHTML = filteredCardsHTML;
+      renderCards(projectsWithSkill);
     });
   });
 
@@ -195,7 +129,7 @@ import { portfolio } from "../data/MenuData";
         <!-- Button to show all cards -->
         <div class="buttons__container">
           <div class="btn__caja">
-            <button class="skill-button" data-All> All</button>
+            <button class="skill-button" data-All data-i18n-key="all_filter"> All</button>
             {
               /*  Render buttons with icons for each available skill  */
               Object.entries(skillIcons).map(([skill, icon]) => (

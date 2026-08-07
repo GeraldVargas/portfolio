@@ -1,8 +1,9 @@
 ---
 import "./button.css"
-const{animation} = Astro.props;
+const { animation, href, target, text } = Astro.props;
+const i18nKey = Astro.props["data-i18n-key"];
 ---
 
-<a data-aos={animation} class="link__boton boton titulo__dark  span"  href={Astro.props.href} target={Astro.props.target}>
-  {Astro.props.text}
+<a data-aos={animation} class="link__boton boton titulo__dark  span"  href={href} target={target} data-i18n-key={i18nKey}>
+  {text}
 </a>

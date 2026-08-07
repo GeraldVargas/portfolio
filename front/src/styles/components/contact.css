@@ -1,0 +1,317 @@
+/* From Uiverse.io by mobinkakei - System Color Palette */
+.contact-section {
+  position: relative;
+  width: 100%;
+  padding: 6rem 1.5rem 8rem;
+  --sz: 4px; /*** size ***/
+  --sp: 6s; /*** speed ***/
+  --b1: #040d21; /*** system dark navy ***/
+  --b2: #011030; /*** system mid navy ***/
+  --b3: #081f4d; /*** system deep blue ***/
+  --b4: rgba(4, 13, 33, 0.92); /*** shadow color ***/
+  --c1: #58ecff; /*** system neon cyan accent ***/
+  --ts: 50% / calc(var(--sz) * 17.5) calc(var(--sz) * 29.5);
+  background:
+    /* black shadows */ radial-gradient(
+        circle at 50% 50%,
+        var(--b4) calc(var(--sz) * 1),
+        #fff0 calc(var(--sz) * 8)
+      )
+      var(--ts),
+    radial-gradient(
+        circle at 0% 0%,
+        var(--b4) calc(var(--sz) * 1),
+        #fff0 calc(var(--sz) * 8)
+      )
+      var(--ts),
+    radial-gradient(
+        circle at 0% 100%,
+        var(--b4) calc(var(--sz) * 1),
+        #fff0 calc(var(--sz) * 8)
+      )
+      var(--ts),
+    radial-gradient(
+        circle at 100% 0%,
+        var(--b4) calc(var(--sz) * 1),
+        #fff0 calc(var(--sz) * 8)
+      )
+      var(--ts),
+    radial-gradient(
+        circle at 100% 100%,
+        var(--b4) calc(var(--sz) * 1),
+        #fff0 calc(var(--sz) * 8)
+      )
+      var(--ts),
+    /* border bottom */
+      conic-gradient(
+        from 90deg at 97.5% 67%,
+        var(--c1) 0 87.5deg,
+        #fff0 88deg 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from 90deg at 97.5% 67%,
+        var(--c1) 0 87.5deg,
+        #fff0 88deg 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from 182.5deg at 2.5% 67%,
+        #fff0 0 0deg,
+        var(--c1) 0.5deg 90deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from 182.5deg at 2.5% 67%,
+        #fff0 0 0deg,
+        var(--c1) 0.5deg 90deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    /* border top */
+      conic-gradient(
+        from 270deg at 2.5% 33%,
+        var(--c1) 0 87.5deg,
+        #fff0 88deg 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from 270deg at 2.5% 33%,
+        var(--c1) 0 87.5deg,
+        #fff0 88deg 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from 2.5deg at 97.5% 33%,
+        #fff0 0 0deg,
+        var(--c1) 0.5deg 90deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from 2.5deg at 97.5% 33%,
+        #fff0 0 0deg,
+        var(--c1) 0.5deg 90deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    /* bottom */
+      conic-gradient(
+        from 116.5deg at 50% 85.5%,
+        var(--b1) 0 127deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from 116.5deg at 50% 85.5%,
+        var(--b1) 0 127deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from 116.5deg at 50% 85.5%,
+        var(--b1) 0 127deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    conic-gradient(from 120deg at 50% 83%, var(--c1) 0 120deg, #fff0 0 100%)
+      var(--ts),
+    /* top */
+      conic-gradient(
+        from -63.5deg at 50% 14.5%,
+        var(--b1) 0 127deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from -63.5deg at 50% 14.5%,
+        var(--b1) 0 127deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    conic-gradient(
+        from -63.5deg at 50% 14.5%,
+        var(--b1) 0 127deg,
+        #fff0 0 100%
+      )
+      var(--ts),
+    conic-gradient(from -60deg at 50% 17%, var(--c1) 0 120deg, #fff0 0 100%)
+      var(--ts),
+    /* central gradient */
+      conic-gradient(
+        from 0deg at 50% 50%,
+        #fff0 0 2deg,
+        var(--b2) 2.5deg 57.5deg,
+        #fff0 58deg 62.5deg,
+        var(--b1) 63deg 117.5deg,
+        #fff0 118deg 122.5deg,
+        var(--b3) 123deg 177.5deg,
+        #fff0 178deg 182deg,
+        var(--b2) 182.5deg 237.5deg,
+        #fff0 0 242.5deg,
+        var(--b1) 243deg 297.5deg,
+        #fff0 298deg 302.5deg,
+        var(--b3) 303deg 357.5deg,
+        #fff0 358deg 360deg
+      )
+      var(--ts),
+    /* bg */ var(--b1);
+  animation: colors var(--sp) linear 0s infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@keyframes colors {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.contact-container {
+  width: min(100%, 720px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  gap: 2rem;
+}
+
+.contact-title {
+  display: flex;
+  font-size: clamp(3rem, 5vw, 4.2rem);
+  margin: 0;
+  gap: 0.8rem;
+  color: #ffffff;
+  font-family: var(--montserrat);
+  font-weight: 800;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.contact-title span {
+  color: #58ecff;
+  text-shadow: 0 0 15px rgba(88, 236, 255, 0.6);
+}
+
+.contact-subtitle {
+  color: #d9f9ff;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--fira-code);
+}
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  background: rgba(6, 23, 56, 0.82);
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid rgba(88, 236, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(88, 236, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* From Uiverse.io by Smit-Prajapati - Adapted to System Colors */
+.input-container {
+  display: flex;
+  background: linear-gradient(135deg, rgba(8, 31, 77, 0.95) 0%, rgba(4, 13, 33, 0.98) 100%);
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  padding: 0.35rem;
+  gap: 0.35rem;
+  border: 1px solid rgba(88, 236, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.input-container input,
+.input-container textarea {
+  border-radius: 0.8rem 0 0 0.8rem;
+  background: rgba(2, 10, 28, 0.85);
+  box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.5), inset -4px -4px 10px rgba(255, 255, 255, 0.03);
+  width: 100%;
+  flex-basis: 75%;
+  padding: 1.2rem 1.4rem;
+  border: none;
+  border-left: 3px solid #58ecff;
+  color: #e8f9ff;
+  font-family: var(--montserrat);
+  font-size: 1.4rem;
+  transition: all 0.2s ease-in-out;
+  resize: vertical;
+}
+
+.input-container textarea {
+  min-height: 100px;
+}
+
+.input-container input::placeholder,
+.input-container textarea::placeholder {
+  color: rgba(217, 249, 255, 0.5);
+  font-family: var(--fira-code);
+}
+
+.input-container input:focus,
+.input-container textarea:focus {
+  border-left: 3px solid #58ecff;
+  outline: none;
+  box-shadow: inset 0 0 12px rgba(88, 236, 255, 0.25), inset -4px -4px 10px rgba(255, 255, 255, 0.05);
+}
+
+.input-container button {
+  flex-basis: 25%;
+  padding: 1.2rem 1.5rem;
+  background: linear-gradient(135deg, #05b9d1 0%, #081f4d 100%);
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  width: 100%;
+  border-radius: 0 0.8rem 0.8rem 0;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(5, 185, 209, 0.3);
+  font-family: var(--fira-code);
+}
+
+.input-container button:hover {
+  background: linear-gradient(135deg, #58ecff 0%, #05b9d1 100%);
+  color: #040d21;
+  box-shadow: 0 6px 20px rgba(88, 236, 255, 0.5);
+}
+
+.contact-status {
+  text-align: center;
+  font-family: var(--fira-code);
+  font-size: 1.3rem;
+  color: #58ecff;
+  min-height: 24px;
+}
+
+@media (max-width: 600px) {
+  .input-container {
+    flex-direction: column;
+  }
+
+  .input-container input,
+  .input-container textarea {
+    border-radius: 0.8rem;
+    flex-basis: 100%;
+  }
+
+  .input-container button {
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    flex-basis: 100%;
+  }
+}

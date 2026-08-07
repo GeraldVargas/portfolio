@@ -7,19 +7,20 @@ const linkKeyByHref = {
   "#tools": "tools",
   "#about": "about",
   "#portafolio": "portfolio",
-  "#blog": "post",
+  "#contact": "contact",
+  "/": "home",
+  "https://github.com/GeraldVargas": "mygithub",
 };
-const hasPrimaryLinks = origin?.some((link) => link.href === "#skills");
 ---
 
 <Header>
   {
-    origin.map((link) => {
+    origin.map((link, index) => {
       const i18nKey = linkKeyByHref[link.href];
       return (
         <>
           <li class="menu__list">
-            {target == "_blank" ? (
+            {link.target == "_blank" ? (
               <a
                 class="menu__link menu__hamburger-link button"
                 target={link.target}
@@ -48,7 +49,7 @@ const hasPrimaryLinks = origin?.some((link) => link.href === "#skills");
               </a>
             )}
           </li>
-          {hasPrimaryLinks && link.href === "#blog" ? (
+          {index === origin.length - 1 ? (
             <li class="menu__list menu__list--lang" aria-label="Language selector">
               <div class="lang-switcher">
                 <div class="radio-input" role="radiogroup" aria-label="Language selector">
@@ -94,11 +95,71 @@ const hasPrimaryLinks = origin?.some((link) => link.href === "#skills");
 
 <script type="module">
   const translations = {
+    // Navigation
     skills: { en: "Skills", es: "Habilidades" },
     tools: { en: "Tools", es: "Herramientas" },
-    about: { en: "About", es: "Sobre" },
+    about: { en: "Who is GeraldDev", es: "Quién es GeraldDev" },
     portfolio: { en: "Portfolio", es: "Portafolio" },
-    post: { en: "Post", es: "Publicaciones" },
+    contact: { en: "Contact", es: "Contáctame" },
+    home: { en: "Home", es: "Inicio" },
+    mygithub: { en: "My GitHub", es: "Mi GitHub" },
+
+    // Hero
+    hero_greeting: { en: "≥ Hi! I'm", es: "≥ ¡Hola! Soy" },
+    hero_name: { en: "Gerald Vargas", es: "Gerald Vargas" },
+    hero_role: { en: "≥ Full Stack Developer · Applied AI", es: "≥ Desarrollador Full Stack · IA Aplicada" },
+    hero_sub: { en: "Computer Engineering Student · Cochabamba, Bolivia", es: "Estudiante de Ingeniería Informática · Cochabamba, Bolivia" },
+
+    // Who is GeraldDev
+    gerald_name: { en: "Gerald", es: "Gerald" },
+    card_role: { en: "Full Stack Developer · Applied AI", es: "Desarrollador Full Stack · IA Aplicada" },
+    card_email: { en: "Email", es: "Correo" },
+    card_cv: { en: "Download CV", es: "Descargar CV" },
+    terminal_h3_1: { en: "≥ Gerald Emanuel Vargas", es: "≥ Gerald Emanuel Vargas" },
+    terminal_p_1: { en: "≥ Python & Laravel fan 🤖. Always building things that matter.", es: "≥ Fanático de Python y Laravel 🤖. Siempre construyendo cosas que importan." },
+    terminal_h3_2_pre: { en: "≥ What ", es: "≥ ¿Qué " },
+    terminal_h3_2_span: { en: "sets me apart?", es: "me diferencia?" },
+    terminal_p_2: { en: "≥ I've deployed real systems used in official elections 🗳️ and municipal governments. I build for production, not just for practice.", es: "≥ He desplegado sistemas reales usados en elecciones oficiales 🗳️ y gobiernos municipales. Construyo para producción, no solo por práctica." },
+
+    // Tools & Skills
+    tools_title: { en: "Tools", es: "Herramientas" },
+    skills_title: { en: "Skills", es: "Habilidades" },
+
+    // Portfolio
+    portfolio_title: { en: "Portfolio", es: "Portafolio" },
+    portfolio_see_more: { en: "See More", es: "Ver Más" },
+    view_demo: { en: "View Demo", es: "Ver Demo" },
+    view_repo: { en: "View Repo", es: "Ver Repo" },
+    all_filter: { en: "All", es: "Todos" },
+
+    desc_synapse: {
+      en: "Full-featured Learning Management System with role-based access, automated assessments, and admin dashboards.",
+      es: "Sistema de gestión de aprendizaje completo con acceso basado en roles, evaluaciones automatizadas y paneles de administración."
+    },
+    desc_colcatrufi: {
+      en: "Cross-platform urban mobility app for the Municipal Government of Colcapirhua.",
+      es: "Aplicación de movilidad urbana multiplataforma para el Gobierno Autónomo Municipal de Colcapirhua."
+    },
+    desc_fraud: {
+      en: "Deep Learning system (Autoencoder + Isolation Forest) with 94.2% precision on 150,000+ transactions.",
+      es: "Sistema de aprendizaje profundo (Autoencoder + Isolation Forest) con 94.2% de precisión en más de 150,000 transacciones."
+    },
+    desc_electoral: {
+      en: "Official system used in the Cochabamba 2026 Sub-national Elections with real-time results dashboard.",
+      es: "Sistema oficial utilizado en las Elecciones Subnacionales Cochabamba 2026 con tablero de resultados en tiempo real."
+    },
+
+    // Contact
+    contact_title_1: { en: "Contác", es: "Contác" },
+    contact_title_2: { en: "tame", es: "tame" },
+    contact_subtitle: { en: "Send me a message for projects, collaborations or inquiries", es: "Ponte en contacto para proyectos, colaboraciones o consultas" },
+    contact_name_placeholder: { en: "Your Name", es: "Tu Nombre" },
+    contact_email_placeholder: { en: "Your Email", es: "Tu Correo Electrónico" },
+    contact_message_placeholder: { en: "Your Message...", es: "Tu Mensaje..." },
+    contact_send_btn: { en: "SEND MESSAGE", es: "ENVIAR MENSAJE" },
+
+    // Footer
+    footer_email: { en: "Email", es: "Correo" }
   };
 
   const setLanguage = (lang) => {
@@ -114,6 +175,16 @@ const hasPrimaryLinks = origin?.some((link) => link.href === "#skills");
       }
       node.textContent = label;
     });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+      const key = node.getAttribute("data-i18n-placeholder");
+      const label = translations[key]?.[lang];
+      if (label) {
+        node.setAttribute("placeholder", label);
+      }
+    });
+
+    window.dispatchEvent(new CustomEvent("languageChange", { detail: { lang } }));
   };
 
   const savedLang = localStorage.getItem("site-lang");

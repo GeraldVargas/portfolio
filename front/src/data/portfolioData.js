@@ -1,5 +1,6 @@
  const portafolioData = [
   {
+    id: "synapse",
     imgSrc: "../img/portfolio_img/synapse.webp",
     titulo: "Synapse — LMS Platform",
     skills: ["Laravel", "MySQL", "PHP"],
@@ -10,6 +11,7 @@
     anim:"fade-right"
   },
   {
+    id: "colcatrufi",
     imgSrc: "../img/portfolio_img/colcatrufi.webp",
     titulo: "ColcaTrufis",
     skills: ["Flutter", "Laravel", "REST API"],
@@ -19,6 +21,7 @@
     anim:"fade-up"
   },
   {
+    id: "fraud",
     imgSrc: "../img/portfolio_img/fraud.webp",
     titulo: "Financial Fraud Detection",
     skills: ["Python", "Streamlit", "Machine Learning"],
@@ -28,6 +31,7 @@
     anim:"fade-left"
   },
   {
+    id: "electoral",
     imgSrc: "../img/portfolio_img/electoral.webp",
     titulo: "Electoral Ballot System",
     skills: ["Node.js", "React", "Realtime"],

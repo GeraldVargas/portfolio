@@ -1,0 +1,87 @@
+---
+import "../styles/components/contact.css";
+---
+
+<section class="contact-section" id="contact">
+  <div class="contact-container" data-aos="fade-up">
+    <h2 class="contact-title">
+      <span data-i18n-key="contact_title_1">Contác</span><span data-i18n-key="contact_title_2">tame</span>
+    </h2>
+    <p class="contact-subtitle" data-i18n-key="contact_subtitle">
+      Ponte en contacto para proyectos, colaboraciones o consultas
+    </p>
+
+    <form class="contact-form" id="contact-form">
+      <div class="input-container">
+        <input
+          type="text"
+          id="contact-name"
+          name="name"
+          placeholder="Tu Nombre"
+          data-i18n-placeholder="contact_name_placeholder"
+          required
+        />
+      </div>
+
+      <div class="input-container">
+        <input
+          type="email"
+          id="contact-email"
+          name="email"
+          placeholder="Tu Correo Electrónico"
+          data-i18n-placeholder="contact_email_placeholder"
+          required
+        />
+      </div>
+
+      <div class="input-container">
+        <textarea
+          id="contact-message"
+          name="message"
+          rows="4"
+          placeholder="Tu Mensaje..."
+          data-i18n-placeholder="contact_message_placeholder"
+          required
+        ></textarea>
+        <button type="submit" id="contact-submit-btn" data-i18n-key="contact_send_btn">
+          ENVIAR
+        </button>
+      </div>
+
+      <div class="contact-status" id="contact-status"></div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const statusDiv = document.getElementById("contact-status");
+  const submitBtn = document.getElementById("contact-submit-btn");
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const currentLang = document.documentElement.lang || "es";
+      
+      if (submitBtn) {
+        submitBtn.setAttribute("disabled", "true");
+      }
+      
+      if (statusDiv) {
+        statusDiv.textContent = currentLang === "en" ? "Sending..." : "Enviando...";
+      }
+
+      setTimeout(() => {
+        if (statusDiv) {
+          statusDiv.textContent = currentLang === "en" 
+            ? "¡Message sent successfully! Thanks for reaching out." 
+            : "¡Mensaje enviado con éxito! Gracias por contactarme.";
+        }
+        form.reset();
+        if (submitBtn) {
+          submitBtn.removeAttribute("disabled");
+        }
+      }, 1000);
+    });
+  }
+</script>

@@ -7,7 +7,7 @@ import Button from "@atoms/Button/Button.astro";
 
 
     <section class="portafolio " id="portafolio">
-            <h2 data-aos="fade-left" class="titulo titulo__dark">Portfolio</h2>
+            <h2 data-aos="fade-left" class="titulo titulo__dark" data-i18n-key="portfolio_title">Portfolio</h2>
             <div class="portafolio__contenedor" data-card>
                 <PortfolioCards/>
             </div>
@@ -15,5 +15,6 @@ import Button from "@atoms/Button/Button.astro";
                 animation="zoom-in"
                 href="/portfolio"
                 text="See More"
+                data-i18n-key="portfolio_see_more"
             />
         </section>

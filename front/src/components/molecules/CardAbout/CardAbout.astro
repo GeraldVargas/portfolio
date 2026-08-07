@@ -6,11 +6,15 @@ import "./card-about.css";
   <div class="about-card__background"></div>
   <div class="about-card__inner">
     <div class="about-card__photo-wrap">
-      <div class="about-card__heading">
-        <p>Gerald</p>
-        <span>Full Stack Developer · Applied AI</span>
+      <div class="about-card__top-name">
+        <p data-i18n-key="gerald_name">Gerald</p>
       </div>
-      <img class="about-card__avatar" src="/img/gerald1.png" alt="Gerald Vargas" loading="lazy" />
+      <div class="about-card__avatar-box">
+        <img class="about-card__avatar" src="/img/gerald1.png" alt="Gerald Vargas" loading="lazy" />
+      </div>
+      <div class="about-card__bottom-role">
+        <span data-i18n-key="card_role">Full Stack Developer · Applied AI</span>
+      </div>
     </div>
 
     <div class="about-card__actions">
@@ -25,7 +29,7 @@ import "./card-about.css";
             <path d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 2v.5l-8 5-8-5V7h16Zm0 10H4V9.86l7.47 4.67a1 1 0 0 0 1.06 0L20 9.86V17Z"/>
           </svg>
         </span>
-        <span class="about-card__label">Email</span>
+        <span class="about-card__label" data-i18n-key="card_email">Email</span>
       </a>
 
       <a
@@ -42,7 +46,7 @@ import "./card-about.css";
             <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5Zm0 2.5L16.5 7H14V4.5ZM7 20V4h5v4a1 1 0 0 0 1 1h4v11H7Zm5-1a1 1 0 0 0 1-1v-2.59l.3.3a1 1 0 1 0 1.4-1.42l-2-2a1 1 0 0 0-1.4 0l-2 2a1 1 0 1 0 1.4 1.42l.3-.3V18a1 1 0 0 0 1 1Z"/>
           </svg>
         </span>
-        <span class="about-card__label">Descargar CV</span>
+        <span class="about-card__label" data-i18n-key="card_cv">Descargar CV</span>
       </a>
     </div>
   </div>
