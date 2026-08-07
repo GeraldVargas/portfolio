@@ -2,42 +2,42 @@
   --main-color: #181818;
   --seccond-color: rgb(228, 228, 228);
   --black: 15, 18, 25;
-  --purple: #2e016c;
-  --dark-purple: rgb(11 0 37);
-  --purple-bg: #19003c;
-  --purple-buble: #ae00ff;
-  --ligth-purple: #610094;
-  --blue: #58ecff;
+  --purple: #1a0a2e;
+  --dark-purple: rgb(10, 8, 30);
+  --purple-bg: #0a1a3f;
+  --purple-buble: #01f2ff;
+  --ligth-purple: #1a2a5e;
+  --blue: #01f2ff;
 
-  --accent: #2337ff;
-  --accent-dark: #000d8a;
+  --accent: #01f2ff;
+  --accent-dark: #0a1a3f;
   --gray: 96, 115, 159;
   --gray-light: 229, 233, 240;
   --gray-dark: 34, 41, 57;
   --gray-gradient: rgba(var(--gray-light), 50%), #fff;
   --box-shadow: 0 2px 6px rgba(var(--gray), 25%),
     0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
-  --box-shadow-toggle: 2px 1px 20px 0px rgba(145, 192, 255, 0.5),
+  --box-shadow-toggle: 2px 1px 20px 0px rgba(1, 242, 255, 0.5),
     inset 2px 0px 1px 0px rgba(214, 232, 255, 0.214),
     inset 0px 11px 28px 0px rgb(255, 255, 255);
 
-  --gradient: linear-gradient(181deg, #000000 35%, #2e006e 100%);
-  --gradient-transparent: 181deg, #2e006e 50%, #000000c5 100%;
+  --gradient: linear-gradient(135deg, #0a1a3f 0%, #1a0a2e 100%);
+  --gradient-transparent: 135deg, #0a1a3f 50%, #1a0a2ec5 100%;
 
   --green-terminal: rgb(0, 255, 102);
   --yellow-terminal: rgb(182, 182, 3);
   --pink-terminal: rgb(255, 0, 144);
-  --blue-terminal: aqua;
+  --blue-terminal: #01f2ff;
 
   --fira-code: "Fira Code", monospace;
   --montserrat: "Montserrat", sans-serif;
   /* Darktheme */
-  --dark-bg:rgb(6, 6, 6);
+  --dark-bg: rgb(6, 6, 6);
   --pure-black: #000000;
 
-  --terminal-bg-dark: rgba(18, 0, 33, 0.734);
+  --terminal-bg-dark: rgba(10, 8, 30, 0.85);
   --icons-glow-dark: invert(1) saturate(0%) sepia(0) var(--glow-blue);
-  --glow-blue: drop-shadow(0 0px 5px rgba(0, 230, 270, 2));
+  --glow-blue: drop-shadow(0 0px 5px rgba(1, 242, 255, 0.6));
 }
 * {
   box-sizing: border-box;
@@ -81,7 +81,7 @@ ul li {
   text-align: center;
 }
 
-.max__width{
+.max__width {
   max-width: 1344px;
 }
 
@@ -114,7 +114,7 @@ h4 {
   }
 }
 .dark-mode a {
-  color: var(--green-terminal);
+  color: var(--blue-terminal);
 }
 .dark-mode code span {
   background-color: #24292e;
@@ -139,7 +139,7 @@ code {
   background-color: rgb(51, 51, 51);
   border-radius: 0.3rem;
   font-size: 1.4rem;
-  color: var(--green-terminal);
+  color: var(--blue-terminal);
 }
 
 code .line span {
@@ -179,7 +179,7 @@ hr {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #00efe3;
+  background: #01f2ff;
 }
 
 /* Handle on hover */

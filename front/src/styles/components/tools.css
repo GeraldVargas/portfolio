@@ -7,7 +7,7 @@
   padding-bottom: 1.25rem;
 }
 .tools__titulo {
-  color: var(--green-terminal);
+  color: #01f2ff;
   text-align: center;
   margin: 0.5rem 0 0;
 }
@@ -101,6 +101,8 @@
 }
 .tools__caja:hover {
   transform: scale(1.1);
+  border: 3px solid rgba(1, 242, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(1, 242, 255, 0.35);
 }
 .tools__icono {
   display: flex;
@@ -109,7 +111,7 @@
 }
 .tools__descripcion {
   text-align: center;
-  color: var(--green-terminal);
+  color: #01f2ff;
   font-family: var(--fira-code);
   font-size: 1.2rem;
 }
