@@ -3,34 +3,69 @@ import MainLogo from "../components/MainLogo.astro";
 import IconLogo from "../components/atoms/IconLogo.astro";
 import "@styles/components/header.css";
 ---
-
 <script>
-  const headerBg = document.querySelector(".header") as HTMLElement;
-  const panelActive = document.querySelector(".panel") as HTMLElement;
-  function hamburgerMenu(panelBtn, panel, menuLink) {
-    document.addEventListener("click", (e) => {
-      if ((e.target as Element).matches(panelBtn) || (e.target as Element).matches(`${panelBtn} *`)) {
-        document.querySelector(panel).classList.toggle("is-active");
-        document.querySelector(panelBtn).classList.toggle("is-active");
-      }
-      if (e.target instanceof Element && e.target.matches(panelBtn)){
-        document.querySelector(panel).classList.remove("is-active");
-        document.querySelector(panelBtn).classList.remove("is-active");
-      }
-      if (e.target instanceof Element && e.target.matches(menuLink)){
-        document.querySelector(panel).classList.remove("is-active");
-        document.querySelector(panelBtn).classList.remove("is-active");
-      }
-      if(panelActive.classList.contains("is-active")){
-        headerBg.classList.remove("blur");
-      }else{
-       headerBg.classList.add("blur");
+  const headerEl = document.querySelector(".header") as HTMLElement;
+  const panelEl = document.querySelector(".panel") as HTMLElement;
+  const btnEl = document.querySelector(".panel__btn") as HTMLElement;
+  const checkbox = document.getElementById("checkbox") as HTMLInputElement;
+
+  // Centra el botón hamburguesa verticalmente respecto al header real,
+  // midiendo su altura en vez de asumirla con calc() fijo.
+  function alignToggleWithHeader() {
+    if (!headerEl || !btnEl) return;
+    const rect = headerEl.getBoundingClientRect();
+    const center = rect.top + rect.height / 2;
+    btnEl.style.top = `${center}px`;
+  }
+
+  function closePanel() {
+    panelEl?.classList.remove("is-active");
+    btnEl?.classList.remove("is-active");
+    if (checkbox) checkbox.checked = false;
+    headerEl?.classList.add("blur");
+  }
+
+  function openPanel() {
+    panelEl?.classList.add("is-active");
+    btnEl?.classList.add("is-active");
+    if (checkbox) checkbox.checked = true;
+    headerEl?.classList.remove("blur");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    alignToggleWithHeader();
+
+    // El checkbox es invisible y solo existe para animar las barras con CSS
+    // (#checkbox:checked + .toggle ...). El click real lo manejamos en el
+    // label/botón directamente para evitar el doble-evento nativo
+    // label -> checkbox que cerraba el panel apenas se abría.
+    btnEl?.addEventListener("click", (e) => {
+      e.preventDefault(); // evita el toggle nativo duplicado del checkbox
+      const isOpen = panelEl?.classList.contains("is-active");
+      if (isOpen) {
+        closePanel();
+      } else {
+        openPanel();
       }
     });
-  }
-  document.addEventListener("DOMContentLoaded", (e) => {
-    hamburgerMenu(".panel__btn", ".panel", ".menu__link");
+
+    // Cerrar al hacer click en un link del menú
+    document.querySelectorAll(".menu__link").forEach((link) => {
+      link.addEventListener("click", () => closePanel());
+    });
+
+    // Cerrar al tocar cualquier parte de la pantalla que no sea
+    // el sidebar ni el botón
+    document.addEventListener("click", (e) => {
+      const target = e.target as Element;
+      const isOpen = panelEl?.classList.contains("is-active");
+      if (!isOpen) return;
+      if (target.closest(".panel") || target.closest(".panel__btn")) return;
+      closePanel();
+    });
   });
+
+  window.addEventListener("resize", alignToggleWithHeader);
 </script>
 <header class="header blur" id="header">
   <MainLogo />
@@ -42,12 +77,11 @@ import "@styles/components/header.css";
     </ul>
   </nav>
 </header>
-<button
-  class="panel__btn hamburger hamburger--emphatic"
-  type="button"
-  aria-label="menu"
->
-  <span class="hamburger-box">
-    <span class="hamburger-inner" id="hamburguesa"></span>
-  </span>
-</button>
+
+<!-- Botón hamburguesa (Uiverse.io by vk-uiux), fijo junto al header -->
+<input type="checkbox" id="checkbox" tabindex="-1" aria-hidden="true" />
+<label for="checkbox" class="toggle panel__btn hamburger--emphatic" aria-label="menu" onclick="return false;">
+  <div class="bar bar--top"></div>
+  <div class="bar bar--middle"></div>
+  <div class="bar bar--bottom"></div>
+</label>
