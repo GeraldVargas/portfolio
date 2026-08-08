@@ -3,8 +3,7 @@ import Header from "../layouts/Header.astro";
 
 const { origin, target } = Astro.props;
 const linkKeyByHref = {
-  "#skills": "skills",
-  "#tools": "tools",
+  "#hero": "inicio",
   "#about": "about",
   "#portafolio": "portfolio",
   "#contact": "contact",
@@ -96,6 +95,7 @@ const linkKeyByHref = {
 <script type="module">
   const translations = {
     // Navigation
+    inicio: { en: "Home", es: "Inicio" },
     skills: { en: "Skills", es: "Habilidades" },
     tools: { en: "Tools", es: "Herramientas" },
     about: { en: "Who is GeraldDev", es: "Quién es GeraldDev" },
@@ -131,6 +131,9 @@ const linkKeyByHref = {
     view_demo: { en: "View Demo", es: "Ver Demo" },
     view_repo: { en: "View Repo", es: "Ver Repo" },
     all_filter: { en: "All", es: "Todos" },
+    ver_detalle: { en: "View Details", es: "Ver Detalle" },
+    modal_techs_label: { en: "Technologies", es: "Tecnologías" },
+    modal_links_label: { en: "Links", es: "Enlaces" },
 
     desc_synapse: {
       en: "Full-featured Learning Management System with role-based access, automated assessments, and admin dashboards.",
@@ -150,8 +153,7 @@ const linkKeyByHref = {
     },
 
     // Contact
-    contact_title_1: { en: "Contác", es: "Contác" },
-    contact_title_2: { en: "tame", es: "tame" },
+    contact_title: { en: "Contact me", es: "Contáctame" },
     contact_subtitle: { en: "Send me a message for projects, collaborations or inquiries", es: "Ponte en contacto para proyectos, colaboraciones o consultas" },
     contact_name_placeholder: { en: "Your Name", es: "Tu Nombre" },
     contact_email_placeholder: { en: "Your Email", es: "Tu Correo Electrónico" },

@@ -1,9 +1,8 @@
 export const links = [
-  { href: "#skills", text: "Skills" },
-  { href: "#tools", text: "Tools" },
-  { href: "#about", text: "About" },
-  { href: "#portafolio", text: "Portfolio" },
-  { href: "#contact", text: "Contact" },
+  { href: "#hero", text: "Inicio" },
+  { href: "#about", text: "Who is GeraldDev" },
+  { href: "#portafolio", text: "Portafolio" },
+  { href: "#contact", text: "Contáctame" },
 ];
 export const about = [
   { href: "/", text: "Home" },

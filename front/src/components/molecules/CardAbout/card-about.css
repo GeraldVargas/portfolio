@@ -1,23 +1,34 @@
-/* From Uiverse.io by Smit-Prajapati */
 .about-card {
   position: relative;
   width: min(100%, 500px);
-  min-height: 320px;
+  min-height: 520px;
   padding: 1.2rem;
-  background: rgba(6, 23, 56, 0.7);
-  border-radius: 30px;
+  background-color: #040d21;
+  background-image: linear-gradient(43deg,
+      #040d21 0%,
+      #081f4d 46%,
+      #011030 100%);
+  border-radius: 1.5rem;
   overflow: visible;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: rgba(0, 0, 0, 0.45) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.35) 0px -36px 30px 0px inset,
+    rgba(88, 236, 255, 0.12) 0px -79px 40px 0px inset,
+    rgba(0, 0, 0, 0.2) 0px 2px 1px,
+    rgba(0, 0, 0, 0.2) 0px 4px 2px,
+    rgba(0, 0, 0, 0.2) 0px 8px 4px,
+    rgba(0, 0, 0, 0.2) 0px 16px 8px,
+    rgba(5, 185, 209, 0.35) 0px 0px 30px;
+  border: 1px solid rgba(88, 236, 255, 0.25);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .about-card__background {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 100% 107%, #000000 0%, #011030 28%, #0a015c 56%, #2e296e 76%, #05b9d1 100%);
+  background-image: linear-gradient(43deg,
+      #040d21 0%,
+      #081f4d 46%,
+      #011030 100%);
   opacity: 0.95;
   border-radius: inherit;
   overflow: hidden;
@@ -40,7 +51,7 @@
   justify-content: space-between;
   transition: transform 0.35s ease;
   margin: 0;
-  padding: 1.4rem 1rem;
+  padding: 1.6rem 1.2rem;
   min-height: 100%;
   pointer-events: none;
 }
@@ -245,7 +256,7 @@
 @media (min-width: 768px) {
   .about-card {
     width: min(100%, 540px);
-    min-height: 340px;
+    min-height: 560px;
     margin-left: clamp(5.5rem, 9vw, 11rem);
   }
 
@@ -257,7 +268,7 @@
 @media (max-width: 767px) {
   .about-card {
     width: min(100%, 360px);
-    min-height: 300px;
+    min-height: 460px;
     margin-left: 0.8rem;
   }
 
