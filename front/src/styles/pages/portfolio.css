@@ -38,7 +38,6 @@
 
 /* ============================================
    ASHON-G POLYGON CARD – system navy palette
-   Timings sped up significantly
    ============================================ */
 .pf-card {
   position: relative;
@@ -52,9 +51,9 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  border: 1px solid #01f2ff;
+  border: 1px solid var(--card-color, #01f2ff);
   transform: scale(0.8);
-  box-shadow: rgba(1, 242, 255, 0.7) 0px 30px 70px 0px;
+  box-shadow: color-mix(in srgb, var(--card-color, #01f2ff) 70%, transparent) 0px 30px 70px 0px;
   transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   border-radius: 4px;
 }
@@ -63,7 +62,10 @@
   width: 240px;
   height: 320px;
   overflow: hidden;
-  background: linear-gradient(0deg, #010b1e 0%, #0a1a3f 60%, #040d21 100%);
+  background: linear-gradient(0deg,
+      #010b1e 0%,
+      color-mix(in srgb, var(--card-color, #0a1a3f) 90%, white 5%) 55%,
+      #040d21 100%);
   position: relative;
   clip-path: polygon(0 0,
       100% 0,
@@ -72,11 +74,10 @@
       calc(100% - 40px) 100%,
       40px 100%,
       0 calc(100% - 40px));
-  box-shadow: rgba(1, 242, 255, 0.5) 0px 7px 29px 0px;
+  box-shadow: color-mix(in srgb, var(--card-color, #01f2ff) 50%, transparent) 0px 7px 29px 0px;
   transition: transform 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-/* Top triangular slide panel */
 .pf-card__top {
   position: absolute;
   top: 0px;
@@ -90,7 +91,6 @@
   transition: top 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-/* Side panels */
 .pf-card__side {
   position: absolute;
   width: 100%;
@@ -111,7 +111,6 @@
   transform: translateX(50%) scale(-1, 1);
 }
 
-/* Title shown on hover */
 .pf-card__title {
   position: absolute;
   left: 50%;
@@ -119,17 +118,16 @@
   top: 28px;
   font-weight: 700;
   font-size: 1.45rem;
-  color: #58ecff;
+  color: var(--card-color, #58ecff);
   white-space: nowrap;
   opacity: 0;
   z-index: 3;
   text-align: center;
-  text-shadow: 0 0 12px rgba(88, 236, 255, 0.6);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--card-color, #01f2ff) 60%, transparent);
   width: 90%;
   transition: opacity 0.2s ease-out 0.3s;
 }
 
-/* Tech icons row */
 .pf-card__techs {
   position: absolute;
   left: 50%;
@@ -149,15 +147,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(1, 242, 255, 0.1);
-  border: 1px solid rgba(1, 242, 255, 0.4);
+  background: color-mix(in srgb, var(--card-color, #01f2ff) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-color, #01f2ff) 40%, transparent);
   border-radius: 50%;
   width: 3.2rem;
   height: 3.2rem;
   padding: 0.5rem;
 }
 
-/* Ver Detalle button */
 .pf-card__btn-wrap {
   position: absolute;
   bottom: 20px;
@@ -174,9 +171,9 @@
   bottom: -220px;
   padding: 7px 20px;
   clip-path: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0% 50%);
-  background: linear-gradient(90deg, #0a1a3f, #01f2ff22);
-  border: 1px solid #01f2ff;
-  color: #58ecff;
+  background: linear-gradient(90deg, #0a1a3f, color-mix(in srgb, var(--card-color, #01f2ff) 13%, transparent));
+  border: 1px solid var(--card-color, #01f2ff);
+  color: var(--card-color, #58ecff);
   font-size: 1.25rem;
   font-weight: 700;
   font-family: var(--fira-code);
@@ -188,11 +185,11 @@
 }
 
 .pf-card__btn:hover {
-  background: rgba(1, 242, 255, 0.2);
-  box-shadow: 0 0 16px rgba(1, 242, 255, 0.5);
+  background: color-mix(in srgb, var(--card-color, #01f2ff) 20%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--card-color, #01f2ff) 50%, transparent);
 }
 
-/* ── HOVER STATES (all faster) ── */
+/* ── HOVER STATES ── */
 .pf-card:hover .pf-card__main {
   transform: scale(1.07);
 }
@@ -229,7 +226,7 @@
 }
 
 /* ============================================
-   PROJECT DETAIL MODAL
+   PROJECT DETAIL MODAL OVERLAY
    ============================================ */
 .pf-modal-overlay {
   position: fixed;
@@ -252,109 +249,72 @@
   pointer-events: all;
 }
 
-.pf-modal {
-  background: linear-gradient(135deg, #060f28 0%, #0a1a3f 100%);
-  border: 1px solid rgba(1, 242, 255, 0.3);
-  border-radius: 16px;
-  box-shadow: 0 0 60px rgba(1, 242, 255, 0.15), inset 0 0 30px rgba(1, 242, 255, 0.05);
+/* Modal TERMINAL (caja__cristal) */
+.pf-modal-terminal {
   width: min(100%, 680px);
   max-height: 90dvh;
   overflow-y: auto;
   transform: translateY(16px) scale(0.97);
   transition: transform 0.25s ease, opacity 0.25s ease;
   opacity: 0;
-  position: relative;
+  border: 1px solid color-mix(in srgb, var(--card-color, #01f2ff) 35%, transparent);
+  box-shadow:
+    0 0 60px color-mix(in srgb, var(--card-color, #01f2ff) 18%, transparent),
+    0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-.pf-modal-overlay.is-open .pf-modal {
+.pf-modal-overlay.is-open .pf-modal-terminal {
   transform: translateY(0) scale(1);
   opacity: 1;
 }
 
-/* Terminal top bar */
-.pf-modal__bar {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 1rem 1.4rem;
-  border-bottom: 1px solid rgba(1, 242, 255, 0.2);
-  background: rgba(4, 13, 33, 0.9);
-  border-radius: 16px 16px 0 0;
+.pf-modal-terminal .user {
+  color: var(--card-color, #58ecff);
+  opacity: 0.85;
 }
 
-.pf-modal__dot {
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
+.pf-modal-terminal .terminal__content--h3 {
+  color: var(--card-color, #58ecff);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--card-color, #01f2ff) 35%, transparent);
 }
 
-.pf-modal__dot--red {
-  background: #ff5f57;
-}
-
-.pf-modal__dot--yellow {
-  background: #febc2e;
-}
-
-.pf-modal__dot--green {
-  background: #28c840;
-}
-
-.pf-modal__bar-title {
-  margin-left: auto;
-  margin-right: auto;
-  color: rgba(88, 236, 255, 0.7);
-  font-family: var(--fira-code);
+.pf-modal-terminal__label {
+  color: var(--card-color, #58ecff);
+  display: block;
+  margin: 1.4rem 0 0.8rem;
   font-size: 1.3rem;
 }
 
-/* Modal body */
-.pf-modal__body {
-  padding: 2rem 2.4rem;
-}
-
-.pf-modal__project-name {
-  color: #58ecff;
-  font-size: 2.2rem;
-  font-weight: 800;
-  font-family: var(--montserrat);
-  margin: 0 0 0.6rem;
-  text-shadow: 0 0 12px rgba(88, 236, 255, 0.35);
-}
-
-.pf-modal__desc {
+.pf-modal-terminal__desc {
   color: #d9f9ff;
-  font-family: var(--fira-code);
-  font-size: 1.4rem;
   line-height: 1.7;
-  margin-bottom: 2rem;
 }
 
-.pf-modal__label {
-  color: rgba(88, 236, 255, 0.7);
-  font-family: var(--fira-code);
-  font-size: 1.2rem;
-  margin-bottom: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
+.pf-modal-terminal .terminal__link {
+  color: var(--card-color, #58ecff);
+}
+
+.pf-modal-terminal .terminal__link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px var(--card-color, #58ecff);
 }
 
 .pf-modal__techs {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2.4rem;
+  margin-bottom: 1.6rem;
 }
 
 .pf-modal__tech-pill {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  background: rgba(1, 242, 255, 0.08);
-  border: 1px solid rgba(1, 242, 255, 0.3);
+  background: color-mix(in srgb, var(--card-color, #01f2ff) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-color, #01f2ff) 30%, transparent);
   border-radius: 100px;
   padding: 0.4rem 1.2rem;
-  color: #58ecff;
+  color: var(--card-color, #58ecff);
   font-family: var(--fira-code);
   font-size: 1.25rem;
 }
@@ -363,58 +323,11 @@
   display: flex;
   gap: 1.2rem;
   flex-wrap: wrap;
-}
-
-.pf-modal__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.8rem 2rem;
-  border-radius: 8px;
-  border: 1px solid rgba(1, 242, 255, 0.4);
-  color: #58ecff;
-  font-family: var(--fira-code);
-  font-size: 1.3rem;
-  font-weight: 600;
-  background: rgba(1, 242, 255, 0.07);
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-.pf-modal__link:hover {
-  background: rgba(1, 242, 255, 0.18);
-  box-shadow: 0 0 18px rgba(1, 242, 255, 0.3);
-  color: #ffffff;
-}
-
-.pf-modal__close {
-  position: absolute;
-  top: 1rem;
-  right: 1.2rem;
-  background: transparent;
-  border: 1px solid rgba(1, 242, 255, 0.3);
-  color: #58ecff;
-  font-size: 1.6rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
-  font-family: monospace;
-  line-height: 1;
-}
-
-.pf-modal__close:hover {
-  background: rgba(1, 242, 255, 0.15);
-  box-shadow: 0 0 12px rgba(1, 242, 255, 0.4);
+  margin-top: 1rem;
 }
 
 /* ============================================
-   PAGE /portfolio – full portfolio page
-   Same polygon card style used here too
+   PAGE /portfolio
    ============================================ */
 .portfolio__padre {
   width: 100%;
@@ -439,7 +352,6 @@
   padding: 2rem 0;
 }
 
-/* Filter buttons on /portfolio page */
 .buttons__container {
   display: flex;
   justify-content: center;
@@ -454,13 +366,14 @@
   max-width: 900px;
 }
 
+/* Botones de filtro: celeste/azul */
 .skill-button {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 1.4rem;
   background: rgba(1, 242, 255, 0.07);
-  border: 1px solid rgba(1, 242, 255, 0.3);
+  border: 1px solid rgba(88, 236, 255, 0.5);
   border-radius: 100px;
   color: #58ecff;
   font-family: var(--fira-code);
@@ -471,92 +384,204 @@
 
 .skill-button:hover,
 .skill-button.active {
-  background: rgba(1, 242, 255, 0.18);
-  box-shadow: 0 0 12px rgba(1, 242, 255, 0.35);
+  background: rgba(1, 242, 255, 0.2);
+  box-shadow: 0 0 14px rgba(88, 236, 255, 0.5);
 }
 
-/* Inline-rendered cards styles for /portfolio page */
-.portafolio__tarjeta {
-  position: relative;
-  height: 320px;
-  width: 240px;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-
-.portafolio__cara {
-  display: none;
-  /* replaced by polygon cards */
-}
-
-.portafolio__contenedor-full {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 4rem;
-}
-
-/* Legacy support for inline JS-rendered simple card fallback */
-.portafolio__subtitulo {
-  font-size: 1.6rem;
-  text-align: center;
-  color: #01f2ff;
-}
-
-.skills__used {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ============================================
+   ESTILOS PROPIOS DE LA TERMINAL DEL MODAL
+   (autosuficientes, no dependen de otro CSS)
+   ============================================ */
+.caja__cristal {
+  background: var(--dark-purple, #1a0a2e);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(14.5px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   width: 100%;
-  flex-wrap: wrap;
-  gap: 0.8rem;
+  padding: 0 1rem 2rem 1rem;
 }
 
-.tecnology {
+.terminal_toolbar {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background: linear-gradient(#504b45 0%, #3c3b37 100%);
+  margin: 0 -1rem;
+  width: calc(100% + 2rem);
+}
+
+.terminal_toolbar .butt {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: rgba(1, 242, 255, 0.08);
+  gap: 6px;
+}
+
+.terminal_toolbar .btn {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  height: 1.3rem;
+  width: 1.3rem;
+  min-width: 1.3rem;
+  box-sizing: border-box;
+  border: none;
   border-radius: 50%;
-  border: 2px solid rgba(1, 242, 255, 0.3);
-  padding: 1.2rem;
-  width: 4rem;
-  height: 4rem;
+  cursor: pointer;
+  box-shadow: 0px 0px 1px 0px #41403a, 0px 1px 1px 0px #474642;
 }
 
-.portafolio__descripcion {
-  text-align: left;
+.terminal_toolbar .btn__red {
+  background: #ee411a;
+}
+
+.terminal_toolbar .btn__yellow {
+  background: #ffae00;
+}
+
+.terminal_toolbar .btn__green {
+  background: #15ff00;
+}
+
+.terminal_toolbar .user {
+  margin-left: 1rem;
+  font-size: 1.3rem;
   font-family: var(--fira-code);
-  color: #e5f9ff;
-  font-size: 1.5rem;
-  padding: 0 1rem;
 }
 
-.portafolio__btn {
+.terminal__container {
+  padding: 1.6rem 1rem 0;
+}
+
+.terminal__content {
+  font-size: 1.5rem;
+  font-family: var(--fira-code);
+  line-height: 1.6;
+}
+
+.terminal__content--h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 1.2rem;
+}
+
+.terminal__content--p {
+  margin: 0 0 1.4rem;
+}
+
+/* El modal ahora se abre más grande */
+.pf-modal-terminal {
+  width: min(96%, 780px);
+  max-height: 92dvh;
+}
+
+/* ============================================
+   Filtros con color e icono propio por tecnología
+   ============================================ */
+.skill-button {
+  border-color: color-mix(in srgb, var(--skill-color, #58ecff) 55%, transparent);
+  color: var(--skill-color, #58ecff);
+  background: color-mix(in srgb, var(--skill-color, #58ecff) 8%, transparent);
+}
+
+.skill-button:hover,
+.skill-button.active {
+  background: color-mix(in srgb, var(--skill-color, #58ecff) 22%, transparent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--skill-color, #58ecff) 55%, transparent);
+}
+
+.skill-button img {
+  border-radius: 3px;
+}
+
+/* Botón "All" se queda celeste, sin --skill-color propio */
+.skill-button[data-filter-all] {
+  border-color: rgba(88, 236, 255, 0.5);
+  color: #58ecff;
+  background: rgba(1, 242, 255, 0.07);
+}
+
+.skill-button[data-filter-all]:hover,
+.skill-button[data-filter-all].active {
+  background: rgba(1, 242, 255, 0.2);
+  box-shadow: 0 0 14px rgba(88, 236, 255, 0.5);
+}
+
+/* ============================================
+   Fondo con textura de ruido (Uiverse.io by SelfMadeSystem)
+   ============================================ */
+.portfolio__padre {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio__noise-bg {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 0;
+}
+
+.portfolio__noise-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMTkuNSIgbnVtT2N0YXZlcz0iMTAiIHJlc3VsdD0idHVyYnVsZW5jZSIvPjxmZUNvbXBvc2l0ZSBvcGVyYXRvcj0iaW4iIGluPSJ0dXJidWxlbmNlIiBpbjI9IlNvdXJjZUFscGhhIiByZXN1bHQ9ImNvbXBvc2l0ZSIvPjxmZUNvbG9yTWF0cml4IGluPSJjb21wb3NpdGUiIHR5cGU9Imx1bWluYW5jZVRvQWxwaGEiLz48ZmVCbGVuZCBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJjb21wb3NpdGUiIG1vZGU9ImNvbG9yLWJ1cm4iLz48L2ZpbHRlcj48L2RlZnM+PGcgZmlsdGVyPSJ1cmwoJyNhJykiPjxwYXRoIGZpbGw9IiMyNmIiIGQ9Ik0wIDBoMTAwdjEwMEgweiIvPjxwYXRoIGQ9Ik0wIDB2MTAwaDEwMFYwWiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM0OGYiIGZpbGw9IiMwMDAwIi8+PHBhdGggZmlsbD0iIzQ4ZjUiIGQ9Ik01MCAwaDF2MTAwaC0xeiIvPjxwYXRoIGZpbGw9IiM0OGY1IiBkPSJNMCA1MGgxMDB2MUgweiIvPjwvZz48L3N2Zz4=");
+  mask: linear-gradient(#0004, #000);
+  -webkit-mask: linear-gradient(#0004, #000);
+  opacity: 0.5;
+}
+
+.portfolio__padre>*:not(.portfolio__noise-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Título "Proyectos" en tono más oscuro para que se note el efecto shine */
+.portfolio__padre h1.btn-shine {
+  color: #0d3a4a;
+}
+
+/* ============================================
+   FILTROS — botón estilo Uiverse by Navarog21
+   Paleta reducida: azul, celeste, blanco, plomo
+   ============================================ */
+.skill-button {
+  width: auto;
+  min-width: 9rem;
+  position: relative;
+  height: 3.5em;
+  border: 3px ridge var(--skill-color, #149CEA);
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.03);
+  color: white;
+  transition: 0.4s ease;
+  border-radius: 0.6em;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 1.4rem;
   display: inline-flex;
   align-items: center;
-  font-size: 1.2rem;
-  padding: 8px 16px;
-  background: #0a1a3f;
-  border-radius: 40px;
-  border: 2px solid #01f2ff;
-  font-weight: 700;
-  color: #e5f9ff;
-  text-decoration: none;
-  cursor: pointer;
-  transition: box-shadow 0.2s ease;
+  gap: 0.6rem;
+  font-family: var(--fira-code);
 }
 
-.portafolio__btn:hover {
-  box-shadow: 0 0 14px rgba(1, 242, 255, 0.45);
+.skill-button:hover,
+.skill-button.active {
+  background-color: color-mix(in srgb, var(--skill-color, #1479EA) 15%, transparent);
+  box-shadow: inset 0px 0px 25px color-mix(in srgb, var(--skill-color, #1479EA) 70%, transparent);
 }
 
-.portafolio__botobnes {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
+.skill-button img {
+  position: relative;
+  z-index: 1;
+  filter: brightness(0) invert(1);
 }

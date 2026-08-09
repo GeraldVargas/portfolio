@@ -1,10 +1,5 @@
 ---
 // src/components/PortfolioCards.astro
-// Contiene todos los proyectos y renderiza cada card + su modal de detalle.
-// Uso:
-//   <PortfolioCards limit={3} />   -> muestra solo los primeros 3 (home)
-//   <PortfolioCards />             -> muestra todos (pantalla /portfolio)
-
 export interface Props {
   limit?: number;
 }
@@ -15,12 +10,13 @@ const projects = [
   {
     id: "colcatrufis",
     title: "ColcaTrufis",
+    color: "01f2ff",
     description:
       "Aplicación móvil multiplataforma de movilidad urbana (Trufi/Radiotaxi) desarrollada durante mi pasantía oficial en el Gobierno Autónomo Municipal de Colcapirhua. Incluye datos oficiales de rutas municipales y consume APIs RESTful en Laravel. Actualmente en producción.",
     technologies: [
-      { name: "Flutter", icon: "https://cdn.simpleicons.org/flutter/01f2ff" },
-      { name: "Laravel", icon: "https://cdn.simpleicons.org/laravel/01f2ff" },
-      { name: "REST API", icon: "https://cdn.simpleicons.org/postman/01f2ff" },
+      { name: "Flutter", slug: "flutter" },
+      { name: "Laravel", slug: "laravel" },
+      { name: "REST API", slug: "postman" },
     ],
     demoUrl: "https://moviruta.colcapirhua.gob.bo",
     repoUrl: "",
@@ -28,12 +24,13 @@ const projects = [
   {
     id: "sistema-electoral",
     title: "Sistema de Boletas Electorales (NGP)",
+    color: "ff6b35",
     description:
       "Sistema desplegado y utilizado oficialmente durante el proceso electoral subnacional de Cochabamba. Backend en Node.js/Express con APIs RESTful para procesamiento de datos electorales en tiempo real, y frontend en React con dashboard interactivo para visualización en vivo de resultados.",
     technologies: [
-      { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/01f2ff" },
-      { name: "Express", icon: "https://cdn.simpleicons.org/express/01f2ff" },
-      { name: "React", icon: "https://cdn.simpleicons.org/react/01f2ff" },
+      { name: "Node.js", slug: "nodedotjs" },
+      { name: "Express", slug: "express" },
+      { name: "React", slug: "react" },
     ],
     demoUrl: "",
     repoUrl: "",
@@ -41,26 +38,28 @@ const projects = [
   {
     id: "ferreteria-urkupina",
     title: "Ferretería Urkupiña",
+    color: "ff9d00",
     description:
       "Sistema completo de inventario y gestión de productos para una ferretería, actualmente en uso activo por el negocio. Dashboard con tarjetas estadísticas interactivas, seguimiento de productos y control de stock, con animaciones personalizadas e identidad de marca propia.",
     technologies: [
-      { name: "Laravel", icon: "https://cdn.simpleicons.org/laravel/01f2ff" },
-      { name: "React", icon: "https://cdn.simpleicons.org/react/01f2ff" },
-      { name: "Tailwind CSS", icon: "https://cdn.simpleicons.org/tailwindcss/01f2ff" },
+      { name: "Laravel", slug: "laravel" },
+      { name: "React", slug: "react" },
+      { name: "Tailwind CSS", slug: "tailwindcss" },
     ],
     demoUrl: "",
     repoUrl: "",
   },
   {
     id: "lectura-medidores",
-    title: "Sistema de Lectura de Medidores Eléctricos",
+    title: "Lectura de Medidores Eléctricos",
+    color: "ffd60a",
     description:
-      "Aplicación móvil Android para técnicos de campo de la Cooperativa de Electricidad “15 de Noviembre” (Potosí). Registro de lecturas con geolocalización GPS, impresión automática de recibos térmicos vía Bluetooth ESC/POS, mapa interactivo de clientes con OpenStreetMap y backend en Laravel.",
+      "Aplicación móvil Android para técnicos de campo de la Cooperativa de Electricidad \u201c15 de Noviembre\u201d (Potosí). Registro de lecturas con geolocalización GPS, impresión automática de recibos térmicos vía Bluetooth ESC/POS, mapa interactivo de clientes con OpenStreetMap y backend en Laravel.",
     technologies: [
-      { name: "Flutter", icon: "https://cdn.simpleicons.org/flutter/01f2ff" },
-      { name: "Laravel", icon: "https://cdn.simpleicons.org/laravel/01f2ff" },
-      { name: "Bluetooth", icon: "https://cdn.simpleicons.org/bluetooth/01f2ff" },
-      { name: "OpenStreetMap", icon: "https://cdn.simpleicons.org/openstreetmap/01f2ff" },
+      { name: "Flutter", slug: "flutter" },
+      { name: "Laravel", slug: "laravel" },
+      { name: "Bluetooth", slug: "bluetooth" },
+      { name: "OpenStreetMap", slug: "openstreetmap" },
     ],
     demoUrl: "",
     repoUrl: "",
@@ -68,23 +67,25 @@ const projects = [
   {
     id: "automatizacion-n8n",
     title: "Automatización de Procesos con n8n",
+    color: "ea4b71",
     description:
       "Migración masiva automatizada de más de 6,500 filas de Excel hacia el sistema de boletas electorales, con trazabilidad completa. Integración y validación de datos multi-fuente mediante orquestación de workflows en n8n.",
     technologies: [
-      { name: "n8n", icon: "https://cdn.simpleicons.org/n8n/01f2ff" },
-      { name: "Excel", icon: "https://cdn.simpleicons.org/microsoftexcel/01f2ff" },
+      { name: "n8n", slug: "n8n" },
+      { name: "Excel", slug: "microsoftexcel" },
     ],
     demoUrl: "",
     repoUrl: "",
   },
   {
     id: "iglesia-betania",
-    title: "Sitio Web Iglesia IENAD Betania Restauración",
+    title: "Sitio Web Iglesia Betania Restauración",
+    color: "a855f7",
     description:
       "Sitio web para una iglesia local, actualmente en uso activo, con información actualizada de eventos, enlaces a redes sociales y datos relevantes de la congregación. Desarrollado íntegramente con Python + Streamlit como solución ligera y fácil de mantener.",
     technologies: [
-      { name: "Python", icon: "https://cdn.simpleicons.org/python/01f2ff" },
-      { name: "Streamlit", icon: "https://cdn.simpleicons.org/streamlit/01f2ff" },
+      { name: "Python", slug: "python" },
+      { name: "Streamlit", slug: "streamlit" },
     ],
     demoUrl: "",
     repoUrl: "",
@@ -92,13 +93,14 @@ const projects = [
   {
     id: "synapse",
     title: "Synapse — Plataforma Educativa",
+    color: "2ecc71",
     description:
       "LMS completo con gestión de cursos, administración de usuarios y entrega de contenido académico. Acceso basado en roles (Estudiante / Profesor / Admin) con dashboards personalizados, evaluaciones automatizadas, seguimiento de progreso y reportes administrativos detallados. Optimizado con caching y eager loading.",
     technologies: [
-      { name: "Laravel", icon: "https://cdn.simpleicons.org/laravel/01f2ff" },
-      { name: "PHP 8", icon: "https://cdn.simpleicons.org/php/01f2ff" },
-      { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/01f2ff" },
-      { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/01f2ff" },
+      { name: "Laravel", slug: "laravel" },
+      { name: "PHP 8", slug: "php" },
+      { name: "MySQL", slug: "mysql" },
+      { name: "JavaScript", slug: "javascript" },
     ],
     demoUrl: "",
     repoUrl: "",
@@ -106,13 +108,14 @@ const projects = [
   {
     id: "deteccion-fraude",
     title: "Detección de Fraude Financiero con Deep Learning",
+    color: "e74c3c",
     description:
       "Sistema híbrido Isolation Forest + Autoencoder (arquitectura 20-12-8-12-20) para detección de anomalías en transacciones. Pipeline diseñado para datos desbalanceados (fraude <0.1%), alcanzando 94.2% de precisión y 91.8% de recall sobre más de 150,000 transacciones. Dashboard interactivo en Streamlit con visualización de anomalías y scoring de riesgo adaptativo.",
     technologies: [
-      { name: "Python", icon: "https://cdn.simpleicons.org/python/01f2ff" },
-      { name: "TensorFlow", icon: "https://cdn.simpleicons.org/tensorflow/01f2ff" },
-      { name: "Scikit-learn", icon: "https://cdn.simpleicons.org/scikitlearn/01f2ff" },
-      { name: "Streamlit", icon: "https://cdn.simpleicons.org/streamlit/01f2ff" },
+      { name: "Python", slug: "python" },
+      { name: "TensorFlow", slug: "tensorflow" },
+      { name: "Scikit-learn", slug: "scikitlearn" },
+      { name: "Streamlit", slug: "streamlit" },
     ],
     demoUrl: "",
     repoUrl: "",
@@ -122,82 +125,101 @@ const projects = [
 const proyectosAMostrar = limit ? projects.slice(0, limit) : projects;
 ---
 
-{proyectosAMostrar.map((proyecto) => (
-  <>
-    <div class="pf-card" data-modal-target={proyecto.id}>
-      <div class="pf-card__shadow"></div>
-
-      <div class="pf-card__main">
-        <div class="pf-card__top"></div>
-        <div class="pf-card__side pf-card__side--left"></div>
-        <div class="pf-card__side pf-card__side--right"></div>
-
-        <h3 class="pf-card__title">{proyecto.title}</h3>
-
-        <div class="pf-card__techs">
-          {proyecto.technologies.slice(0, 4).map((tech) => (
-            <span class="pf-card__tech-icon" title={tech.name}>
-              <img src={tech.icon} alt={tech.name} width="20" height="20" />
-            </span>
-          ))}
-        </div>
-
-        <div class="pf-card__btn-wrap">
-          <button class="pf-card__btn" data-open-modal={proyecto.id} type="button">
-            Ver detalle
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal de detalle de este proyecto -->
-    <div class="pf-modal-overlay" id={`modal-${proyecto.id}`} data-modal-overlay={proyecto.id}>
-      <div class="pf-modal">
-        <button class="pf-modal__close" data-close-modal={proyecto.id} type="button" aria-label="Cerrar">
-          ✕
-        </button>
-
-        <div class="pf-modal__bar">
-          <span class="pf-modal__dot pf-modal__dot--red"></span>
-          <span class="pf-modal__dot pf-modal__dot--yellow"></span>
-          <span class="pf-modal__dot pf-modal__dot--green"></span>
-          <span class="pf-modal__bar-title">{proyecto.title}.detail</span>
-        </div>
-
-        <div class="pf-modal__body">
-          <h2 class="pf-modal__project-name">{proyecto.title}</h2>
-          <p class="pf-modal__desc">{proyecto.description}</p>
-
-          <p class="pf-modal__label">Tecnologías utilizadas</p>
-          <div class="pf-modal__techs">
-            {proyecto.technologies.map((tech) => (
-              <span class="pf-modal__tech-pill">
-                <img src={tech.icon} alt={tech.name} width="18" height="18" />
-                {tech.name}
+{proyectosAMostrar.map((proyecto) => {
+  const skillsAttr = proyecto.technologies.map((t) => t.slug).join(",");
+  const colorHex = `#${proyecto.color}`;
+  return (
+    <>
+      <div
+        class="pf-card"
+        data-modal-target={proyecto.id}
+        data-skills={skillsAttr}
+        style={`--card-color: ${colorHex};`}
+      >
+        <div class="pf-card__shadow"></div>
+        <div class="pf-card__main">
+          <div class="pf-card__top"></div>
+          <div class="pf-card__side pf-card__side--left"></div>
+          <div class="pf-card__side pf-card__side--right"></div>
+          <h3 class="pf-card__title">{proyecto.title}</h3>
+          <div class="pf-card__techs">
+            {proyecto.technologies.slice(0, 4).map((tech) => (
+              <span class="pf-card__tech-icon" title={tech.name}>
+                <img
+                  src={`https://cdn.simpleicons.org/${tech.slug}/${proyecto.color}`}
+                  alt={tech.name}
+                  width="20"
+                  height="20"
+                />
               </span>
             ))}
           </div>
-
-          <div class="pf-modal__links">
-            {proyecto.demoUrl && (
-              <a class="pf-modal__link" href={proyecto.demoUrl} target="_blank" rel="noopener noreferrer">
-                Ver demo
-              </a>
-            )}
-            {proyecto.repoUrl && (
-              <a class="pf-modal__link" href={proyecto.repoUrl} target="_blank" rel="noopener noreferrer">
-                Ver repositorio
-              </a>
-            )}
+          <div class="pf-card__btn-wrap">
+            <button class="pf-card__btn" data-open-modal={proyecto.id} type="button">
+              Ver detalle
+            </button>
           </div>
         </div>
       </div>
-    </div>
-  </>
-))}
+
+      <!-- Modal estilo TERMINAL (caja__cristal) -->
+      <div
+        class="pf-modal-overlay"
+        id={`modal-${proyecto.id}`}
+        data-modal-overlay={proyecto.id}
+        style={`--card-color: ${colorHex};`}
+      >
+        <div class="caja__cristal pf-modal-terminal">
+          <div class="terminal_toolbar">
+            <div class="butt">
+              <button class="btn btn__red" data-close-modal={proyecto.id} type="button" aria-label="Cerrar"></button>
+              <button class="btn btn__yellow" type="button" aria-label="Minimizar" tabindex="-1"></button>
+              <button class="btn btn__green" type="button" aria-label="Maximizar" tabindex="-1"></button>
+            </div>
+            <p class="user">{proyecto.title.toLowerCase().replace(/\s+/g, "-")}.sh</p>
+          </div>
+
+          <div class="terminal__container">
+            <div class="terminal__content">
+              <h3 class="terminal__content--h3">≥ {proyecto.title}</h3>
+              <p class="terminal__content--p pf-modal-terminal__desc">{proyecto.description}</p>
+
+              <p class="terminal__content--span pf-modal-terminal__label">≥ Tecnologías utilizadas</p>
+              <div class="pf-modal__techs">
+                {proyecto.technologies.map((tech) => (
+                  <span class="pf-modal__tech-pill">
+                    <img
+                      src={`https://cdn.simpleicons.org/${tech.slug}/${proyecto.color}`}
+                      alt={tech.name}
+                      width="18"
+                      height="18"
+                    />
+                    {tech.name}
+                  </span>
+                ))}
+              </div>
+
+              <div class="pf-modal__links">
+                {proyecto.demoUrl && (
+                  <a class="terminal__link pf-modal__link" href={proyecto.demoUrl} target="_blank" rel="noopener noreferrer">
+                    ≥ Ver demo
+                  </a>
+                )}
+                {proyecto.repoUrl && (
+                  <a class="terminal__link pf-modal__link" href={proyecto.repoUrl} target="_blank" rel="noopener noreferrer">
+                    ≥ Ver repositorio
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+})}
 
 <script>
-  // Delegación de eventos: funciona para todas las cards/modales de la página
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
 
@@ -219,14 +241,12 @@ const proyectosAMostrar = limit ? projects.slice(0, limit) : projects;
       return;
     }
 
-    // Cerrar al hacer click fuera del modal (en el overlay)
     if (target.classList.contains('pf-modal-overlay')) {
       target.classList.remove('is-open');
       document.body.style.overflow = '';
     }
   });
 
-  // Cerrar con la tecla Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       document.querySelectorAll('.pf-modal-overlay.is-open').forEach((overlay) => {
