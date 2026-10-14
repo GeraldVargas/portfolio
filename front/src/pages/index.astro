@@ -6,7 +6,6 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Skills from "@molecules/skills/Skills.astro";
 import BtnToTop from "@atoms/BtnToTop.astro";
-import DividerTop from "../components/atoms/Dividers/DividerTop.astro";
 import Tools from "../components/Tools.astro";
 import AboutHome from "@organisms/AboutHome/AboutHome.astro";
 import PortfolioSection from "../components/PortfolioSection.astro";
@@ -28,18 +27,7 @@ import AOS from "aos";
     <main>
       <Hero />
       <AboutHome />
-      <DividerTop
-        colorLight="fill__white"
-        colorDark="purple__dark"
-        dividerBg="secundary"
-        dividerBgDark="dark__background"
-      />
       <Tools />
-      <DividerTop
-        colorLight="fill__purple"
-        colorDark="dark__primary"
-        dividerBg="dark__background"
-      />
       <Skills />
       <PortfolioSection />
       <ContactSection />
