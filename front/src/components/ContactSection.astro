@@ -2,8 +2,6 @@
 import "../styles/components/contact.css";
 ---
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <section class="contact-section" id="contact">
   <div class="contact-container" data-aos="fade-up">
     <h2 class="contact-title btn-shine" data-i18n-key="contact_title">
@@ -71,62 +69,66 @@ import "../styles/components/contact.css";
 <script>
   // @ts-nocheck
   // ============================================
-  // CONFIGURACIÓN DE EMAILJS
-  // Reemplaza estos 3 valores con los tuyos de emailjs.com
+  // CONFIGURACIÓN DEL API
+  // Define PUBLIC_API_URL en el .env del frontend
+  // para apuntar al backend (por defecto localhost:4000)
   // ============================================
-  const EMAILJS_PUBLIC_KEY  = "TU_PUBLIC_KEY";   // Account > General
-  const EMAILJS_SERVICE_ID  = "TU_SERVICE_ID";   // Email Services
-  const EMAILJS_TEMPLATE_ID = "TU_TEMPLATE_ID";  // Email Templates
+  const API_URL = import.meta.env.PUBLIC_API_URL || "http://localhost:4000";
 
   const form      = document.getElementById("contact-form") as HTMLFormElement | null;
   const statusDiv = document.getElementById("contact-status") as HTMLElement | null;
   const submitBtn = document.getElementById("contact-submit-btn") as HTMLButtonElement | null;
 
-  // Inicializa EmailJS con tu public key
-  if (typeof window !== "undefined" && (window as any).emailjs) {
-    (window as any).emailjs.init(EMAILJS_PUBLIC_KEY);
-  }
+  const setStatus = (text: string) => {
+    if (statusDiv) statusDiv.textContent = text;
+  };
 
   if (form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const lang = document.documentElement.lang || "es";
 
-      const name    = (document.getElementById("contact-name") as HTMLInputElement)?.value;
-      const email   = (document.getElementById("contact-email") as HTMLInputElement)?.value;
-      const message = (document.getElementById("contact-message") as HTMLTextAreaElement)?.value;
+      const name    = (document.getElementById("contact-name") as HTMLInputElement)?.value.trim();
+      const email   = (document.getElementById("contact-email") as HTMLInputElement)?.value.trim();
+      const message = (document.getElementById("contact-message") as HTMLTextAreaElement)?.value.trim();
 
-      if (submitBtn) submitBtn.disabled = true;
-      if (statusDiv) {
-        statusDiv.textContent = lang === "en" ? "Sending..." : "Enviando...";
+      if (!name || !email || !message) {
+        setStatus(lang === "en" ? "Please fill in all fields." : "Completa todos los campos.");
+        return;
       }
 
-      (window as any).emailjs
-        .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-          name,
-          email,
-          message,
-        })
-        .then(() => {
-          if (statusDiv) {
-            statusDiv.textContent =
-              lang === "en"
-                ? "✓ Message sent! Thanks for reaching out."
-                : "✓ ¡Mensaje enviado! Gracias por contactarme.";
-          }
-          form.reset();
-          if (submitBtn) submitBtn.disabled = false;
-        })
-        .catch((error: any) => {
-          console.error("EmailJS error:", error);
-          if (statusDiv) {
-            statusDiv.textContent =
-              lang === "en"
-                ? "✗ Something went wrong. Please try again."
-                : "✗ Algo salió mal. Intenta de nuevo.";
-          }
-          if (submitBtn) submitBtn.disabled = false;
+      if (submitBtn) submitBtn.disabled = true;
+      setStatus(lang === "en" ? "Sending..." : "Enviando...");
+
+      try {
+        const res = await fetch(`${API_URL}/api/contact`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message }),
         });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok || data.ok === false) {
+          throw new Error(data.error || "Request failed");
+        }
+
+        setStatus(
+          lang === "en"
+            ? "✓ Message sent! Thanks for reaching out."
+            : "✓ ¡Mensaje enviado! Gracias por contactarme."
+        );
+        form.reset();
+      } catch (error: any) {
+        console.error("Contact form error:", error);
+        setStatus(
+          lang === "en"
+            ? "✗ Something went wrong. Please try again."
+            : "✗ Algo salió mal. Intenta de nuevo."
+        );
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
   }
 </script>

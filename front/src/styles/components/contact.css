@@ -2,15 +2,47 @@
    CONTACT SECTION – Dark SVG noise background
    ============================================ */
 .contact-section {
+  --curve-h: 129px;
   position: relative;
   width: 100%;
-  padding: 6rem 1.5rem 8rem;
+  padding: calc(6rem + var(--curve-h)) 1.5rem 8rem;
   background: #020b18;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .contact-section {
+    --curve-h: 168px;
+  }
+}
+
+/* Curva superior: recorta el borde de arriba con la forma de onda.
+   Usa el color del fondo de arriba (portfolio), dejando ver el patrón
+   de la sección por debajo de forma continua. */
+.contact-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--curve-h);
+  background: var(--seccond-color);
+  -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZD0iTTMyMS4zOSw1Ni40NGM1OC0xMC43OSwxMTQuMTYtMzAuMTMsMTcyLTQxLjg2LDgyLjM5LTE2LjcyLDE2OC4xOS0xNy43MywyNTAuNDUtLjM5QzgyMy43OCwzMSw5MDYuNjcsNzIsOTg1LjY2LDkyLjgzYzcwLjA1LDE4LjQ4LDE0Ni41MywyNi4wOSwyMTQuMzQsM1YwSDBWMjcuMzVBNjAwLjIxLDYwMC4yMSwwLDAsMCwzMjEuMzksNTYuNDRaIiBmaWxsPSIjZmZmZmZmIi8+PC9zdmc+");
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZD0iTTMyMS4zOSw1Ni40NGM1OC0xMC43OSwxMTQuMTYtMzAuMTMsMTcyLTQxLjg2LDgyLjM5LTE2LjcyLDE2OC4xOS0xNy43MywyNTAuNDUtLjM5QzgyMy43OCwzMSw5MDYuNjcsNzIsOTg1LjY2LDkyLjgzYzcwLjA1LDE4LjQ4LDE0Ni41MywyNi4wOSwyMTQuMzQsM1YwSDBWMjcuMzVBNjAwLjIxLDYwMC4yMSwwLDAsMCwzMjEuMzksNTYuNDRaIiBmaWxsPSIjZmZmZmZmIi8+PC9zdmc+");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark-mode .contact-section::after {
+  background: var(--dark-bg);
 }
 
 /* SelfMadeSystem SVG noise overlay */
