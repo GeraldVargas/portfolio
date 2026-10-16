@@ -1,43 +1,40 @@
+/* El estilo visual lo aporta .btn3d (button3d.css).
+   Aquí solo se define el layout y el color propio del botón. */
 .boton {
-	display: flex;
 	font-size: 1.3rem;
 	width: 100%;
 	max-width: 25rem;
 	margin-top: 20px;
-	padding: 10px 4px;
-	align-items: center;
-	background: black;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
-	border-radius: 9px;
-	border: 1.5px solid var(--green-terminal);
-	justify-content: center;
-	font-weight: 700;
-	cursor: pointer;
-	gap: 1rem;
-	min-width:13rem;
-	text-decoration: none;
-	color: white;
+	min-width: 13rem;
+
+	--btn-font: var(--montserrat);
+	--btn-rim: #050505;
+	--btn-face-a: #2b2b2b;
+	--btn-face-b: #050505;
+	--btn-ink-a: #f5f5f5;
+	--btn-ink-b: #a8a8a8;
 }
+
 .boton:hover {
-	border: 1.8px solid var(--blue);
+	--btn-ink-b: #ffffff;
 }
-.button-secondary{
-    background-color: rgba(68, 3, 181, 0.55);
-	backdrop-filter: blur(13px);
-    color: rgb(8, 243, 0);
-    border-color: rgb(1, 255, 22);
+
+.button-secondary {
+	--btn-rim: #2a0150;
+	--btn-face-a: #5a1a9e;
+	--btn-face-b: #33036e;
+	--btn-ink-a: #efe6ff;
+	--btn-ink-b: #c39bff;
 }
-.button-secondary:hover{
-	color: rgba(255, 255, 255, 0.759);
+
+.button-secondary:hover {
+	--btn-ink-b: #ffffff;
 }
 
 @media (min-width: 768px) {
 	.boton {
 		max-width: 15rem;
 		font-size: 1.2rem;
-		padding: 1.2rem 0.4rem;
 	}
 }
 

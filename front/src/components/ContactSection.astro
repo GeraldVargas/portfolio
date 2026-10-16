@@ -4,7 +4,7 @@ import "../styles/components/contact.css";
 
 <section class="contact-section" id="contact">
   <div class="contact-container" data-aos="fade-up">
-    <h2 class="contact-title btn-shine" data-i18n-key="contact_title">
+    <h2 class="contact-title titulo--dev" data-i18n-key="contact_title">
       Contáctame
     </h2>
     <p class="contact-subtitle" data-i18n-key="contact_subtitle">
@@ -56,9 +56,17 @@ import "../styles/components/contact.css";
           ></textarea>
         </div>
 
-        <button type="submit" id="contact-submit-btn" class="contact-submit-btn" data-i18n-key="contact_send_btn">
-          ENVIAR MENSAJE
+        <button type="submit" id="contact-submit-btn" class="contact-submit-btn btn3d" data-i18n-key="contact_send_btn" disabled>
+          <span class="button-outer">
+            <span class="button-inner">
+              <span class="button-label">En proceso</span>
+            </span>
+          </span>
         </button>
+
+        <p class="contact-note" data-i18n-key="contact_pending_note">
+          El formulario está en proceso — disponible próximamente.
+        </p>
 
         <div class="contact-status" id="contact-status" aria-live="polite"></div>
       </form>

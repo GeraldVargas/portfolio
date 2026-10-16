@@ -127,6 +127,17 @@ ul li {
   100% { background-position: 300px; }
 }
 
+/* Título con el estilo "Dev" (celeste + relieve 3D) — reutilizable */
+.titulo--dev {
+  color: #01f2ff;
+  filter: drop-shadow(0px 0px 4px rgb(0, 0, 0));
+  text-shadow: -2px 3px 5px black;
+}
+.titulo--dev:hover {
+  color: var(--blue);
+  filter: drop-shadow(-1px 1px 3px var(--pure-black));
+}
+
 .max__width {
   max-width: 1344px;
 }

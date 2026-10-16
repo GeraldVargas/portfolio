@@ -38,27 +38,39 @@ const filterSkills = [
       <section class="portfolio__padre">
         <div class="portfolio__noise-bg" aria-hidden="true"></div>
 
-        <h1 class="titulo titulo__dark btn-shine">
+        <h1 class="titulo titulo__dark titulo--dev" data-i18n-key="portfolio_page_title">
           Proyectos
         </h1>
 
         <div class="buttons__container">
           <div class="btn__caja">
-            <button class="skill-button" data-filter-all type="button">All</button>
+            <button class="skill-button btn3d" data-filter-all data-i18n-key="all_filter" type="button">
+              <span class="button-outer">
+                <span class="button-inner">
+                  <span class="button-label">All</span>
+                </span>
+              </span>
+            </button>
             {filterSkills.map((skill) => (
               <button
-                class="skill-button"
+                class="skill-button btn3d"
                 data-filter={skill.slug}
                 style={`--skill-color: ${skill.color};`}
                 type="button"
               >
-                <img
-                  src={`https://cdn.simpleicons.org/${skill.slug}/ffffff`}
-                  alt=""
-                  width="16"
-                  height="16"
-                />
-                {skill.label}
+                <span class="button-outer">
+                  <span class="button-inner">
+                    <span class="button-label">
+                      <img
+                        src={`https://cdn.simpleicons.org/${skill.slug}/ffffff`}
+                        alt=""
+                        width="16"
+                        height="16"
+                      />
+                      {skill.label}
+                    </span>
+                  </span>
+                </span>
               </button>
             ))}
           </div>

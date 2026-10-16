@@ -7,21 +7,21 @@
   class=`about__titulo ${Astro.props.classColor}`
   id="aboutDeTitulo"
 >
-  {Astro.props.text1}
-  <span data-aos="fade-left" class="span__dark" id="span-titulo2">
+  <span data-i18n-key="about_title_pre">{Astro.props.text1}</span>
+  <span data-aos="fade-left" class="span__dark" id="span-titulo2" data-i18n-key="about_title_span">
     {Astro.props.span}
   </span>
-  {Astro.props.text2}
+  <span data-i18n-key="about_title_post">{Astro.props.text2}</span>
 </h2>
 
 <style>
-  .about__titulo span {
+  .about__titulo .span__dark {
     color: #01f2ff;
     filter: drop-shadow(0px 0px 4px rgb(0, 0, 0));
     text-shadow: -2px 3px 5px black;
   }
 
-  .about__titulo span:hover {
+  .about__titulo .span__dark:hover {
     color: var(--blue);
     filter: drop-shadow(-1px 1px 3px var(--pure-black));
   }

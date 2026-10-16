@@ -169,24 +169,19 @@
 .pf-card__btn {
   position: relative;
   bottom: -220px;
-  padding: 7px 20px;
-  clip-path: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0% 50%);
-  background: linear-gradient(90deg, #0a1a3f, color-mix(in srgb, var(--card-color, #01f2ff) 13%, transparent));
-  border: 1px solid var(--card-color, #01f2ff);
-  color: var(--card-color, #58ecff);
   font-size: 1.25rem;
-  font-weight: 700;
-  font-family: var(--fira-code);
   white-space: nowrap;
-  cursor: pointer;
   opacity: 0;
   transition: bottom 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.1s,
     opacity 0.25s ease 0.15s;
-}
 
-.pf-card__btn:hover {
-  background: color-mix(in srgb, var(--card-color, #01f2ff) 20%, transparent);
-  box-shadow: 0 0 16px color-mix(in srgb, var(--card-color, #01f2ff) 50%, transparent);
+  /* Botón 3D con la cara del color de cada proyecto */
+  --btn-font: var(--fira-code);
+  --btn-rim: color-mix(in srgb, var(--card-color, #01f2ff) 55%, black);
+  --btn-face-a: color-mix(in srgb, var(--card-color, #01f2ff) 80%, white);
+  --btn-face-b: color-mix(in srgb, var(--card-color, #01f2ff) 84%, black);
+  --btn-ink-a: #08111f;
+  --btn-ink-b: #0a1a3f;
 }
 
 /* ── HOVER STATES ── */
@@ -366,28 +361,6 @@
   max-width: 900px;
 }
 
-/* Botones de filtro: celeste/azul */
-.skill-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.4rem;
-  background: rgba(1, 242, 255, 0.07);
-  border: 1px solid rgba(88, 236, 255, 0.5);
-  border-radius: 100px;
-  color: #58ecff;
-  font-family: var(--fira-code);
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
-}
-
-.skill-button:hover,
-.skill-button.active {
-  background: rgba(1, 242, 255, 0.2);
-  box-shadow: 0 0 14px rgba(88, 236, 255, 0.5);
-}
-
 /* ============================================
    ESTILOS PROPIOS DE LA TERMINAL DEL MODAL
    (autosuficientes, no dependen de otro CSS)
@@ -483,35 +456,63 @@
 }
 
 /* ============================================
-   Filtros con color e icono propio por tecnología
+   Modal "Ver detalle" con el DISEÑO del terminal de About
+   (copia de .about-modern-card, cambiando solo los colores)
    ============================================ */
-.skill-button {
-  border-color: color-mix(in srgb, var(--skill-color, #58ecff) 55%, transparent);
-  color: var(--skill-color, #58ecff);
-  background: color-mix(in srgb, var(--skill-color, #58ecff) 8%, transparent);
+.caja__cristal.pf-modal-terminal {
+  background: linear-gradient(
+    145deg,
+    rgba(4, 15, 38, 0.95) 0%,
+    rgba(8, 31, 77, 0.92) 55%,
+    rgba(9, 57, 107, 0.94) 100%
+  );
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--card-color, #01f2ff) 30%, transparent);
+  border-bottom: 3px solid color-mix(in srgb, var(--card-color, #01f2ff) 55%, transparent);
+  box-shadow:
+    0 0 60px color-mix(in srgb, var(--card-color, #01f2ff) 18%, transparent),
+    -40px 50px 30px rgba(0, 0, 0, 0.28);
+  color: #ffffff;
 }
 
-.skill-button:hover,
-.skill-button.active {
-  background: color-mix(in srgb, var(--skill-color, #58ecff) 22%, transparent);
-  box-shadow: 0 0 14px color-mix(in srgb, var(--skill-color, #58ecff) 55%, transparent);
+.pf-modal-terminal .terminal_toolbar {
+  background: transparent;
+  height: auto;
+  padding: 1rem 1rem 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
 }
 
-.skill-button img {
-  border-radius: 3px;
+.pf-modal-terminal .terminal_toolbar .btn__red {
+  background: #000000;
 }
 
-/* Botón "All" se queda celeste, sin --skill-color propio */
-.skill-button[data-filter-all] {
-  border-color: rgba(88, 236, 255, 0.5);
-  color: #58ecff;
-  background: rgba(1, 242, 255, 0.07);
+.pf-modal-terminal .terminal_toolbar .btn__yellow {
+  background: #0b2f6f;
 }
 
-.skill-button[data-filter-all]:hover,
-.skill-button[data-filter-all].active {
-  background: rgba(1, 242, 255, 0.2);
-  box-shadow: 0 0 14px rgba(88, 236, 255, 0.5);
+.pf-modal-terminal .terminal_toolbar .btn__green {
+  background: var(--card-color, #58ecff);
+}
+
+.pf-modal-terminal .terminal__container {
+  padding: 1.2rem 2rem 2rem;
+}
+
+.pf-modal-terminal .terminal__content--h3 {
+  color: var(--card-color, #58ecff);
+  text-align: center;
+  text-shadow: 0 0 18px color-mix(in srgb, var(--card-color, #01f2ff) 40%, transparent);
+}
+
+.pf-modal-terminal__label {
+  color: var(--card-color, #58ecff);
+  text-align: center;
+}
+
+.pf-modal-terminal__desc {
+  color: #d8fbff;
 }
 
 /* ============================================
@@ -550,38 +551,46 @@
 }
 
 /* ============================================
-   FILTROS — botón estilo Uiverse by Navarog21
-   Paleta reducida: azul, celeste, blanco, plomo
+   FILTROS — botón estilo Uiverse by Navarog21 + 3D (FColombati)
+   Conserva el color de cada skill (--skill-color)
    ============================================ */
 .skill-button {
   width: auto;
   min-width: 9rem;
   position: relative;
   height: 3.5em;
-  border: 3px ridge var(--skill-color, #149CEA);
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.03);
-  color: white;
-  transition: 0.4s ease;
-  border-radius: 0.6em;
   font-size: 1.3rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0 1.4rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--fira-code);
+
+  --btn-font: var(--fira-code);
+  --btn-tracking: normal;
+  --btn-rim: color-mix(in srgb, var(--skill-color, #58ecff) 55%, black);
+  --btn-face-a: color-mix(in srgb, var(--skill-color, #58ecff) 80%, white);
+  --btn-face-b: color-mix(in srgb, var(--skill-color, #58ecff) 84%, black);
+  --btn-ink-a: #08111f;
+  --btn-ink-b: #0a1a3f;
 }
 
 .skill-button:hover,
 .skill-button.active {
-  background-color: color-mix(in srgb, var(--skill-color, #1479EA) 15%, transparent);
-  box-shadow: inset 0px 0px 25px color-mix(in srgb, var(--skill-color, #1479EA) 70%, transparent);
+  --btn-face-a: color-mix(in srgb, var(--skill-color, #58ecff) 92%, white);
+  --btn-face-b: color-mix(in srgb, var(--skill-color, #58ecff) 92%, black);
+  --btn-ink-b: #06131f;
+}
+
+.skill-button .button-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #08111f;
+  background-image: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  text-shadow: none;
 }
 
 .skill-button img {
   position: relative;
   z-index: 1;
-  filter: brightness(0) invert(1);
+  border-radius: 3px;
+  filter: brightness(0);
 }

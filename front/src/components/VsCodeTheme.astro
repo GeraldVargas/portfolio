@@ -1,5 +1,6 @@
 ---
 import "../styles/components/VsCodeTheme.css"
+import Button from "@atoms/Button/Button.astro";
 ---
 
 <script>
@@ -56,12 +57,8 @@ import "../styles/components/VsCodeTheme.css"
     <p class="extension-description">My preferred VS Code setup for daily development.</p>
     <h6 class="extension-actions-heading">Open With:</h6>
     <div class="extension-actions">
-      <a class="link__boton boton titulo__dark  span" href="https://code.visualstudio.com/"
-        >VS Code</a
-      ><a
-        class="link__boton boton titulo__dark  span button-secondary"
-        href="https://vscode.dev/" target="_blank">VS Code for the Web</a
-      >
+      <Button href="https://code.visualstudio.com/" text="VS Code" />
+      <Button href="https://vscode.dev/" target="_blank" text="VS Code for the Web" variant="button-secondary" />
     </div>
   </div>
 </div>

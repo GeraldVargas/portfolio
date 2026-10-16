@@ -182,26 +182,21 @@
     0px 0px 24px rgba(88, 236, 255, 0.25);
 }
 
-/* Submit button – clean, no color-shift */
+/* Submit button – estilo botón 3D (pill), conserva su color */
 .contact-submit-btn {
   width: 100%;
-  padding: 1.4rem;
-  background: #0a1a3f;
-  color: #d9f9ff;
-  border: 1px solid rgba(88, 236, 255, 0.35);
-  border-radius: 1rem;
   font-size: 1.4rem;
   font-weight: 700;
-  font-family: var(--fira-code);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
 
-.contact-submit-btn:hover {
-  border-color: rgba(88, 236, 255, 0.6);
-  box-shadow: 0 0 16px rgba(88, 236, 255, 0.18);
+  --btn-font: var(--fira-code);
+  --btn-tracking: 0.1em;
+  --btn-rim: rgba(88, 236, 255, 0.5);
+  --btn-face-a: #12315f;
+  --btn-face-b: #0a1a3f;
+  --btn-ink-a: #d9f9ff;
+  --btn-ink-b: #58ecff;
 }
 
 .contact-status {
@@ -210,6 +205,23 @@
   font-size: 1.3rem;
   color: #58ecff;
   min-height: 20px;
+}
+
+.contact-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.contact-submit-btn:disabled:hover {
+  transform: none;
+}
+
+.contact-note {
+  margin: 0;
+  text-align: center;
+  font-family: var(--fira-code);
+  font-size: 1.2rem;
+  color: rgba(217, 249, 255, 0.7);
 }
 
 @media (max-width: 500px) {

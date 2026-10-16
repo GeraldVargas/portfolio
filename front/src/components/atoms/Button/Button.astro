@@ -1,9 +1,16 @@
 ---
 import "./button.css"
-const { animation, href, target, text } = Astro.props;
+const { animation, href, target, text, variant } = Astro.props;
 const i18nKey = Astro.props["data-i18n-key"];
+const className = ["link__boton", "boton", "titulo__dark", "span", "btn3d", variant]
+  .filter(Boolean)
+  .join(" ");
 ---
 
-<a data-aos={animation} class="link__boton boton titulo__dark  span"  href={href} target={target} data-i18n-key={i18nKey}>
-  {text}
+<a data-aos={animation} class={className} href={href} target={target} data-i18n-key={i18nKey}>
+  <span class="button-outer">
+    <span class="button-inner">
+      <span class="button-label">{text}</span>
+    </span>
+  </span>
 </a>

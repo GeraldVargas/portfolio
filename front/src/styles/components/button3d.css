@@ -1,0 +1,170 @@
+/* ============================================================
+   BOTÓN 3D REUTILIZABLE — estilo nav del header
+   (Uiverse.io by FColombati)
+   ------------------------------------------------------------
+   Estructura:
+     <a|button class="btn3d">
+       <span class="button-outer">
+         <span class="button-inner">
+           <span class="button-label">Texto</span>
+         </span>
+       </span>
+     </a|button>
+   ------------------------------------------------------------
+   Color personalizable por variable:
+     --btn-font     tipografía del label
+     --btn-rim      fondo del pill (aro)
+     --btn-face-a   color inicial de la cara (gradiente)
+     --btn-face-b   color final de la cara (gradiente)
+     --btn-ink-a    color inicial del texto
+     --btn-ink-b    color final del texto
+   ============================================================ */
+:where(.btn3d) {
+  --btn-font: var(--montserrat);
+  --btn-rim: var(--lang-button-gray, rgba(190, 189, 189, 0.5));
+  --btn-face-a: rgba(230, 230, 230, 1);
+  --btn-face-b: rgba(180, 180, 180, 1);
+  --btn-ink-a: rgba(25, 25, 25, 1);
+  --btn-ink-b: rgba(75, 75, 75, 1);
+  --btn-tracking: -0.05em;
+}
+
+.btn3d {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: center;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border-radius: 100em;
+  background-color: var(--btn-rim);
+  box-shadow:
+    -0.15em -0.15em 0.15em -0.075em rgba(5, 5, 5, 0.25),
+    0.0375em 0.0375em 0.0675em 0 rgba(5, 5, 5, 0.1);
+}
+
+.btn3d::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: calc(100% + 0.3em);
+  height: calc(100% + 0.3em);
+  top: -0.15em;
+  left: -0.15em;
+  border-radius: inherit;
+  background: linear-gradient(-135deg,
+      rgba(5, 5, 5, 0.5),
+      transparent 20%,
+      transparent 100%);
+  filter: blur(0.0125em);
+  opacity: 0.25;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.btn3d .button-outer {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  display: flex;
+  border-radius: inherit;
+  transition: box-shadow 300ms ease;
+  will-change: box-shadow;
+  box-shadow:
+    0 0.05em 0.05em -0.01em rgba(5, 5, 5, 1),
+    0 0.01em 0.01em -0.01em rgba(5, 5, 5, 0.5),
+    0.15em 0.3em 0.1em -0.01em rgba(5, 5, 5, 0.25);
+}
+
+.btn3d:hover .button-outer {
+  box-shadow:
+    0 0 0 0 rgba(5, 5, 5, 1),
+    0 0 0 0 rgba(5, 5, 5, 0.5),
+    0 0 0 0 rgba(5, 5, 5, 0.25);
+}
+
+.btn3d .button-inner {
+  --inset: 0.035em;
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: inherit;
+  padding: 0.4em 1.4em;
+  background-image: linear-gradient(135deg, var(--btn-face-a), var(--btn-face-b));
+  transition:
+    box-shadow 300ms ease,
+    clip-path 250ms ease,
+    background-image 250ms ease,
+    transform 250ms ease;
+  will-change: box-shadow, clip-path, background-image, transform;
+  overflow: clip;
+  clip-path: inset(0 0 0 0 round 100em);
+  box-shadow:
+    0 0 0 0 inset rgba(5, 5, 5, 0.1),
+    -0.05em -0.05em 0.05em 0 inset rgba(5, 5, 5, 0.25),
+    0 0 0 0 inset rgba(5, 5, 5, 0.1),
+    0 0 0.05em 0.2em inset rgba(255, 255, 255, 0.25),
+    0.025em 0.05em 0.1em 0 inset rgba(255, 255, 255, 1),
+    0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+    -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
+}
+
+.btn3d:hover .button-inner {
+  clip-path: inset(clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 100em);
+  box-shadow:
+    0.1em 0.15em 0.05em 0 inset rgba(5, 5, 5, 0.75),
+    -0.025em -0.03em 0.05em 0.025em inset rgba(5, 5, 5, 0.5),
+    0.25em 0.25em 0.2em 0 inset rgba(5, 5, 5, 0.5),
+    0 0 0.05em 0.5em inset rgba(255, 255, 255, 0.15),
+    0 0 0 0 inset rgba(255, 255, 255, 1),
+    0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+    -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
+}
+
+.btn3d .button-label {
+  position: relative;
+  z-index: 4;
+  font-family: var(--btn-font);
+  letter-spacing: var(--btn-tracking);
+  font-weight: 600;
+  font-size: inherit;
+  line-height: 1.1;
+  color: transparent;
+  background-image: linear-gradient(135deg, var(--btn-ink-a), var(--btn-ink-b));
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: transform 250ms ease;
+  will-change: transform;
+  display: block;
+  white-space: nowrap;
+  text-shadow: rgba(0, 0, 0, 0.1) 0 0 0.1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btn3d:hover .button-label {
+  transform: scale(0.975);
+}
+
+.btn3d:active .button-inner {
+  transform: scale(0.975);
+}
+
+.btn3d:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn3d:focus-visible {
+  outline: 2px solid var(--btn-rim);
+  outline-offset: 3px;
+}

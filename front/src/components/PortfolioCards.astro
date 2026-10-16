@@ -155,8 +155,12 @@ const proyectosAMostrar = limit ? projects.slice(0, limit) : projects;
             ))}
           </div>
           <div class="pf-card__btn-wrap">
-            <button class="pf-card__btn" data-open-modal={proyecto.id} type="button">
-              Ver detalle
+            <button class="pf-card__btn btn3d" data-open-modal={proyecto.id} data-i18n-key="ver_detalle" type="button">
+              <span class="button-outer">
+                <span class="button-inner">
+                  <span class="button-label">Ver detalle</span>
+                </span>
+              </span>
             </button>
           </div>
         </div>
@@ -184,7 +188,7 @@ const proyectosAMostrar = limit ? projects.slice(0, limit) : projects;
               <h3 class="terminal__content--h3">≥ {proyecto.title}</h3>
               <p class="terminal__content--p pf-modal-terminal__desc">{proyecto.description}</p>
 
-              <p class="terminal__content--span pf-modal-terminal__label">≥ Tecnologías utilizadas</p>
+              <p class="terminal__content--span pf-modal-terminal__label" data-i18n-key="modal_techs_label">≥ Tecnologías utilizadas</p>
               <div class="pf-modal__techs">
                 {proyecto.technologies.map((tech) => (
                   <span class="pf-modal__tech-pill">
@@ -201,12 +205,12 @@ const proyectosAMostrar = limit ? projects.slice(0, limit) : projects;
 
               <div class="pf-modal__links">
                 {proyecto.demoUrl && (
-                  <a class="terminal__link pf-modal__link" href={proyecto.demoUrl} target="_blank" rel="noopener noreferrer">
+                  <a class="terminal__link pf-modal__link" href={proyecto.demoUrl} target="_blank" rel="noopener noreferrer" data-i18n-key="view_demo">
                     ≥ Ver demo
                   </a>
                 )}
                 {proyecto.repoUrl && (
-                  <a class="terminal__link pf-modal__link" href={proyecto.repoUrl} target="_blank" rel="noopener noreferrer">
+                  <a class="terminal__link pf-modal__link" href={proyecto.repoUrl} target="_blank" rel="noopener noreferrer" data-i18n-key="view_repo">
                     ≥ Ver repositorio
                   </a>
                 )}
