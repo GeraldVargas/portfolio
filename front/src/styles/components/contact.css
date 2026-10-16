@@ -207,23 +207,6 @@
   min-height: 20px;
 }
 
-.contact-submit-btn:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
-}
-
-.contact-submit-btn:disabled:hover {
-  transform: none;
-}
-
-.contact-note {
-  margin: 0;
-  text-align: center;
-  font-family: var(--fira-code);
-  font-size: 1.2rem;
-  color: rgba(217, 249, 255, 0.7);
-}
-
 @media (max-width: 500px) {
   .input-container {
     flex-direction: column;

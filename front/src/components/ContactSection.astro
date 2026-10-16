@@ -56,17 +56,13 @@ import "../styles/components/contact.css";
           ></textarea>
         </div>
 
-        <button type="submit" id="contact-submit-btn" class="contact-submit-btn btn3d" data-i18n-key="contact_send_btn" disabled>
+        <button type="submit" id="contact-submit-btn" class="contact-submit-btn btn3d" data-i18n-key="contact_send_btn">
           <span class="button-outer">
             <span class="button-inner">
-              <span class="button-label">En proceso</span>
+              <span class="button-label">Enviar</span>
             </span>
           </span>
         </button>
-
-        <p class="contact-note" data-i18n-key="contact_pending_note">
-          El formulario está en proceso — disponible próximamente.
-        </p>
 
         <div class="contact-status" id="contact-status" aria-live="polite"></div>
       </form>
@@ -77,22 +73,21 @@ import "../styles/components/contact.css";
 <script>
   // @ts-nocheck
   // ============================================
-  // CONFIGURACIÓN DEL API
-  // Define PUBLIC_API_URL en el .env del frontend
-  // para apuntar al backend (por defecto localhost:4000)
+  // Envío del mensaje vía WhatsApp
+  // Edita WHATSAPP_NUMBER con tu número en formato
+  // internacional sin "+" (código de país + número).
   // ============================================
-  const API_URL = import.meta.env.PUBLIC_API_URL || "http://localhost:4000";
+  const WHATSAPP_NUMBER = "59176476507";
 
   const form      = document.getElementById("contact-form") as HTMLFormElement | null;
   const statusDiv = document.getElementById("contact-status") as HTMLElement | null;
-  const submitBtn = document.getElementById("contact-submit-btn") as HTMLButtonElement | null;
 
   const setStatus = (text: string) => {
     if (statusDiv) statusDiv.textContent = text;
   };
 
   if (form) {
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
       const lang = document.documentElement.lang || "es";
 
@@ -105,38 +100,12 @@ import "../styles/components/contact.css";
         return;
       }
 
-      if (submitBtn) submitBtn.disabled = true;
-      setStatus(lang === "en" ? "Sending..." : "Enviando...");
+      const text = `Hola Gerald, soy ${name} (${email}).\n\n${message}`;
+      const url  = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
-      try {
-        const res = await fetch(`${API_URL}/api/contact`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, message }),
-        });
-
-        const data = await res.json().catch(() => ({}));
-
-        if (!res.ok || data.ok === false) {
-          throw new Error(data.error || "Request failed");
-        }
-
-        setStatus(
-          lang === "en"
-            ? "✓ Message sent! Thanks for reaching out."
-            : "✓ ¡Mensaje enviado! Gracias por contactarme."
-        );
-        form.reset();
-      } catch (error: any) {
-        console.error("Contact form error:", error);
-        setStatus(
-          lang === "en"
-            ? "✗ Something went wrong. Please try again."
-            : "✗ Algo salió mal. Intenta de nuevo."
-        );
-      } finally {
-        if (submitBtn) submitBtn.disabled = false;
-      }
+      window.open(url, "_blank", "noopener,noreferrer");
+      setStatus(lang === "en" ? "Opening WhatsApp..." : "Abriendo WhatsApp...");
+      form.reset();
     });
   }
 </script>
