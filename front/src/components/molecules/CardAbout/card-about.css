@@ -78,17 +78,6 @@
   align-items: center;
   justify-content: center;
   margin: 0.4rem 0;
-  padding: 7px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, rgba(88, 236, 255, 0.78), rgba(8, 31, 77, 0.92));
-  border: 1px solid rgba(217, 249, 255, 0.55);
-  box-shadow:
-    rgba(0, 0, 0, 0.42) 0 3px 5px,
-    rgba(0, 0, 0, 0.38) 0 12px 20px -5px,
-    rgba(217, 249, 255, 0.42) 0 3px 3px inset,
-    rgba(0, 0, 0, 0.48) 0 -4px 5px inset,
-    rgba(88, 236, 255, 0.3) 0 0 24px;
-  transition: transform 0.45s ease, box-shadow 0.45s ease;
 }
 
 .about-card__avatar {
@@ -98,11 +87,11 @@
   object-fit: cover;
   border: 3px solid rgba(88, 236, 255, 0.95);
   box-shadow:
-    rgba(0, 0, 0, 0.48) 0 2px 4px,
-    rgba(0, 0, 0, 0.42) 0 8px 14px -4px,
-    rgba(255, 255, 255, 0.32) 0 3px 3px inset,
-    rgba(0, 0, 0, 0.38) 0 -4px 5px inset;
-  transition: transform 0.45s ease;
+    rgba(0, 0, 0, 0.5) 0 3px 5px,
+    rgba(0, 0, 0, 0.44) 0 13px 20px -5px,
+    rgba(217, 249, 255, 0.38) 0 3px 3px inset,
+    rgba(0, 0, 0, 0.52) 0 -5px 6px inset;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
 }
 
 .about-card__bottom-role {
@@ -254,18 +243,12 @@
 
 .about-card:hover .about-card__avatar,
 .about-card:focus-within .about-card__avatar {
-  transform: scale(1.02);
-}
-
-.about-card:hover .about-card__avatar-box,
-.about-card:focus-within .about-card__avatar-box {
-  transform: translateY(-3px);
+  transform: translateY(-2px) scale(1.02);
   box-shadow:
-    rgba(0, 0, 0, 0.46) 0 4px 7px,
-    rgba(0, 0, 0, 0.42) 0 16px 24px -6px,
-    rgba(217, 249, 255, 0.48) 0 3px 3px inset,
-    rgba(0, 0, 0, 0.52) 0 -4px 5px inset,
-    rgba(88, 236, 255, 0.4) 0 0 28px;
+    rgba(0, 0, 0, 0.54) 0 4px 7px,
+    rgba(0, 0, 0, 0.48) 0 16px 24px -6px,
+    rgba(217, 249, 255, 0.44) 0 3px 3px inset,
+    rgba(0, 0, 0, 0.58) 0 -5px 6px inset;
 }
 
 .about-card:hover .about-card__box:hover,
