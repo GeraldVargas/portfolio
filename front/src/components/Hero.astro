@@ -73,14 +73,14 @@ const orbitPositions = [
             return (
               <div
                 class="hero__orbit-item"
-                style={`--orbit-x:${position.x}%; --orbit-y:${position.y}%; --orbit-delay:${index * 0.12}s;`}
+                style={`--orbit-x:${position.x}%; --orbit-y:${position.y}%; --orbit-delay:${index * 0.12}s; --fly-x:${(position.x - 50) * 1.4}vw; --fly-y:${(position.y - 50) * 1.4}vh; --fly-turn:${index % 2 === 0 ? -145 : 145}deg; --fly-delay:${0.1 + index * 0.09}s;`}
               >
                 <div class="hero__orbit-skill">
                   <img
                     class={`hero__orbit-icon ${skill.clas}`}
                     src={skill.imgSrc}
                     alt=""
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               </div>
