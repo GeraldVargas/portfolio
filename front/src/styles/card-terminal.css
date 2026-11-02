@@ -14,12 +14,17 @@
   min-height: 120px;
   padding: 0.5rem;
   background: linear-gradient(145deg, rgba(4, 15, 38, 0.8) 0%, rgba(8, 31, 77, 0.72) 55%, rgba(9, 57, 107, 0.74) 100%);
-  border-radius: 8px;
+  border-radius: 2px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(88, 236, 255, 0.2);
   border-bottom: 3px solid rgba(88, 236, 255, 0.48);
   border-left: 2px rgba(88, 236, 255, 0.38) outset;
-  box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.28);
+  box-shadow:
+    -40px 50px 30px rgba(0, 0, 0, 0.28),
+    rgba(0, 0, 0, 0.4) 0 2px 4px,
+    rgba(0, 0, 0, 0.3) 0 7px 13px -3px,
+    rgba(88, 236, 255, 0.18) 0 -3px 0 inset;
   transform: skewX(10deg);
   transition: 0.4s;
   overflow: hidden;

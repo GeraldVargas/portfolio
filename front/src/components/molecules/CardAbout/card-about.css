@@ -8,15 +8,17 @@
       #040d21 0%,
       #081f4d 46%,
       #011030 100%);
-  border-radius: 1.5rem;
+  border-radius: 2px;
   overflow: visible;
   box-shadow: rgba(0, 0, 0, 0.45) 0px -23px 25px 0px inset,
     rgba(0, 0, 0, 0.35) 0px -36px 30px 0px inset,
     rgba(88, 236, 255, 0.12) 0px -79px 40px 0px inset,
+    rgba(88, 236, 255, 0.22) 0px -4px 0px inset,
     rgba(0, 0, 0, 0.2) 0px 2px 1px,
     rgba(0, 0, 0, 0.2) 0px 4px 2px,
     rgba(0, 0, 0, 0.2) 0px 8px 4px,
     rgba(0, 0, 0, 0.2) 0px 16px 8px,
+    rgba(0, 0, 0, 0.42) 0px 24px 32px -12px,
     rgba(5, 185, 209, 0.35) 0px 0px 30px;
   border: 1px solid rgba(88, 236, 255, 0.25);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -76,6 +78,17 @@
   align-items: center;
   justify-content: center;
   margin: 0.4rem 0;
+  padding: 7px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(88, 236, 255, 0.78), rgba(8, 31, 77, 0.92));
+  border: 1px solid rgba(217, 249, 255, 0.55);
+  box-shadow:
+    rgba(0, 0, 0, 0.42) 0 3px 5px,
+    rgba(0, 0, 0, 0.38) 0 12px 20px -5px,
+    rgba(217, 249, 255, 0.42) 0 3px 3px inset,
+    rgba(0, 0, 0, 0.48) 0 -4px 5px inset,
+    rgba(88, 236, 255, 0.3) 0 0 24px;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
 }
 
 .about-card__avatar {
@@ -84,7 +97,11 @@
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(88, 236, 255, 0.95);
-  box-shadow: 0 12px 30px rgba(5, 15, 48, 0.55);
+  box-shadow:
+    rgba(0, 0, 0, 0.48) 0 2px 4px,
+    rgba(0, 0, 0, 0.42) 0 8px 14px -4px,
+    rgba(255, 255, 255, 0.32) 0 3px 3px inset,
+    rgba(0, 0, 0, 0.38) 0 -4px 5px inset;
   transition: transform 0.45s ease;
 }
 
@@ -136,7 +153,12 @@
   color: white;
   background: linear-gradient(90deg, rgba(15, 31, 74, 0.92), rgba(32, 42, 92, 0.9));
   border-radius: 999px;
-  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(88, 236, 255, 0.28);
+  box-shadow:
+    rgba(0, 0, 0, 0.42) 0 2px 4px,
+    rgba(0, 0, 0, 0.36) 0 9px 15px -4px,
+    rgba(217, 249, 255, 0.28) 0 3px 3px inset,
+    rgba(0, 0, 0, 0.42) 0 -4px 4px inset;
   transform: translateX(22px);
   opacity: 0;
   visibility: hidden;
@@ -182,7 +204,7 @@
 }
 
 .about-card__box1:hover::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .about-card__box1:hover .about-card__svg {
@@ -198,7 +220,7 @@
 }
 
 .about-card__box2:hover::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .about-card__box2:hover .about-card__svg {
@@ -206,8 +228,16 @@
 }
 
 .about-card:hover {
-  transform: scale(1.04);
-  box-shadow: rgba(0, 0, 0, 0.32) 0px 16px 40px;
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.38) 0px -36px 30px 0px inset,
+    rgba(88, 236, 255, 0.16) 0px -79px 40px 0px inset,
+    rgba(88, 236, 255, 0.28) 0px -4px 0px inset,
+    rgba(0, 0, 0, 0.28) 0px 4px 2px,
+    rgba(0, 0, 0, 0.26) 0px 8px 4px,
+    rgba(0, 0, 0, 0.24) 0px 16px 8px,
+    rgba(0, 0, 0, 0.46) 0px 30px 42px -12px,
+    rgba(5, 185, 209, 0.42) 0px 0px 34px;
 }
 
 .about-card:hover .about-card__box,
@@ -227,24 +257,40 @@
   transform: scale(1.02);
 }
 
-.about-card__box:hover,
-.about-card__box:focus-visible,
-.about-card__box:active {
+.about-card:hover .about-card__avatar-box,
+.about-card:focus-within .about-card__avatar-box {
+  transform: translateY(-3px);
+  box-shadow:
+    rgba(0, 0, 0, 0.46) 0 4px 7px,
+    rgba(0, 0, 0, 0.42) 0 16px 24px -6px,
+    rgba(217, 249, 255, 0.48) 0 3px 3px inset,
+    rgba(0, 0, 0, 0.52) 0 -4px 5px inset,
+    rgba(88, 236, 255, 0.4) 0 0 28px;
+}
+
+.about-card:hover .about-card__box:hover,
+.about-card:focus-within .about-card__box:focus-visible,
+.about-card .about-card__box:active {
   z-index: 5;
-  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.34);
+  transform: translateY(2px) scale(0.985);
+  box-shadow:
+    rgba(0, 0, 0, 0.72) 3px 4px 5px inset,
+    rgba(0, 0, 0, 0.52) -2px -2px 4px inset,
+    rgba(255, 255, 255, 0.12) 0 0 0 1px inset,
+    rgba(0, 0, 0, 0.2) 0 2px 2px;
 }
 
 .about-card__box1:hover,
 .about-card__box1:focus-visible,
 .about-card__box1:active {
-  background: linear-gradient(90deg, rgba(4, 25, 65, 0.95), rgba(11, 21, 116, 0.9));
+  background: linear-gradient(90deg, rgba(9, 23, 58, 0.98), rgba(20, 29, 70, 0.96));
   z-index: 6;
 }
 
 .about-card__box2:hover,
 .about-card__box2:focus-visible,
 .about-card__box2:active {
-  background: linear-gradient(90deg, rgba(8, 31, 77, 0.95), rgba(9, 57, 107, 0.9));
+  background: linear-gradient(90deg, rgba(10, 25, 60, 0.98), rgba(18, 38, 76, 0.96));
   z-index: 6;
 }
 
