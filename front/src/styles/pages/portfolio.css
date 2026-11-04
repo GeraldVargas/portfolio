@@ -392,8 +392,8 @@
   align-items: center;
   flex-wrap: wrap;
   height: auto;
-  gap: 4rem;
-  padding: 2rem 0;
+  gap: clamp(5rem, 8vw, 9rem);
+  padding: 3rem 0 5rem;
 }
 
 .buttons__container {
@@ -573,20 +573,50 @@
 /* "See More": mecanismo 3D del header con el acento principal del portfolio. */
 .boton.portfolio-see-more {
   --btn-font: var(--fira-code);
-  --btn-rim: #020b18;
-  --btn-face-a: #0d3941;
-  --btn-face-b: #05262c;
-  --btn-ink-a: #d9f9ff;
-  --btn-ink-b: #86dad6;
+  --btn-rim: transparent;
+  --btn-face-a: transparent;
+  --btn-face-b: transparent;
+  --btn-ink-a: #f5faff;
+  --btn-ink-b: #c6fffb;
   --btn-tracking: 0.01em;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(88, 236, 255, 0.28);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(15, 31, 74, 0.98), rgba(32, 42, 92, 0.96));
   box-shadow:
-    -0.15em -0.15em 0.15em -0.075em rgba(0, 0, 0, 0.45),
-    0.15em 0.3em 0.3em rgba(0, 0, 0, 0.55);
+    rgba(0, 0, 0, 0.42) 0 2px 4px,
+    rgba(0, 0, 0, 0.36) 0 9px 15px -4px,
+    rgba(217, 249, 255, 0.28) 0 3px 3px inset,
+    rgba(0, 0, 0, 0.42) 0 -4px 4px inset;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.boton.portfolio-see-more .button-outer,
+.boton.portfolio-see-more .button-inner {
+  box-shadow: none;
+}
+
+.boton.portfolio-see-more .button-inner {
+  padding: 0.7em 1.4em;
+  background: transparent;
+  clip-path: none;
 }
 
 .boton.portfolio-see-more:hover {
-  --btn-ink-a: #ffffff;
-  --btn-ink-b: #c6fffb;
+  transform: translateY(2px) scale(0.985);
+  background: linear-gradient(90deg, rgba(9, 23, 58, 0.98), rgba(20, 29, 70, 0.96));
+  box-shadow:
+    rgba(0, 0, 0, 0.72) 3px 4px 5px inset,
+    rgba(0, 0, 0, 0.52) -2px -2px 4px inset,
+    rgba(255, 255, 255, 0.12) 0 0 0 1px inset,
+    rgba(0, 0, 0, 0.2) 0 2px 2px;
+}
+
+.boton.portfolio-see-more:hover .button-outer,
+.boton.portfolio-see-more:hover .button-inner {
+  box-shadow: none;
+  clip-path: none;
 }
 
 /* ============================================
@@ -710,6 +740,9 @@
   white-space: normal;
   text-wrap: balance;
   font-size: clamp(1.25rem, 1.55vw, 1.55rem);
+  font-family: var(--montserrat);
+  font-weight: 800;
+  letter-spacing: 0.015em;
   line-height: 1.18;
   z-index: 3;
 }
@@ -815,6 +848,14 @@
 .pf-modal-overlay.is-open .pf-modal-terminal:hover,
 .pf-modal-overlay.is-open .pf-modal-terminal:focus-within {
   transform: translateY(0) scale(1);
+}
+
+.pf-modal-terminal .terminal_toolbar .btn {
+  box-shadow:
+    rgba(0, 0, 0, 0.22) 0 -3px 4px inset,
+    rgba(255, 255, 255, 0.22) 0 2px 2px inset,
+    rgba(0, 0, 0, 0.3) 0 2px 2px,
+    rgba(0, 0, 0, 0.24) 0 5px 7px -3px;
 }
 
 /* ============================================

@@ -144,7 +144,7 @@
   overflow: hidden;
   color: var(--tool-ink, #fff);
   background: var(--tool-color, #356854);
-  border: 2px solid #050505;
+  border: 2px solid var(--tool-border, #b7e8ff);
   box-shadow: 4px 4px 0 #050505;
   cursor: default;
   outline: none;
