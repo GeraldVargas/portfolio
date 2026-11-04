@@ -571,7 +571,7 @@
 }
 
 /* "See More": mecanismo 3D del header con el acento principal del portfolio. */
-.boton.portfolio-see-more {
+.portfolio-see-more {
   --btn-font: var(--fira-code);
   --btn-rim: transparent;
   --btn-face-a: transparent;
@@ -592,18 +592,18 @@
   transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
 }
 
-.boton.portfolio-see-more .button-outer,
-.boton.portfolio-see-more .button-inner {
+.portfolio-see-more .button-outer,
+.portfolio-see-more .button-inner {
   box-shadow: none;
 }
 
-.boton.portfolio-see-more .button-inner {
+.portfolio-see-more .button-inner {
   padding: 0.7em 1.4em;
   background: transparent;
   clip-path: none;
 }
 
-.boton.portfolio-see-more:hover {
+.portfolio-see-more:hover {
   transform: translateY(2px) scale(0.985);
   background: linear-gradient(90deg, rgba(9, 23, 58, 0.98), rgba(20, 29, 70, 0.96));
   box-shadow:
@@ -613,10 +613,14 @@
     rgba(0, 0, 0, 0.2) 0 2px 2px;
 }
 
-.boton.portfolio-see-more:hover .button-outer,
-.boton.portfolio-see-more:hover .button-inner {
+.portfolio-see-more:hover .button-outer,
+.portfolio-see-more:hover .button-inner {
   box-shadow: none;
   clip-path: none;
+}
+
+.boton.portfolio-see-more {
+  margin-top: 2.7rem;
 }
 
 /* ============================================
@@ -655,6 +659,11 @@
   filter: blur(30px);
   opacity: 0.68;
   z-index: -1;
+}
+
+/* La franja posterior usa la sombra del título Portfolio, sin contorno. */
+.pf-card::before {
+  filter: drop-shadow(-2px 3px 5px rgba(0, 0, 0, 0.92));
 }
 
 .pf-card:hover::before,
@@ -743,6 +752,12 @@
   font-family: var(--montserrat);
   font-weight: 800;
   letter-spacing: 0.015em;
+  -webkit-text-stroke: 0.7px rgba(0, 0, 0, 0.95);
+  paint-order: stroke fill;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.9));
+  text-shadow:
+    -2px 3px 5px rgba(0, 0, 0, 0.92),
+    0 0 12px color-mix(in srgb, var(--card-color, #01f2ff) 55%, transparent);
   line-height: 1.18;
   z-index: 3;
 }

@@ -28,10 +28,11 @@ import "../styles/components/contact.css";
             type="text"
             id="contact-name"
             name="name"
-            placeholder="Tu Nombre"
-            data-i18n-placeholder="contact_name_placeholder"
+            placeholder=" "
+            autocomplete="name"
             required
           />
+          <label class="input-label" for="contact-name" data-i18n-key="contact_name_placeholder">Tu Nombre</label>
         </div>
 
         <div class="input-container">
@@ -39,10 +40,11 @@ import "../styles/components/contact.css";
             type="email"
             id="contact-email"
             name="email"
-            placeholder="Tu Correo Electrónico"
-            data-i18n-placeholder="contact_email_placeholder"
+            placeholder=" "
+            autocomplete="email"
             required
           />
+          <label class="input-label" for="contact-email" data-i18n-key="contact_email_placeholder">Tu Correo Electrónico</label>
         </div>
 
         <div class="input-container">
@@ -50,13 +52,13 @@ import "../styles/components/contact.css";
             id="contact-message"
             name="message"
             rows="4"
-            placeholder="Tu Mensaje..."
-            data-i18n-placeholder="contact_message_placeholder"
+            placeholder=" "
             required
           ></textarea>
+          <label class="input-label" for="contact-message" data-i18n-key="contact_message_placeholder">Tu Mensaje...</label>
         </div>
 
-        <button type="submit" id="contact-submit-btn" class="contact-submit-btn btn3d" data-i18n-key="contact_send_btn">
+        <button type="submit" id="contact-submit-btn" class="contact-submit-btn portfolio-see-more btn3d" data-i18n-key="contact_send_btn">
           <span class="button-outer">
             <span class="button-inner">
               <span class="button-label">Enviar</span>

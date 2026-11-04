@@ -133,6 +133,7 @@
    Uiverse coslac / Smit-Prajapati dark inputs
    ============================================ */
 .input-container {
+  position: relative;
   display: flex;
   border-radius: 1rem;
   background: linear-gradient(173deg, #0f2550 0%, #152544 100%);
@@ -152,7 +153,7 @@
     inset -5px -5px 10px #29385a;
   width: 100%;
   flex-basis: 100%;
-  padding: 1.3rem 1.6rem;
+  padding: 1.55rem 1.6rem 0.8rem;
   border: 1px solid transparent;
   color: #ffffff;
   font-size: 1.4rem;
@@ -165,11 +166,49 @@
   min-height: 110px;
 }
 
-.input-container input::placeholder,
-.input-container textarea::placeholder {
-  color: rgba(217, 249, 255, 0.35);
+.input-label {
+  position: absolute;
+  left: 1.9rem;
+  top: 50%;
+  z-index: 1;
+  padding: 0 0.35rem;
+  color: rgba(217, 249, 255, 0.58);
+  background: #031230;
   font-family: var(--fira-code);
   font-size: 1.3rem;
+  line-height: 1;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.input-container:has(textarea) .input-label {
+  top: 2.15rem;
+}
+
+.input-container input:focus + .input-label,
+.input-container input:not(:placeholder-shown) + .input-label,
+.input-container textarea:focus + .input-label,
+.input-container textarea:not(:placeholder-shown) + .input-label,
+.input-container input:-webkit-autofill + .input-label,
+.input-container textarea:-webkit-autofill + .input-label {
+  top: 0.3rem;
+  transform: translateY(-50%);
+  color: #58ecff;
+  font-size: 1.05rem;
+}
+
+.input-container input:-webkit-autofill,
+.input-container input:-webkit-autofill:hover,
+.input-container input:-webkit-autofill:focus,
+.input-container textarea:-webkit-autofill,
+.input-container textarea:-webkit-autofill:hover,
+.input-container textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  caret-color: #ffffff;
+  -webkit-box-shadow: inset 5px 5px 10px #0e1013, inset -5px -5px 10px #29385a, 0 0 0 1000px #031230 inset;
+  box-shadow: inset 5px 5px 10px #0e1013, inset -5px -5px 10px #29385a, 0 0 0 1000px #031230 inset;
+  transition: background-color 9999s ease-out 0s;
 }
 
 .input-container input:focus,
@@ -192,11 +231,42 @@
 
   --btn-font: var(--fira-code);
   --btn-tracking: 0.1em;
-  --btn-rim: rgba(88, 236, 255, 0.5);
-  --btn-face-a: #12315f;
-  --btn-face-b: #0a1a3f;
-  --btn-ink-a: #d9f9ff;
-  --btn-ink-b: #58ecff;
+  --btn-rim: transparent;
+  --btn-face-a: transparent;
+  --btn-face-b: transparent;
+  --btn-ink-a: #f5faff;
+  --btn-ink-b: #c6fffb;
+  margin-top: 0.6rem;
+  border: 1px solid rgba(88, 236, 255, 0.28);
+  background: linear-gradient(90deg, rgba(15, 31, 74, 0.98), rgba(32, 42, 92, 0.96));
+  box-shadow:
+    rgba(0, 0, 0, 0.42) 0 2px 4px,
+    rgba(0, 0, 0, 0.36) 0 9px 15px -4px,
+    rgba(217, 249, 255, 0.28) 0 3px 3px inset,
+    rgba(0, 0, 0, 0.42) 0 -4px 4px inset;
+}
+
+.contact-submit-btn .button-outer,
+.contact-submit-btn .button-inner,
+.contact-submit-btn:hover .button-outer,
+.contact-submit-btn:hover .button-inner {
+  box-shadow: none;
+  clip-path: none;
+}
+
+.contact-submit-btn .button-inner {
+  padding: 0.8em 1.4em;
+  background: transparent;
+}
+
+.contact-submit-btn:hover {
+  transform: translateY(2px) scale(0.985);
+  background: linear-gradient(90deg, rgba(9, 23, 58, 0.98), rgba(20, 29, 70, 0.96));
+  box-shadow:
+    rgba(0, 0, 0, 0.72) 3px 4px 5px inset,
+    rgba(0, 0, 0, 0.52) -2px -2px 4px inset,
+    rgba(255, 255, 255, 0.12) 0 0 0 1px inset,
+    rgba(0, 0, 0, 0.2) 0 2px 2px;
 }
 
 .contact-status {
