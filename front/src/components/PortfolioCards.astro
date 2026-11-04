@@ -187,6 +187,9 @@ const proyectosAMostrar = limit ? projects.slice(0, limit) : projects;
         id={`modal-${proyecto.id}`}
         data-modal-overlay={proyecto.id}
         style={`--card-color: ${colorHex};`}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Detalles de ${proyecto.title}`}
       >
         <div class="caja__cristal pf-modal-terminal">
           <div class="terminal_toolbar">

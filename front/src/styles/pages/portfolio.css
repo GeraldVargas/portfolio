@@ -172,16 +172,56 @@
   font-size: 1.25rem;
   white-space: nowrap;
   opacity: 0;
-  transition: bottom 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.1s,
-    opacity 0.25s ease 0.15s;
+  transition:
+    bottom 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.1s,
+    opacity 0.25s ease 0.15s,
+    transform 0.45s ease,
+    border-radius 0.45s ease,
+    box-shadow 0.45s ease;
 
   /* Botón 3D con la cara del color de cada proyecto */
   --btn-font: var(--fira-code);
-  --btn-rim: color-mix(in srgb, var(--card-color, #01f2ff) 55%, black);
-  --btn-face-a: color-mix(in srgb, var(--card-color, #01f2ff) 80%, white);
-  --btn-face-b: color-mix(in srgb, var(--card-color, #01f2ff) 84%, black);
-  --btn-ink-a: #08111f;
-  --btn-ink-b: #0a1a3f;
+  --btn-rim: color-mix(in srgb, var(--card-color, #01f2ff) 48%, #050505);
+  --btn-face-a: color-mix(in srgb, var(--card-color, #01f2ff) 64%, #18202b);
+  --btn-face-b: color-mix(in srgb, var(--card-color, #01f2ff) 42%, #05070c);
+  --btn-ink-a: #ffffff;
+  --btn-ink-b: color-mix(in srgb, var(--card-color, #01f2ff) 42%, white);
+
+  border-radius: 0.9rem;
+  box-shadow:
+    0 12px 22px rgba(0, 0, 0, 0.45),
+    0 0 0 1px color-mix(in srgb, var(--card-color, #01f2ff) 25%, transparent);
+}
+
+.pf-card__btn::after {
+  border-radius: inherit;
+}
+
+.pf-card__btn .button-outer,
+.pf-card__btn .button-inner {
+  border-radius: inherit;
+  box-shadow: none;
+}
+
+.pf-card__btn .button-inner {
+  padding: 0.7em 1.35em;
+}
+
+.pf-card__btn:hover,
+.pf-card__btn:focus-visible {
+  transform: translateY(7px);
+  border-radius: 999px;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.5),
+    0 0 18px color-mix(in srgb, var(--card-color, #01f2ff) 42%, transparent);
+}
+
+.pf-card__btn:hover .button-outer,
+.pf-card__btn:focus-visible .button-outer,
+.pf-card__btn:hover .button-inner,
+.pf-card__btn:focus-visible .button-inner {
+  box-shadow: none;
+  clip-path: inset(0 round 999px);
 }
 
 /* ── HOVER STATES ── */
@@ -216,8 +256,12 @@
 .pf-card:hover .pf-card__btn {
   bottom: 0px;
   opacity: 1;
-  transition: bottom 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.1s,
-    opacity 0.25s ease 0.2s;
+  transition:
+    bottom 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.1s,
+    opacity 0.25s ease 0.2s,
+    transform 0.45s ease,
+    border-radius 0.45s ease,
+    box-shadow 0.45s ease;
 }
 
 /* ============================================
@@ -259,8 +303,13 @@
 }
 
 .pf-modal-overlay.is-open .pf-modal-terminal {
-  transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1) skewX(3deg);
   opacity: 1;
+}
+
+.pf-modal-overlay.is-open .pf-modal-terminal:hover,
+.pf-modal-overlay.is-open .pf-modal-terminal:focus-within {
+  transform: translateY(0) scale(1) skewX(0deg);
 }
 
 .pf-modal-terminal .user {
@@ -462,17 +511,23 @@
 .caja__cristal.pf-modal-terminal {
   background: linear-gradient(
     145deg,
-    rgba(4, 15, 38, 0.95) 0%,
-    rgba(8, 31, 77, 0.92) 55%,
-    rgba(9, 57, 107, 0.94) 100%
+    color-mix(in srgb, var(--card-color, #01f2ff) 10%, #040f26) 0%,
+    color-mix(in srgb, var(--card-color, #01f2ff) 24%, #081f4d) 55%,
+    color-mix(in srgb, var(--card-color, #01f2ff) 34%, #050c1d) 100%
   );
-  border-radius: 8px;
+  border-radius: 2px;
   border: 1px solid color-mix(in srgb, var(--card-color, #01f2ff) 30%, transparent);
   border-bottom: 3px solid color-mix(in srgb, var(--card-color, #01f2ff) 55%, transparent);
+  border-left: 2px color-mix(in srgb, var(--card-color, #01f2ff) 40%, transparent) outset;
   box-shadow:
-    0 0 60px color-mix(in srgb, var(--card-color, #01f2ff) 18%, transparent),
-    -40px 50px 30px rgba(0, 0, 0, 0.28);
+    -40px 50px 30px rgba(0, 0, 0, 0.28),
+    rgba(0, 0, 0, 0.4) 0 2px 4px,
+    rgba(0, 0, 0, 0.3) 0 7px 13px -3px,
+    color-mix(in srgb, var(--card-color, #01f2ff) 22%, transparent) 0 -3px 0 inset,
+    0 0 60px color-mix(in srgb, var(--card-color, #01f2ff) 18%, transparent);
   color: #ffffff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .pf-modal-terminal .terminal_toolbar {
@@ -489,7 +544,7 @@
 }
 
 .pf-modal-terminal .terminal_toolbar .btn__yellow {
-  background: #0b2f6f;
+  background: color-mix(in srgb, var(--card-color, #01f2ff) 45%, #081f4d);
 }
 
 .pf-modal-terminal .terminal_toolbar .btn__green {
@@ -513,6 +568,253 @@
 
 .pf-modal-terminal__desc {
   color: #d8fbff;
+}
+
+/* "See More": mecanismo 3D del header con el acento principal del portfolio. */
+.boton.portfolio-see-more {
+  --btn-font: var(--fira-code);
+  --btn-rim: #020b18;
+  --btn-face-a: #0d3941;
+  --btn-face-b: #05262c;
+  --btn-ink-a: #d9f9ff;
+  --btn-ink-b: #86dad6;
+  --btn-tracking: 0.01em;
+  box-shadow:
+    -0.15em -0.15em 0.15em -0.075em rgba(0, 0, 0, 0.45),
+    0.15em 0.3em 0.3em rgba(0, 0, 0, 0.55);
+}
+
+.boton.portfolio-see-more:hover {
+  --btn-ink-a: #ffffff;
+  --btn-ink-b: #c6fffb;
+}
+
+/* ============================================
+   PROJECT CARDS — glass skew card, color per project
+   (adapted from Uiverse.io by Codewithvinay)
+   ============================================ */
+.pf-card {
+  width: 260px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  overflow: visible;
+}
+
+.pf-card::before,
+.pf-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 50%;
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(
+    315deg,
+    color-mix(in srgb, var(--card-color, #01f2ff) 72%, #ffffff),
+    var(--card-color, #01f2ff)
+  );
+  transform: skewX(15deg);
+  transition: transform 0.5s ease;
+}
+
+.pf-card::after {
+  filter: blur(30px);
+  opacity: 0.68;
+  z-index: -1;
+}
+
+.pf-card:hover::before,
+.pf-card:hover::after {
+  transform: skewX(0deg) scaleX(1.3);
+}
+
+.pf-card__shadow {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border: 0;
+  border-radius: 0;
+  transform: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.pf-card__shadow::before,
+.pf-card__shadow::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--card-color, #01f2ff) 18%, rgba(255, 255, 255, 0.4));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+  animation: pf-card-float 2s ease-in-out infinite;
+}
+
+.pf-card__shadow::before {
+  top: -22px;
+  left: 28px;
+}
+
+.pf-card__shadow::after {
+  right: 28px;
+  bottom: -22px;
+  animation-delay: -1s;
+}
+
+.pf-card__main {
+  width: 230px;
+  height: 292px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.1rem 1.2rem;
+  overflow: hidden;
+  clip-path: none;
+  border: 1px solid color-mix(in srgb, var(--card-color, #01f2ff) 26%, rgba(255, 255, 255, 0.35));
+  border-radius: 8px;
+  background: rgba(3, 13, 33, 0.58);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.28);
+  z-index: 2;
+  transform: none;
+  transition: transform 0.5s ease, background 0.5s ease;
+}
+
+.pf-card:hover .pf-card__main {
+  transform: translateY(-4px);
+  background: rgba(3, 13, 33, 0.68);
+}
+
+.pf-card__top,
+.pf-card__side {
+  display: none;
+}
+
+.pf-card__title {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  min-height: 3.1em;
+  margin: 0;
+  transform: none;
+  opacity: 1;
+  white-space: normal;
+  text-wrap: balance;
+  font-size: clamp(1.25rem, 1.55vw, 1.55rem);
+  line-height: 1.18;
+  z-index: 3;
+}
+
+.pf-card__techs {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  margin-top: 1.15rem;
+  transform: none;
+  opacity: 1;
+  z-index: 3;
+}
+
+.pf-card__tech-icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.pf-card__btn-wrap {
+  bottom: 1.5rem;
+  z-index: 5;
+}
+
+.pf-card__btn {
+  bottom: -100px;
+  opacity: 0;
+  border-radius: 100em;
+  box-shadow:
+    -0.15em -0.15em 0.15em -0.075em rgba(5, 5, 5, 0.25),
+    0.0375em 0.0375em 0.0675em rgba(5, 5, 5, 0.1);
+  transition:
+    bottom 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.25s ease;
+}
+
+.pf-card__btn .button-outer {
+  box-shadow:
+    0 0.05em 0.05em -0.01em rgba(5, 5, 5, 1),
+    0 0.01em 0.01em -0.01em rgba(5, 5, 5, 0.5),
+    0.15em 0.3em 0.1em -0.01em rgba(5, 5, 5, 0.25);
+}
+
+.pf-card__btn .button-inner {
+  box-shadow:
+    0 0 0 0 inset rgba(5, 5, 5, 0.1),
+    -0.05em -0.05em 0.05em 0 inset rgba(5, 5, 5, 0.25),
+    0 0 0.05em 0.2em inset rgba(255, 255, 255, 0.25),
+    0.025em 0.05em 0.1em inset rgba(255, 255, 255, 1),
+    -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
+  clip-path: inset(0 round 100em);
+}
+
+.pf-card__btn:hover,
+.pf-card__btn:focus-visible {
+  transform: none;
+  border-radius: 100em;
+  box-shadow:
+    -0.15em -0.15em 0.15em -0.075em rgba(5, 5, 5, 0.25),
+    0.0375em 0.0375em 0.0675em rgba(5, 5, 5, 0.1);
+}
+
+.pf-card__btn:hover .button-outer,
+.pf-card__btn:focus-visible .button-outer {
+  box-shadow: none;
+}
+
+.pf-card__btn:hover .button-inner,
+.pf-card__btn:focus-visible .button-inner {
+  box-shadow:
+    0.1em 0.15em 0.05em 0 inset rgba(5, 5, 5, 0.75),
+    -0.025em -0.03em 0.05em 0.025em inset rgba(5, 5, 5, 0.5),
+    0.25em 0.25em 0.2em 0 inset rgba(5, 5, 5, 0.5),
+    0 0 0.05em 0.5em inset rgba(255, 255, 255, 0.15),
+    -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
+  clip-path: inset(clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 100em);
+}
+
+.pf-card:hover .pf-card__btn,
+.pf-card:focus-within .pf-card__btn {
+  bottom: 0;
+  opacity: 1;
+}
+
+.pf-card:hover .pf-card__title,
+.pf-card:hover .pf-card__techs {
+  opacity: 1;
+}
+
+@keyframes pf-card-float {
+  0%,
+  100% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* The project detail uses the exact About-card stance: always straight. */
+.pf-modal-overlay.is-open .pf-modal-terminal,
+.pf-modal-overlay.is-open .pf-modal-terminal:hover,
+.pf-modal-overlay.is-open .pf-modal-terminal:focus-within {
+  transform: translateY(0) scale(1);
 }
 
 /* ============================================
