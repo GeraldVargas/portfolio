@@ -105,6 +105,10 @@
   height: auto;
   animation: 32s slide infinite linear;
 }
+
+.slider--reverse {
+  animation-direction: reverse;
+}
 @keyframes slide {
   from {
     transform: translateX(0);
@@ -134,10 +138,10 @@
 .tools__caja {
   display: grid;
   place-items: center;
-  height: 72px;
-  width: 72px;
-  min-width: 72px;
-  min-height: 72px;
+  height: 64px;
+  width: 64px;
+  min-width: 64px;
+  min-height: 64px;
   border-radius: 50%;
   padding: 0;
   position: relative;
@@ -266,10 +270,10 @@
     gap: 0;
   }
   .tools__caja {
-    width: 96px;
-    height: 96px;
-    min-width: 96px;
-    min-height: 96px;
+    width: 84px;
+    height: 84px;
+    min-width: 84px;
+    min-height: 84px;
   }
   .tools__descripcion {
     font-size: 0.88rem;
@@ -286,10 +290,10 @@
     gap: clamp(2rem, 4vw, 4.5rem);
   }
   .tools__caja {
-    height: 112px;
-    width: 112px;
-    min-height: 112px;
-    min-width: 112px;
+    height: 98px;
+    width: 98px;
+    min-height: 98px;
+    min-width: 98px;
   }
   .tools__descripcion {
     font-size: 1rem;
