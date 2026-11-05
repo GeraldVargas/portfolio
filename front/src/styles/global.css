@@ -226,22 +226,26 @@ hr {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 1.5rem;
+  width: 1rem;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(36, 36, 36);
+  background: linear-gradient(90deg, #1b1b1b, #303030, #1b1b1b);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.65);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #01f2ff;
+  border: 2px solid #272727;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e6e6e6, #a9a9a9);
+  box-shadow: inset 1px 2px 3px rgba(255, 255, 255, 0.82), inset -2px -3px 4px rgba(0, 0, 0, 0.34), 0 2px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #5f00e3;
+  background: linear-gradient(135deg, #f3f3f3, #8f8f8f);
 }
 /* Buttons */
 ::-webkit-scrollbar-button:single-button {
