@@ -60,12 +60,15 @@ const orbitPositions = [
       </div>
     </div>
     <div class="hero__media">
-      <figure class="hero__bubble" aria-label="Gerald hero">
+      <figure class="hero__bubble" aria-hidden="true">
         <div class="loader-wrapper" aria-hidden="true">
           <div class="loader" aria-hidden="true"></div>
         </div>
-        <img class="hero__avatar" src="/img/portfolio_img/geraldhero.png" alt="Gerald hero" loading="eager" />
       </figure>
+      <div class="hero__scene" role="img" aria-label="Gerald se asoma, entra al círculo, gira para sentarse y recibe su laptop.">
+        <img class="hero__avatar" src="/img/portfolio_img/geraldhero.png" alt="" loading="eager" />
+        <canvas class="hero__scene-canvas" aria-hidden="true"></canvas>
+      </div>
       <div class="hero__orbit" aria-hidden="true">
         {
           orbitSkills.map((skill, index) => {
@@ -73,7 +76,7 @@ const orbitPositions = [
             return (
               <div
                 class="hero__orbit-item"
-                style={`--orbit-x:${position.x}%; --orbit-y:${position.y}%; --orbit-delay:${index * 0.12}s; --fly-x:${(position.x - 50) * 1.4}vw; --fly-y:${(position.y - 50) * 1.4}vh; --fly-turn:${index % 2 === 0 ? -145 : 145}deg; --fly-delay:${0.1 + index * 0.09}s;`}
+                style={`--orbit-x:${position.x}%; --orbit-y:${position.y}%; --orbit-delay:${index * 0.12}s;`}
               >
                 <div class="hero__orbit-skill">
                   <img
@@ -100,3 +103,10 @@ const orbitPositions = [
     </svg>
   </div>
 </section>
+
+<script>
+  import { initHeroScene } from "../scripts/hero-scene";
+
+  initHeroScene();
+  document.addEventListener("astro:page-load", initHeroScene);
+</script>

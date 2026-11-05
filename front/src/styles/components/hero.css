@@ -174,36 +174,19 @@
   left: var(--orbit-x);
   transform: translate(-50%, -50%);
   transform-origin: center;
-  animation: hero-app-arrival 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: var(--fly-delay, 0s);
 }
 
-/* Wait until the loading overlay is removed before starting the entrance. */
-body:has(#page-loader) .hero__orbit-item {
+/* The scene clock controls arrivals; only the small idle float uses CSS. */
+.is-scene-ready:not(.is-scene-playing) .hero__orbit-skill,
+body:has(#page-loader) .hero__orbit-skill {
   animation-play-state: paused;
 }
 
-@keyframes hero-app-arrival {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) translate(var(--fly-x), var(--fly-y)) rotate(var(--fly-turn)) scale(0.35);
-  }
-  25% {
-    opacity: 1;
-  }
-  80% {
-    transform: translate(-50%, -50%) translate(0, -5px) rotate(-4deg) scale(1.06);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__orbit-item {
-    animation: none;
-  }
+.is-scene-ready[data-scene-phase="peek"] .hero__orbit-skill,
+.is-scene-ready[data-scene-phase="walk"] .hero__orbit-skill,
+.is-scene-ready[data-scene-phase="turn"] .hero__orbit-skill,
+.is-scene-ready[data-scene-phase="sit"] .hero__orbit-skill {
+  animation-play-state: paused;
 }
 
 .hero__orbit-skill {
@@ -321,6 +304,31 @@ body:has(#page-loader) .hero__orbit-item {
   animation-delay: 0.9s;
 }
 
+.hero__scene {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero__scene-canvas {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+}
+
+.is-scene-ready .hero__avatar {
+  display: none;
+}
+
+.is-scene-ready .hero__scene-canvas {
+  display: block;
+}
+
 .hero__avatar {
   position: relative;
   width: 54%;
@@ -332,8 +340,17 @@ body:has(#page-loader) .hero__orbit-item {
   z-index: 2;
 }
 
-.hero__bubble:hover .hero__avatar {
+.hero__media:hover .hero__avatar {
   transform: scale(0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__orbit-skill,
+  .hero__bubble .loader,
+  .hero__glitch::before,
+  .hero__glitch::after {
+    animation: none;
+  }
 }
 
 .hero__wave {
